@@ -1,10 +1,11 @@
 import Link from 'next/link'
+import NewsletterForm from '@/components/shared/NewsletterForm'
 
 export default function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Identidade */}
           <div>
             <p className="font-bold text-lg">ASESP</p>
@@ -32,6 +33,15 @@ export default function Footer() {
               {/* Endereço e email serão adicionados */}
               São Paulo, SP
             </p>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <p className="font-semibold text-sm mb-3">Fique por dentro</p>
+            <p className="text-xs text-primary-foreground/70 mb-3">
+              Receba novidades da ASESP no seu e-mail.
+            </p>
+            <NewsletterForm />
           </div>
         </div>
 
