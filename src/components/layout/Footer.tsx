@@ -1,52 +1,162 @@
+import React from 'react'
 import Link from 'next/link'
-import NewsletterForm from '@/components/shared/NewsletterForm'
+import { MapPin, Mail, Instagram, Youtube, Facebook, Linkedin } from 'lucide-react'
+
+const linksInstitucionais = [
+  { href: '/about', label: 'Quem Somos' },
+  { href: '/board', label: 'Diretoria' },
+  { href: '/transparency', label: 'Transparência' },
+  { href: '/news', label: 'Notícias' },
+  { href: '/contact', label: 'Contato' },
+]
+
+const linksProjetos = [
+  { href: '/projects', label: 'Todos os Projetos' },
+  { href: '/projects', label: 'Núcleo dos Idosos' },
+  { href: '/projects', label: 'Núcleo das Mulheres' },
+  { href: '/projects', label: 'Juventude Surda' },
+  { href: '/how-to-join', label: 'Seja Associado' },
+  { href: '/donations', label: 'Faça uma Doação' },
+]
+
+const socialLinks = [
+  {
+    icon: Instagram,
+    href: 'https://instagram.com/asesp_oficial',
+    label: 'Instagram da ASESP',
+    hoverBg: 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)',
+    color: '#bc1888',
+  },
+  {
+    icon: Youtube,
+    href: 'https://youtube.com/@asesp',
+    label: 'YouTube da ASESP',
+    hoverBg: '#FF0000',
+    color: '#FF0000',
+  },
+  {
+    icon: Facebook,
+    href: 'https://facebook.com/asesp.sp',
+    label: 'Facebook da ASESP',
+    hoverBg: '#1877F2',
+    color: '#1877F2',
+  },
+  {
+    icon: Linkedin,
+    href: 'https://linkedin.com/company/asesp',
+    label: 'LinkedIn da ASESP',
+    hoverBg: '#0A66C2',
+    color: '#0A66C2',
+  },
+]
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground mt-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Identidade */}
-          <div>
-            <p className="font-bold text-lg">ASESP</p>
-            <p className="text-sm text-primary-foreground/70 mt-1">
-              Associação dos Surdos do Estado de São Paulo
+    <footer
+      className="text-white"
+      style={{ background: 'linear-gradient(180deg, #1B3A6B 0%, #0d2347 100%)' }}
+    >
+      {/* Decorative top border */}
+      <div
+        className="h-1 w-full"
+        style={{ background: 'linear-gradient(90deg, #F26522, #00B4D8, #F26522)' }}
+        aria-hidden="true"
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+          {/* Identidade — ocupa 2 colunas no lg */}
+          <div className="lg:col-span-2">
+            {/* Logo */}
+            <div className="flex items-center gap-3 mb-4">
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                style={{ background: 'linear-gradient(135deg, #F26522, #ff8c53)' }}
+                aria-hidden="true"
+              >
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="white" aria-hidden="true">
+                  <path d="M6 4a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1v5.5a1 1 0 0 0 2 0V3a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1v6.5a1 1 0 0 0 2 0V5a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1v7.5C18 16 15.5 20 11 20S4 16.314 4 12.5V8a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1v3.5a.5.5 0 0 0 1 0V4Z" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-extrabold text-lg leading-none tracking-tight">vemsonhar</p>
+                <p className="text-[#00B4D8] text-[10px] tracking-[0.18em] uppercase font-semibold mt-0.5">ASESP</p>
+              </div>
+            </div>
+            <p className="text-white/60 text-base leading-relaxed max-w-xs text-justify">
+              Associação dos Surdos do Estado de São Paulo. Representando e defendendo os direitos da comunidade surda paulista desde 2012.
             </p>
+
+            {/* Redes sociais */}
+            <div className="flex items-center gap-3 mt-6">
+              {socialLinks.map(({ icon: Icon, href, label, hoverBg, color }) => (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="social-icon w-11 h-11 rounded-lg flex items-center justify-center border border-white/10 transition-all duration-200 hover:-translate-y-0.5"
+                  style={{ '--social-bg': hoverBg, '--social-color': color } as React.CSSProperties}
+                >
+                  <Icon size={20} className="text-white" />
+                </a>
+              ))}
+            </div>
+
+            {/* Contato rápido */}
+            <div className="mt-6 space-y-2">
+              <a href="mailto:contato@asesp.org.br" className="flex items-center gap-2 text-base text-white/60 hover:text-[#00B4D8] transition-colors">
+                <Mail size={16} className="shrink-0" />
+                contato@asesp.org.br
+              </a>
+              <span className="flex items-center gap-2 text-base text-white/60">
+                <MapPin size={16} className="shrink-0" />
+                São Paulo, SP — Brasil
+              </span>
+            </div>
           </div>
 
-          {/* Links */}
+          {/* Links Institucionais */}
           <div>
-            <p className="font-semibold text-sm mb-3">Links</p>
-            <ul className="space-y-2 text-sm text-primary-foreground/80">
-              <li><Link href="/sobre" className="hover:text-accent transition-colors">Sobre</Link></li>
-              <li><Link href="/noticias" className="hover:text-accent transition-colors">Notícias</Link></li>
-              <li><Link href="/como-se-associar" className="hover:text-accent transition-colors">Como se Associar</Link></li>
-              <li><Link href="/doacoes" className="hover:text-accent transition-colors">Doações</Link></li>
-              <li><Link href="/contato" className="hover:text-accent transition-colors">Contato</Link></li>
+            <p className="font-semibold text-base mb-4 text-white">Institucional</p>
+            <ul className="space-y-2.5">
+              {linksInstitucionais.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="text-base text-white/60 hover:text-white hover:font-bold transition-all duration-150 leading-none"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contato */}
+          {/* Links Projetos */}
           <div>
-            <p className="font-semibold text-sm mb-3">Contato</p>
-            <p className="text-sm text-primary-foreground/80">
-              {/* Endereço e email serão adicionados */}
-              São Paulo, SP
-            </p>
+            <p className="font-semibold text-base mb-4 text-white">Projetos</p>
+            <ul className="space-y-2.5">
+              {linksProjetos.map((l) => (
+                <li key={l.label}>
+                  <Link
+                    href={l.href}
+                    className="text-base text-white/60 hover:text-white hover:font-bold transition-all duration-150 leading-none"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Newsletter */}
-          <div>
-            <p className="font-semibold text-sm mb-3">Fique por dentro</p>
-            <p className="text-xs text-primary-foreground/70 mb-3">
-              Receba novidades da ASESP no seu e-mail.
-            </p>
-            <NewsletterForm />
-          </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-8 pt-6 text-center text-xs text-primary-foreground/60">
-          © {new Date().getFullYear()} ASESP. Todos os direitos reservados.
+        {/* Bottom bar */}
+        <div className="border-t border-white/10 mt-12 pt-6 text-center text-base text-white/40">
+          <p>© {new Date().getFullYear()} ASESP - Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>
