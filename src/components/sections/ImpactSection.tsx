@@ -11,7 +11,7 @@ const numeros = [
 ]
 
 export default function ImpactoSection() {
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDListElement>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [counters, setCounters] = useState(numeros.map(() => 0))
 

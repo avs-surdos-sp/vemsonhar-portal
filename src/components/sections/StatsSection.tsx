@@ -11,7 +11,7 @@ const stats = [
 ]
 
 function useIntersectionObserver(options?: IntersectionObserverInit) {
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDListElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
