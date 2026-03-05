@@ -19,11 +19,13 @@ Site institucional da **ASESP** (Associação dos Surdos do Estado de São Paulo
 
 ## Identidade Visual
 
-| Token | Cor | Hex |
+| Papel | Cor | Hex |
 |---|---|---|
-| Navy | Azul marinho principal | `#1B3A6B` |
-| Orange | Laranja CTA | `#F26522` |
-| Cyan | Ciano destaque | `#00B4D8` |
+| Azul escuro — texto "vem" e subtítulo | Azul marinho | `#1B3A6B` |
+| Azul vibrante — texto "sonhar" | Azul médio | `#1565C0` |
+| Destaque quente — mãos e CTAs | Laranja/coral | `#F26522` |
+| Detalhe — onda e ícones | Ciano/azul claro | `#00B4D8` |
+| Fundo geral | Branco | `#FFFFFF` |
 
 ---
 
@@ -55,18 +57,6 @@ Acesse `http://localhost:3000`.
 
 ---
 
-## Variáveis de Ambiente
-
-Crie um arquivo `.env.local` na raiz do projeto:
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOi...
-```
-
-> **Nunca** comite o `.env.local`. Ele já está no `.gitignore`.
-
----
 
 ## Estrutura de Pastas
 
@@ -76,35 +66,35 @@ src/
 │   ├── layout.tsx                     # Layout raiz (Header + Footer + fonte Inter)
 │   ├── page.tsx                       # Home page
 │   ├── globals.css                    # Tokens de cor AVS + estilos globais
-│   ├── sobre/page.tsx                 # Quem Somos
-│   ├── noticias/
+│   ├── about/page.tsx                 # Quem Somos
+│   ├── board/page.tsx                 # Diretoria e estrutura administrativa
+│   ├── projects/page.tsx              # Projetos e núcleos
+│   ├── transparency/page.tsx          # Transparência e prestação de contas
+│   ├── news/
 │   │   ├── page.tsx                   # Lista de notícias
 │   │   └── [slug]/page.tsx            # Notícia individual
-│   ├── como-se-associar/page.tsx      # Benefícios + Google Forms (placeholder)
-│   ├── doacoes/page.tsx               # Impacto + formulário de doação
-│   ├── contato/page.tsx               # Endereço + formulário de contato
+│   ├── how-to-join/page.tsx           # Benefícios + Google Forms (placeholder)
+│   ├── donations/page.tsx             # Impacto + formulário de doação
+│   ├── contact/page.tsx               # Endereço + formulário de contato
 │   └── actions/
-│       ├── contato.ts                 # Server Action → tabela contatos
-│       ├── doacoes.ts                 # Server Action → tabela doacoes
-│       └── newsletter.ts             # Server Action → tabela newsletter
+│       └── contact.ts                 # Server Action → tabela contatos
 │
 ├── components/
 │   ├── layout/
 │   │   ├── Header.tsx                 # Nav fixa, transparente → navy no scroll
-│   │   └── Footer.tsx                 # 4 colunas + newsletter
+│   │   └── Footer.tsx                 # 4 colunas + redes sociais
 │   ├── sections/
 │   │   ├── Hero.tsx                   # Home — hero 2 colunas + wave SVG
 │   │   ├── StatsSection.tsx           # Home — contadores animados
-│   │   ├── AcoesSection.tsx           # Home — 3 cards de ação
-│   │   ├── ProjetosSection.tsx        # Home — 4 núcleos
+│   │   ├── ActionsSection.tsx         # Home — 3 cards de ação
+│   │   ├── ProjectsSection.tsx        # Home — 4 núcleos
 │   │   ├── EventoNoticiasSection.tsx  # Home — evento + notícias
-│   │   ├── MissaoSection.tsx          # Usado em /sobre
-│   │   ├── ImpactoSection.tsx         # Usado em /sobre e /doacoes
-│   │   └── DoacoesCTA.tsx             # Usado em /doacoes
+│   │   ├── MissionSection.tsx         # Seção missão
+│   │   ├── ImpactSection.tsx          # Seção impacto
+│   │   └── DonationsCTA.tsx           # CTA de doações
 │   └── shared/
-│       ├── ContatoForm.tsx            # Formulário → Supabase
-│       ├── DoacaoForm.tsx             # Formulário → Supabase
-│       ├── NewsletterForm.tsx         # Newsletter → Supabase
+│       ├── ContactForm.tsx            # Formulário → Supabase
+│       ├── DonationForm.tsx           # Formulário → Supabase
 │       └── LibrasVideo.tsx            # Embed YouTube
 │
 ├── lib/
@@ -125,7 +115,6 @@ supabase/
 |---|---|
 | `contatos` | `nome`, `email`, `assunto`, `mensagem`, `created_at` |
 | `doacoes` | `nome`, `email`, `valor_pretendido`, `modalidade`, `mensagem`, `created_at` |
-| `newsletter` | `email`, `created_at` |
 
 **Políticas RLS:**
 - `INSERT` liberado para o role `anon` (formulários públicos)
@@ -140,59 +129,17 @@ Para recriar as tabelas: execute `supabase/schema.sql` no SQL Editor do painel S
 | Rota | Descrição |
 |---|---|
 | `/` | Home — Hero, Stats, Ações, Projetos, Evento + Notícias |
-| `/sobre` | História, Missão/Visão, Valores, Pilares institucionais |
-| `/noticias` | Grid de notícias *(integração Sanity a implementar)* |
-| `/noticias/[slug]` | Notícia individual |
-| `/como-se-associar` | Benefícios, etapas, Google Forms embed *(placeholder)* |
-| `/doacoes` | Impacto em números + formulário de doação |
-| `/contato` | Endereço + formulário integrado ao Supabase |
+| `/about` | História, Missão/Visão, Valores |
+| `/board` | Diretoria, organograma, conselhos, núcleos |
+| `/projects` | 6 projetos e núcleos detalhados |
+| `/transparency` | Relatórios, financeiro, editais, projetos aprovados |
+| `/news` | Grid de notícias *(integração Sanity a implementar)* |
+| `/news/[slug]` | Notícia individual |
+| `/how-to-join` | Benefícios + Google Forms embed *(placeholder)* |
+| `/donations` | Impacto em números + formulário de doação |
+| `/contact` | Endereço + formulário integrado ao Supabase |
 
 ---
-
-## Seções da Home
-
-### `Hero.tsx`
-- Fundo gradient navy (`#1B3A6B → #0d2347`)
-- Layout 2 colunas em `lg:`: texto à esquerda, card de vídeo à direita
-- Blobs decorativos com `radial-gradient` e baixa opacidade
-- Dot grid no fundo (opacidade 3%)
-- Wave SVG branca na transição para a próxima seção
-- Indicador de scroll animado
-
-### `StatsSection.tsx` *(client component)*
-- 4 cards: Associados ativos, Idosos atendidos, Eventos realizados, Anos de história
-- Contador animado com `IntersectionObserver` — inicia apenas quando a seção fica visível
-- Borda superior colorida por card (navy, laranja, ciano)
-- Ícones Lucide React
-
-### `AcoesSection.tsx`
-- 3 cards: Seja Associado (navy), Faça uma Doação (laranja), Conheça os Projetos (ciano)
-- Hover: elevação com `translateY` + sombra colorida
-- Card "Seja Associado" tem borda superior gradient destacada
-
-### `ProjetosSection.tsx`
-- 4 núcleos: Idosos Surdos, Mulheres Surdas, Juventude Surda, Cursos em Libras
-- Header colorido com ícone Lucide que escala no hover
-- Tag de categoria no canto superior do card
-- "Saiba mais →" aparece com `opacity` no hover
-
-### `EventoNoticiasSection.tsx`
-- Fundo gradient navy + azul
-- **Coluna esquerda:** próximo evento com badge de data laranja, ícone de localização
-- **Coluna direita:** 3 notícias recentes com tag colorida por categoria, seta animada no hover
-- Link "Ver todas as notícias →"
-
----
-
-## Header
-
-- Fixo (`position: fixed`, `z-50`, `h-16`)
-- **Transparente** quando no topo → `bg-[#1B3A6B]/95 + backdrop-blur` após 40px de scroll
-- **Barra de progresso laranja** na borda inferior (mostra % da página lida pelo usuário)
-- Link ativo marcado com ponto laranja abaixo do texto
-- Logo: ícone SVG de mão + "vemsonhar" / "ASESP"
-- Menu mobile com animação `max-h` suave (slide-down)
-- Fecha automaticamente ao trocar de rota (`usePathname`)
 
 ---
 
@@ -200,12 +147,11 @@ Para recriar as tabelas: execute `supabase/schema.sql` no SQL Editor do painel S
 
 - `lang="pt-BR"` no `<html>`
 - `aria-labelledby` em todas as `<section>`
-- `aria-hidden="true"` em todos os elementos puramente decorativos
+- `aria-hidden="true"` em elementos decorativos
 - `aria-label` em botões sem texto visível
-- Contrastes verificados: branco sobre navy, laranja sobre branco
-- HTML semântico: `<header>`, `<main>`, `<footer>`, `<nav>`, `<section>`, `<dl>`, `<ul>`, `<li>`
+- HTML semântico: `<header>`, `<main>`, `<footer>`, `<nav>`, `<section>`
 - `role="status"` e `role="alert"` nos feedbacks de formulários
-- Vídeos em Libras planejados em todas as páginas (componente `LibrasVideo.tsx` criado)
+- Vídeos em Libras planejados (componente `LibrasVideo.tsx` criado)
 
 ---
 
@@ -213,12 +159,11 @@ Para recriar as tabelas: execute `supabase/schema.sql` no SQL Editor do painel S
 
 - [ ] Integração com Sanity CMS (notícias e conteúdo dinâmico)
 - [ ] Deploy na Vercel + variáveis de ambiente de produção
-- [ ] Google Forms real em `/como-se-associar`
-- [ ] Chave PIX real em `/doacoes` (substituir `pix@asesp.org.br`)
-- [ ] Endereço e e-mail reais no Footer e em `/contato`
-- [ ] Vídeos reais em Libras (substituir placeholders pelo componente `LibrasVideo.tsx`)
-- [ ] Conteúdo real nas páginas (substituir lorem ipsum)
-- [ ] Página `/noticias/[slug]` conectada ao Sanity
+- [ ] Google Forms real em `/how-to-join`
+- [ ] Chave PIX real em `/donations`
+- [ ] Endereço e e-mail reais no Footer e em `/contact`
+- [ ] Vídeos reais em Libras (`LibrasVideo.tsx`)
+- [ ] Página `/news/[slug]` conectada ao Sanity
 
 ---
 
