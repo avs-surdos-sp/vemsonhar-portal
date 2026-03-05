@@ -1,7 +1,8 @@
 import Hero from '@/components/sections/Hero'
-import MissaoSection from '@/components/sections/MissaoSection'
-import ImpactoSection from '@/components/sections/ImpactoSection'
-import DoacoesCTA from '@/components/sections/DoacoesCTA'
+import StatsSection from '@/components/sections/StatsSection'
+import AcoesSection from '@/components/sections/ActionsSection'
+import ProjetosSection from '@/components/sections/ProjectsSection'
+import EventoNoticiasSection from '@/components/sections/EventoNoticiasSection'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -13,9 +14,10 @@ export default function HomePage() {
   return (
     <main>
       <Hero />
-      <MissaoSection />
-      <ImpactoSection />
-      <DoacoesCTA />
+      <StatsSection />
+      <AcoesSection />
+      <ProjetosSection />
+      <EventoNoticiasSection />
     </main>
   )
 }

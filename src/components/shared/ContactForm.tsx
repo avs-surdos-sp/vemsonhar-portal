@@ -15,7 +15,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-import { enviarContato } from '@/app/actions/contato'
+import { enviarContato } from '@/app/actions/contact'
 
 const schema = z.object({
   nome: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),

@@ -1,17 +1,28 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
   title: "ASESP — Associação dos Surdos do Estado de São Paulo",
-  description: "Site oficial da ASESP. Conheça nossa missão, associe-se e apoie a comunidade surda de São Paulo.",
+  description:
+    "Site oficial da ASESP. Conheça nossa missão, associe-se e apoie a comunidade surda de São Paulo.",
+  keywords: ["ASESP", "surdos", "Libras", "inclusão", "São Paulo", "associação"],
+  openGraph: {
+    title: "ASESP — Associação dos Surdos do Estado de São Paulo",
+    description:
+      "Site oficial da ASESP. Conheça nossa missão, associe-se e apoie a comunidade surda de São Paulo.",
+    locale: "pt_BR",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -20,12 +31,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
-      <body className={`${geistSans.variable} antialiased flex flex-col min-h-screen`}>
+    <html lang="pt-BR" suppressHydrationWarning>
+      <body
+        className={`${inter.variable} antialiased flex flex-col min-h-screen`}
+      >
         <Header />
-        <div className="flex-1">
-          {children}
-        </div>
+        <div className="flex-1 pt-16">{children}</div>
         <Footer />
       </body>
     </html>
