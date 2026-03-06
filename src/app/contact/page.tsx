@@ -111,6 +111,30 @@ export default function ContatoPage() {
           </section>
 
         </div>
+
+        {/* Mapa */}
+        <section aria-labelledby="mapa-titulo" className="mt-12">
+          <p className="section-label text-[#00B4D8] mb-3">Localização</p>
+          <h2 id="mapa-titulo" className="text-2xl font-extrabold text-[#1B3A6B] mb-6 tracking-tight">
+            Como chegar
+          </h2>
+          <div className="rounded-2xl overflow-hidden border border-[#eef2f8] shadow-sm">
+            <iframe
+              title="Localização da AVS — Rua Angaturama, 623"
+              src="https://maps.google.com/maps?q=Rua+Angaturama,+623,+São+Paulo,+SP&output=embed&z=16"
+              width="100%"
+              height="380"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+          <p className="text-sm text-gray-500 mt-3">
+            📍 Rua Angaturama, 623 — São Paulo, SP
+          </p>
+        </section>
+
       </div>
     </main>
   )
