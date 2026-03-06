@@ -44,14 +44,17 @@ export default function Hero() {
           <div>
             {/* Badge */}
             <div
-              className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-8 border border-[#00B4D8]/40 bg-[#00B4D8]/10 anim-hidden animate-fade-in-up"
+              className="inline-flex items-center gap-3 rounded-full mb-8 anim-hidden animate-fade-in-up"
+              style={{
+                background: 'rgba(255,255,255,0.1)',
+                backdropFilter: 'blur(12px)',
+                border: '1px solid rgba(255,255,255,0.25)',
+                boxShadow: '0 2px 16px rgba(0,0,0,0.15)',
+                padding: '6px 18px',
+              }}
             >
-              <span
-                className="w-2 h-2 rounded-full bg-[#00B4D8] animate-pulse-ring"
-                aria-hidden="true"
-              />
-              <span className="text-[#00B4D8] text-xs font-semibold tracking-widest uppercase">
-                Associação dos Surdos do Estado de SP
+              <span className="text-white/90 text-sm font-medium">
+                Associação dos Surdos do Estado de São Paulo
               </span>
             </div>
 

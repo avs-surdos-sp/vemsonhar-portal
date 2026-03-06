@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { Users, Star, Leaf, BookOpen, Music, Handshake, Heart, Megaphone, type LucideIcon } from 'lucide-react'
-import { sanityClient } from '@/lib/sanity'
 
 export const metadata: Metadata = {
   title: 'Projetos e Núcleos | ASESP',
@@ -9,7 +8,6 @@ export const metadata: Metadata = {
     'Conheça os projetos e núcleos da ASESP — ações voltadas à comunidade surda paulista em todas as fases da vida.',
 }
 
-export const revalidate = 60
 
 const iconMap: Record<string, LucideIcon> = {
   Users, Star, Leaf, BookOpen, Music, Handshake, Heart, Megaphone,
@@ -142,19 +140,8 @@ function getBgLight(cor: string) {
   return map[cor] ?? `${cor}18`
 }
 
-export default async function ProjetosPage() {
-  let projetos: Projeto[] = []
-
-  try {
-    const data = await sanityClient.fetch<Projeto[]>(
-      `*[_type == "projeto" && ativo != false] | order(ordem asc) {
-        _id, titulo, tag, icone, cor, objetivo, publico, resultados, apoio
-      }`
-    )
-    projetos = data && data.length > 0 ? data : projetosEstaticos
-  } catch {
-    projetos = projetosEstaticos
-  }
+export default function ProjetosPage() {
+  const projetos = projetosEstaticos
 
   return (
     <main>
