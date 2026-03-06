@@ -73,9 +73,9 @@ const conselhos = [
 ]
 
 const nucleos = [
-  { nome: 'Núcleo dos Idosos Surdos', icon: Users, color: '#00B4D8', bgLight: '#e6f9fd', href: '/projetos' },
-  { nome: 'Núcleo das Mulheres Surdas', icon: Star, color: '#F26522', bgLight: '#fef2ec', href: '/projetos' },
-  { nome: 'Núcleo da Juventude Surda', icon: BookOpen, color: '#1565C0', bgLight: '#e8eefb', href: '/projetos' },
+  { nome: 'Núcleo dos Idosos Surdos', icon: Users, color: '#00B4D8', bgLight: '#e6f9fd', href: '/projects' },
+  { nome: 'Núcleo das Mulheres Surdas', icon: Star, color: '#F26522', bgLight: '#fef2ec', href: '/projects' },
+  { nome: 'Núcleo da Juventude Surda', icon: BookOpen, color: '#1565C0', bgLight: '#e8eefb', href: '/projects' },
 ]
 
 export default function DiretoriaPage() {

@@ -49,7 +49,7 @@ export default function ProjetosSection() {
             </h2>
           </div>
           <Link
-            href="/sobre"
+            href="/projects"
             className="flex items-center gap-2 text-[#1565C0] font-semibold text-sm hover:gap-3 transition-all duration-200 group"
           >
             Ver todos

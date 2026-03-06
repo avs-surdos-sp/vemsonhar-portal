@@ -113,7 +113,7 @@ export default function EventoNoticiasSection() {
                 className={`${i < noticias.length - 1 ? 'border-b border-white/10' : ''}`}
               >
                 <Link
-                  href={`/noticias/${n.slug}`}
+                  href={`/news/${n.slug}`}
                   className="flex items-start gap-4 py-5 group"
                 >
                   {/* Tag */}
@@ -141,7 +141,7 @@ export default function EventoNoticiasSection() {
           </ul>
 
           <Link
-            href="/noticias"
+            href="/news"
             className="inline-flex items-center gap-2 mt-4 text-[#F26522] font-semibold text-base hover:gap-3 transition-all duration-200 group"
           >
             Ver todas as notícias
