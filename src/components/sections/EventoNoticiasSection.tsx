@@ -86,7 +86,7 @@ export default function EventoNoticiasSection() {
 
             <div className="flex items-center gap-4 mt-5">
               <Link
-                href="/contato"
+                href="/contact"
                 className="inline-flex items-center gap-2 bg-[#F26522] text-white text-sm font-bold px-6 py-2.5 rounded-full hover:bg-[#d4501a] transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/30"
               >
                 <CalendarDays size={15} />

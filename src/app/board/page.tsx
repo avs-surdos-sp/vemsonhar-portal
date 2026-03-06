@@ -311,13 +311,13 @@ export default function DiretoriaPage() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
-              href="/como-se-associar"
+              href="/how-to-join"
               className="bg-[#F26522] text-white font-bold px-8 py-3 rounded-full hover:bg-[#d4501a] transition-colors hover:shadow-lg"
             >
               🤟 Associar-se
             </Link>
             <Link
-              href="/contato"
+              href="/contact"
               className="bg-white/10 border border-white/30 text-white font-semibold px-8 py-3 rounded-full hover:bg-white/20 transition-colors"
             >
               Falar com a diretoria

@@ -80,7 +80,7 @@ export default function Hero() {
                 className="font-bold px-8 rounded-full text-white shadow-lg shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-200"
                 style={{ background: 'linear-gradient(135deg, #F26522, #e0541d)' }}
               >
-                <Link href="/como-se-associar">🤟 Seja Associado</Link>
+                <Link href="/how-to-join">🤟 Seja Associado</Link>
               </Button>
               <Button
                 asChild
@@ -88,7 +88,7 @@ export default function Hero() {
                 variant="outline"
                 className="font-semibold px-8 rounded-full border-white/30 text-white bg-white/8 hover:bg-white/15 hover:border-white/50 transition-all duration-200 backdrop-blur-sm"
               >
-                <Link href="/doacoes">💙 Faça uma Doação</Link>
+                <Link href="/donations">💙 Faça uma Doação</Link>
               </Button>
             </div>
 
