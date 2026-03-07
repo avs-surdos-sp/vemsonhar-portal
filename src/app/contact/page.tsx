@@ -39,7 +39,10 @@ export default function ContatoPage() {
       >
         <div aria-hidden="true" className="absolute -right-16 -top-16 w-64 h-64 rounded-full opacity-10" style={{ background: 'radial-gradient(circle, #F26522, transparent)' }} />
         <div className="relative max-w-5xl mx-auto text-center">
-          <p className="section-label text-[#00B4D8] mb-3">Fale conosco</p>
+          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-5">
+            <MessageSquare size={15} className="text-[#F26522]" aria-hidden="true" />
+            <span className="text-white/80 text-sm font-medium">Fale conosco</span>
+          </div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">Contato</h1>
           <p className="text-white/60 text-lg">
             Entre em contato para dúvidas, parcerias ou suporte à comunidade surda.

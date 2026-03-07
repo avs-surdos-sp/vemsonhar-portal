@@ -93,7 +93,10 @@ export default function DiretoriaPage() {
           />
         </div>
         <div className="relative max-w-4xl mx-auto text-center">
-          <p className="section-label text-[#00B4D8] mb-3">Institucional</p>
+          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-5">
+            <Users size={15} className="text-[#00B4D8]" aria-hidden="true" />
+            <span className="text-white/80 text-sm font-medium">Estrutura administrativa</span>
+          </div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
             Diretoria e Estrutura Administrativa
           </h1>
