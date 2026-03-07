@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
-import { MapPin, ArrowRight, Newspaper, Tag } from 'lucide-react'
+import { ArrowRight, Newspaper, Tag } from 'lucide-react'
 import { sanityClient } from '@/lib/sanity'
-import AddToCalendarButton from '@/components/shared/AddToCalendarButton'
+import EventosCarousel from '@/components/shared/EventosCarousel'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -23,12 +23,15 @@ type NoticiaPreview = {
 
 // ─── Fallback static data (shown while Sanity has no content) ─────────────────
 
-const EVENTO_FALLBACK: Evento = {
-  titulo: 'Encontro do Núcleo dos Idosos Surdos',
-  data: '2026-03-15',
-  local: 'Sede da ASESP — São Paulo, SP',
-  descricao: 'Atividades recreativas, roda de conversa em Libras e almoço comunitário. Aberto a todos os associados e convidados.',
-}
+const EVENTOS_FALLBACK: Evento[] = [
+  {
+    titulo: 'Encontro do Núcleo dos Idosos Surdos',
+    data: '2026-03-15',
+    horaInicio: '14:00',
+    local: 'Sede da ASESP — São Paulo, SP',
+    descricao: 'Atividades recreativas, roda de conversa em Libras e almoço comunitário.',
+  },
+]
 
 const NOTICIAS_FALLBACK: NoticiaPreview[] = [
   { titulo: 'ASESP participa do Conselho Municipal de Direitos', categoria: 'noticia', slug: '', dataPublicacao: '2026-02-28T00:00:00Z' },
@@ -47,11 +50,6 @@ const CATEGORIA: Record<string, { label: string; color: string }> = {
 
 const MESES = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
 
-function parseEventoDate(iso: string) {
-  const [, mes, dia] = iso.split('-')
-  return { dia: String(parseInt(dia)), mes: MESES[parseInt(mes) - 1] ?? mes }
-}
-
 function formatNoticiaDate(iso: string) {
   const d = new Date(iso)
   return `${String(d.getUTCDate()).padStart(2, '0')} ${MESES[d.getUTCMonth()]} ${d.getUTCFullYear()}`
@@ -59,8 +57,8 @@ function formatNoticiaDate(iso: string) {
 
 // ─── Queries ──────────────────────────────────────────────────────────────────
 
-const QUERY_EVENTO = `
-  *[_type == "evento" && ativo == true && data >= $today] | order(data asc) [0] {
+const QUERY_EVENTOS = `
+  *[_type == "evento" && ativo == true && data >= $today] | order(data asc) [0...3] {
     titulo, data, horaInicio, local, descricao
   }
 `
@@ -79,20 +77,19 @@ const QUERY_NOTICIAS = `
 export default async function EventoNoticiasSection() {
   const today = new Date().toISOString().split('T')[0]
 
-  const [eventoSanity, noticiasSanity] = await Promise.all([
-    sanityClient.fetch<Evento | null>(QUERY_EVENTO, { today }, { next: { revalidate: 60 } }),
+  const [eventosSanity, noticiasSanity] = await Promise.all([
+    sanityClient.fetch<Evento[]>(QUERY_EVENTOS, { today }, { next: { revalidate: 60 } }),
     sanityClient.fetch<NoticiaPreview[]>(QUERY_NOTICIAS, {}, { next: { revalidate: 60 } }),
-  ]).catch(() => [null, []] as [null, NoticiaPreview[]])
+  ]).catch(() => [[], []] as [Evento[], NoticiaPreview[]])
 
-  const evento = eventoSanity ?? EVENTO_FALLBACK
+  const eventos = eventosSanity?.length ? eventosSanity : EVENTOS_FALLBACK
   const noticias = noticiasSanity?.length ? noticiasSanity : NOTICIAS_FALLBACK
-  const { dia, mes } = parseEventoDate(evento.data)
 
   return (
     <section
       className="py-24 px-4 relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg, #1B3A6B 0%, #1565C0 100%)' }}
-      aria-label="Próximo evento e últimas notícias"
+      aria-label="Próximos eventos e últimas notícias"
     >
       {/* Decorators */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -115,51 +112,14 @@ export default async function EventoNoticiasSection() {
 
       <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-start">
 
-        {/* ── Próximo evento ── */}
+        {/* ── Próximos eventos ── */}
         <div>
           <p className="section-label text-[#F26522] mb-3">Agenda</p>
-          <h2 className="text-3xl font-extrabold text-white mb-7 tracking-tight">Próximo evento</h2>
+          <h2 className="text-3xl font-extrabold text-white mb-7 tracking-tight">
+            Próximos eventos
+          </h2>
 
-          <div className="glass-card rounded-2xl p-7">
-            <div className="flex items-start gap-5 mb-5">
-              {/* Date badge */}
-              <div
-                className="rounded-xl px-4 py-3 text-center shrink-0"
-                style={{ background: 'linear-gradient(135deg, #F26522, #e0541d)' }}
-              >
-                <div className="text-white text-2xl font-extrabold leading-none">{dia}</div>
-                <div className="text-white/80 text-[11px] uppercase mt-0.5 font-semibold tracking-wide">{mes}</div>
-              </div>
-              <div>
-                <h3 className="text-white font-bold text-xl leading-snug">
-                  {evento.titulo}
-                </h3>
-                <p className="flex items-center gap-1.5 text-white/80 text-base mt-2">
-                  <MapPin size={15} className="shrink-0" />
-                  {evento.local}
-                </p>
-                {evento.horaInicio && (
-                  <p className="text-white/60 text-sm mt-1">{evento.horaInicio}</p>
-                )}
-              </div>
-            </div>
-
-            {evento.descricao && (
-              <p className="text-white/90 text-base leading-relaxed border-t border-white/10 pt-4">
-                {evento.descricao}
-              </p>
-            )}
-
-            <div className="flex items-center gap-4 mt-5">
-              <AddToCalendarButton
-                titulo={evento.titulo}
-                data={evento.data}
-                local={evento.local}
-                descricao={evento.descricao}
-                horaInicio={evento.horaInicio}
-              />
-            </div>
-          </div>
+            <EventosCarousel eventos={eventos} />
         </div>
 
         {/* ── Últimas notícias ── */}
@@ -193,7 +153,7 @@ export default async function EventoNoticiasSection() {
                       <p className="text-white font-semibold text-base leading-snug group-hover:text-[#00B4D8] transition-colors duration-150 line-clamp-2">
                         {n.titulo}
                       </p>
-                      <p className="text-white/75 text-base mt-1.5 group-hover:text-white transition-colors duration-150">
+                      <p className="text-white/75 text-sm mt-1.5">
                         {formatNoticiaDate(n.dataPublicacao)}
                       </p>
                     </div>
