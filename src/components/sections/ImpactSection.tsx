@@ -1,7 +1,8 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
 import { MapPin, Users, CalendarCheck2, Building2 } from 'lucide-react'
+import { useAnimatedCounter } from '@/hooks/useAnimatedCounter'
+import SectionHeader from '@/components/shared/SectionHeader'
 
 const numeros = [
   { valor: 30, suffix: '+', label: 'Anos de atuação', icon: CalendarCheck2, color: '#F26522' },
@@ -11,37 +12,10 @@ const numeros = [
 ]
 
 export default function ImpactoSection() {
-  const ref = useRef<HTMLDListElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
-  const [counters, setCounters] = useState(numeros.map(() => 0))
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.3 }
-    )
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (!isVisible) return
-    const duration = 1600
-    const steps = 50
-    const interval = duration / steps
-    let step = 0
-    const timer = setInterval(() => {
-      step++
-      setCounters(numeros.map((n) => Math.min(Math.round((n.valor * step) / steps), n.valor)))
-      if (step >= steps) clearInterval(timer)
-    }, interval)
-    return () => clearInterval(timer)
-  }, [isVisible])
+  const { ref, counters } = useAnimatedCounter(
+    numeros.map((n) => n.valor),
+    { duration: 1600, steps: 50 }
+  )
 
   return (
     <section
@@ -62,10 +36,14 @@ export default function ImpactoSection() {
       </div>
 
       <div className="relative max-w-5xl mx-auto text-center">
-        <p className="section-label text-[#00B4D8] mb-3">Em números</p>
-        <h2 id="impacto-titulo" className="text-3xl font-extrabold text-white mt-2 mb-14 tracking-tight">
-          Nosso Impacto
-        </h2>
+        <SectionHeader
+          label="Em números"
+          title="Nosso Impacto"
+          headingId="impacto-titulo"
+          labelColor="#00B4D8"
+          titleColor="white"
+          className="mb-14"
+        />
 
         <dl
           ref={ref}

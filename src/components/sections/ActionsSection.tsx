@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { UserPlus, Heart, Star } from 'lucide-react'
+import SectionHeader from '@/components/shared/SectionHeader'
 
 const acoes = [
   {
@@ -35,16 +36,13 @@ export default function AcoesSection() {
   return (
     <section className="py-24 px-4 bg-[#F5F7FA]" aria-labelledby="acoes-titulo">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <p className="section-label text-[#F26522] mb-3">Como você pode ajudar</p>
-          <h2 id="acoes-titulo" className="text-3xl font-extrabold text-[#1B3A6B] mb-4 tracking-tight">
-            Faça parte dessa história
-          </h2>
-          <p className="text-gray-500 text-base max-w-md mx-auto leading-relaxed">
-            Cada contribuição transforma vidas na comunidade surda paulista.
-          </p>
-        </div>
+        <SectionHeader
+          label="Como você pode ajudar"
+          title="Faça parte dessa história"
+          headingId="acoes-titulo"
+          description="Cada contribuição transforma vidas na comunidade surda paulista."
+          className="mb-16"
+        />
 
         <ul className="grid md:grid-cols-3 gap-7 list-none">
           {acoes.map((a) => {

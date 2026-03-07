@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
 import { Users, Handshake, CalendarCheck, Trophy } from 'lucide-react'
+import { useAnimatedCounter } from '@/hooks/useAnimatedCounter'
+import SectionHeader from '@/components/shared/SectionHeader'
 
 const stats = [
   { target: 340, label: 'Associados ativos', icon: Users, color: '#1B3A6B', suffix: '+' },
@@ -10,53 +11,17 @@ const stats = [
   { target: 12, label: 'Anos de história', icon: Trophy, color: '#1B3A6B', suffix: '' },
 ]
 
-function useIntersectionObserver(options?: IntersectionObserverInit) {
-  const ref = useRef<HTMLDListElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true)
-        observer.disconnect()
-      }
-    }, { threshold: 0.3, ...options })
-
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [options])
-
-  return { ref, isVisible }
-}
-
 export default function StatsSection() {
-  const { ref, isVisible } = useIntersectionObserver()
-  const [counters, setCounters] = useState(stats.map(() => 0))
-
-  useEffect(() => {
-    if (!isVisible) return
-    const duration = 1800
-    const steps = 60
-    const interval = duration / steps
-    let step = 0
-    const timer = setInterval(() => {
-      step++
-      setCounters(stats.map((s) => Math.min(Math.round((s.target * step) / steps), s.target)))
-      if (step >= steps) clearInterval(timer)
-    }, interval)
-    return () => clearInterval(timer)
-  }, [isVisible])
+  const { ref, counters } = useAnimatedCounter(stats.map((s) => s.target))
 
   return (
     <section className="bg-white py-20 px-4" aria-label="Números da ASESP">
       <div className="max-w-7xl mx-auto">
-        {/* Section header */}
-        <div className="text-center mb-14">
-          <p className="section-label text-[#F26522] mb-3">Nossa trajetória</p>
-          <h2 className="text-3xl font-extrabold text-[#1B3A6B] tracking-tight">
-            Impacto em números
-          </h2>
-        </div>
+        <SectionHeader
+          label="Nossa trajetória"
+          title="Impacto em números"
+          className="mb-14"
+        />
 
         <dl ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, i) => {
