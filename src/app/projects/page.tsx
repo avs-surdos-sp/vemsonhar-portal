@@ -165,7 +165,13 @@ export default async function ProjetosPage() {
     { next: { revalidate: 60 } },
   )
 
-  const projetos = sanityProjetos.length > 0 ? sanityProjetos : projetosEstaticos
+  // Mescla: projetos do Sanity primeiro, depois os estáticos que ainda não
+  // foram substituídos (compara por título, case-insensitive)
+  const sanityTitulos = new Set(sanityProjetos.map(p => p.titulo.trim().toLowerCase()))
+  const staticFiltrado = projetosEstaticos.filter(
+    p => !sanityTitulos.has(p.titulo.trim().toLowerCase()),
+  )
+  const projetos = [...sanityProjetos, ...staticFiltrado]
 
   return (
     <main>
