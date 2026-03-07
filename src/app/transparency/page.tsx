@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { FileText, BarChart2, ClipboardList, CheckSquare, ArrowRight, ShieldCheck } from 'lucide-react'
+import LibrasVideo from '@/components/shared/LibrasVideo'
 
 export const metadata: Metadata = {
   title: 'Transparência | ASESP',
@@ -72,6 +73,7 @@ export default function TransparenciaPage() {
           <p className="text-white/60 text-lg max-w-2xl mx-auto">
             A ASESP acredita na transparência como pilar da confiança. Acesse relatórios, balanço financeiro, editais e projetos aprovados.
           </p>
+          <LibrasVideo title="Transparência da ASESP em Libras" />
         </div>
       </section>
 

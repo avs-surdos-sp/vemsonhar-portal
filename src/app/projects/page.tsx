@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { Users, Star, Leaf, BookOpen, Music, Handshake, Heart, Megaphone, type LucideIcon } from 'lucide-react'
+import LibrasVideo from '@/components/shared/LibrasVideo'
 
 export const metadata: Metadata = {
   title: 'Projetos e Núcleos | ASESP',
@@ -167,6 +168,7 @@ export default function ProjetosPage() {
           <p className="text-white/60 text-lg max-w-2xl mx-auto">
             Ações concretas voltadas à comunidade surda paulista — em todas as fases da vida e em múltiplas dimensões sociais.
           </p>
+          <LibrasVideo title="Projetos e Núcleos da ASESP em Libras" />
         </div>
       </section>
 

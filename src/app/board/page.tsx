@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { Users, Shield, BookOpen, Star } from 'lucide-react'
+import LibrasVideo from '@/components/shared/LibrasVideo'
 
 export const metadata: Metadata = {
   title: 'Diretoria | ASESP',
@@ -103,6 +104,7 @@ export default function DiretoriaPage() {
           <p className="text-white/60 text-lg max-w-lg mx-auto">
             Conheça as pessoas que trabalham pela comunidade surda paulista e a estrutura que sustenta a ASESP.
           </p>
+          <LibrasVideo title="Diretoria da ASESP em Libras" />
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 import { Newspaper } from 'lucide-react'
 import { sanityClient } from '@/lib/sanity'
 import NewsClient, { type Noticia } from './NewsClient'
+import LibrasVideo from '@/components/shared/LibrasVideo'
 
 const query = `*[_type == "noticia"] | order(dataPublicacao desc) {
   _id,
@@ -33,6 +34,7 @@ export default async function NoticiasPage() {
           </div>
           <h1 id="noticias-titulo" className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">Notícias</h1>
           <p className="text-white/60 text-lg">Acompanhe as novidades da ASESP e da comunidade surda paulista.</p>
+          <LibrasVideo title="Notícias da ASESP em Libras" />
         </div>
       </section>
 

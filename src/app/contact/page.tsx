@@ -1,6 +1,7 @@
 import ContatoForm from '@/components/shared/ContactForm'
 import { Metadata } from 'next'
 import { MapPin, Mail, MessageSquare, Clock } from 'lucide-react'
+import LibrasVideo from '@/components/shared/LibrasVideo'
 
 export const metadata: Metadata = {
   title: 'Contato | ASESP',
@@ -47,6 +48,7 @@ export default function ContatoPage() {
           <p className="text-white/60 text-lg">
             Entre em contato para dúvidas, parcerias ou suporte à comunidade surda.
           </p>
+          <LibrasVideo title="Contato da ASESP em Libras" />
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { Globe, GraduationCap, AccessibilityIcon, CheckCircle2, Heart } from 'lucide-react'
 import Link from 'next/link'
+import LibrasVideo from '@/components/shared/LibrasVideo'
 
 export const metadata: Metadata = {
   title: 'Sobre | ASESP',
@@ -62,6 +63,7 @@ export default function SobrePage() {
           <p className="text-white/60 text-lg max-w-3xl mx-auto">
             Representando e defendendo os direitos da comunidade surda paulista desde 2012.
           </p>
+          <LibrasVideo title="Quem Somos — ASESP em Libras" />
         </div>
       </section>
 
