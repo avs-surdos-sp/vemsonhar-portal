@@ -2,6 +2,23 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { Users, Star, Leaf, BookOpen, Music, Handshake, Heart, Megaphone, type LucideIcon } from 'lucide-react'
 import LibrasVideo from '@/components/shared/LibrasVideo'
+import { sanityClient } from '@/lib/sanity'
+
+export const revalidate = 60
+
+const QUERY_PROJETOS = `
+  *[_type == "projeto" && ativo != false] | order(ordem asc) {
+    _id,
+    titulo,
+    tag,
+    icone,
+    cor,
+    objetivo,
+    publico,
+    resultados,
+    apoio
+  }
+`
 
 export const metadata: Metadata = {
   title: 'Projetos e Núcleos | ASESP',
@@ -141,8 +158,14 @@ function getBgLight(cor: string) {
   return map[cor] ?? `${cor}18`
 }
 
-export default function ProjetosPage() {
-  const projetos = projetosEstaticos
+export default async function ProjetosPage() {
+  const sanityProjetos: Projeto[] = await sanityClient.fetch(
+    QUERY_PROJETOS,
+    {},
+    { next: { revalidate: 60 } },
+  )
+
+  const projetos = sanityProjetos.length > 0 ? sanityProjetos : projetosEstaticos
 
   return (
     <main>
