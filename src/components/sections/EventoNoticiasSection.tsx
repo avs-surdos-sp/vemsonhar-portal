@@ -1,7 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
-import { MapPin, CalendarDays, ArrowRight, Newspaper, Tag } from 'lucide-react'
+import { MapPin, ArrowRight, Newspaper, Tag } from 'lucide-react'
 import { sanityClient } from '@/lib/sanity'
+import AddToCalendarButton from '@/components/shared/AddToCalendarButton'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -150,13 +151,13 @@ export default async function EventoNoticiasSection() {
             )}
 
             <div className="flex items-center gap-4 mt-5">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-[#F26522] text-white text-sm font-bold px-6 py-2.5 rounded-full hover:bg-[#d4501a] transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/30"
-              >
-                <CalendarDays size={15} />
-                Confirmar presença
-              </Link>
+              <AddToCalendarButton
+                titulo={evento.titulo}
+                data={evento.data}
+                local={evento.local}
+                descricao={evento.descricao}
+                horaInicio={evento.horaInicio}
+              />
             </div>
           </div>
         </div>
