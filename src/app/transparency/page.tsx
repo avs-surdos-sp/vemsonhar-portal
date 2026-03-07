@@ -122,7 +122,7 @@ export default function TransparenciaPage() {
       <div className="max-w-5xl mx-auto px-4 py-16 space-y-20">
 
         {/* Relatórios Anuais */}
-        <section aria-labelledby="relatorios-titulo">
+        <section id="relatorios" aria-labelledby="relatorios-titulo">
           <div className="flex items-center gap-3 mb-2">
             <FileText size={20} className="text-[#1B3A6B]" aria-hidden="true" />
             <p className="text-[#F26522] text-xs font-bold uppercase tracking-widest">Documentos</p>
@@ -175,7 +175,7 @@ export default function TransparenciaPage() {
         </section>
 
         {/* Demonstrativo Financeiro */}
-        <section aria-labelledby="financeiro-titulo">
+        <section id="demonstrativo" aria-labelledby="financeiro-titulo">
           <div className="flex items-center gap-3 mb-2">
             <BarChart2 size={20} className="text-[#1B3A6B]" aria-hidden="true" />
             <p className="text-[#F26522] text-xs font-bold uppercase tracking-widest">Finanças</p>
@@ -223,7 +223,7 @@ export default function TransparenciaPage() {
         </section>
 
         {/* Editais e Parcerias */}
-        <section aria-labelledby="editais-titulo">
+        <section id="editais" aria-labelledby="editais-titulo">
           <div className="flex items-center gap-3 mb-2">
             <ClipboardList size={20} className="text-[#1B3A6B]" aria-hidden="true" />
             <p className="text-[#F26522] text-xs font-bold uppercase tracking-widest">Convênios</p>
@@ -261,7 +261,7 @@ export default function TransparenciaPage() {
         </section>
 
         {/* Projetos Aprovados */}
-        <section aria-labelledby="projetos-aprovados-titulo">
+        <section id="projetos" aria-labelledby="projetos-aprovados-titulo">
           <div className="flex items-center gap-3 mb-2">
             <CheckSquare size={20} className="text-[#1B3A6B]" aria-hidden="true" />
             <p className="text-[#F26522] text-xs font-bold uppercase tracking-widest">Em execução</p>
