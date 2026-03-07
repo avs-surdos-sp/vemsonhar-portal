@@ -287,10 +287,8 @@ html[data-fs="xlarge"] { font-size: 125%;   }
 
 /* ===========================
    ALTO CONTRASTE  (data-hc="1")
-   Substituição das CSS variables + overrides de classes utilitárias Tailwind
    =========================== */
 html[data-hc="1"] {
-  /* Tokens do Shadcn / Tailwind */
   --background:         #000000;
   --foreground:         #ffffff;
   --card:               #111111;
@@ -300,10 +298,9 @@ html[data-hc="1"] {
   --border:             rgba(255, 255, 255, 0.45);
   --input:              #2a2a2a;
   --muted:              #1a1a1a;
-  --muted-foreground:   #cccccc;
+  --muted-foreground:   #e0e0e0;
   --primary:            oklch(1 0 0);
   --primary-foreground: oklch(0 0 0);
-  /* Brand tokens */
   --brand-navy:         #ffffff;
   --brand-orange:       #ffff00;
   --brand-cyan:         #00ffff;
@@ -314,53 +311,104 @@ html[data-hc="1"] body {
   color: #fff !important;
 }
 
-/* Backgrounds claros → preto */
-html[data-hc="1"] .bg-white,
-html[data-hc="1"] [class*="bg-gray-50"],
-html[data-hc="1"] [class*="bg-gray-100"],
-html[data-hc="1"] [class*="bg-\[#F5F7FA\]"],
-html[data-hc="1"] [class*="bg-\[#eaeff7\]"],
-html[data-hc="1"] [class*="bg-\[#e6f4ea\]"],
-html[data-hc="1"] [class*="bg-\[#fff3e6\]"],
-html[data-hc="1"] [class*="bg-\[#eef2ff\]"],
-html[data-hc="1"] [class*="bg-\[#fef2ec\]"],
-html[data-hc="1"] [class*="bg-\[#e8eefb\]"],
-html[data-hc="1"] [class*="bg-\[#e6f9fd\]"] {
+/* ── Header ──────────────────────────────────────────────── */
+html[data-hc="1"] header {
+  border-bottom: 1px solid rgba(255,255,255,0.25) !important;
+}
+
+/* Dropdown panel (bg-white → black) */
+html[data-hc="1"] header [class*="bg-white"] {
+  background-color: #0d0d0d !important;
+  border-color: rgba(255,255,255,0.35) !important;
+}
+
+/* Dropdown — texto dos itens */
+html[data-hc="1"] header .text-gray-700 {
+  color: #e8e8e8 !important;
+}
+
+/* Dropdown — hover fundo claro → escuro + texto amarelo */
+html[data-hc="1"] header a:hover,
+html[data-hc="1"] header button:hover {
+  background-color: #1e1e1e !important;
+  color: #ffff00 !important;
+}
+
+/* Dropdown "Ver tudo em Transparência" link */
+html[data-hc="1"] header .text-\[\#1B3A6B\] {
+  color: #e8e8e8 !important;
+}
+
+/* ── Backgrounds claros → escuros ────────────────────────── */
+html[data-hc="1"] .bg-white {
   background-color: #111 !important;
 }
 
-/* Cores de texto cinza → branco ou cinza claro */
+html[data-hc="1"] .bg-gray-50,
+html[data-hc="1"] .bg-gray-100 {
+  background-color: #1a1a1a !important;
+}
+
+/* Tints coloridos (Tailwind JIT — upper e lower case) */
+html[data-hc="1"] [class*="bg-[#EAF0FA]"],
+html[data-hc="1"] [class*="bg-[#eaf0fa]"],
+html[data-hc="1"] [class*="bg-[#FEF2EC]"],
+html[data-hc="1"] [class*="bg-[#fef2ec]"],
+html[data-hc="1"] [class*="bg-[#d0dcf0]"],
+html[data-hc="1"] [class*="bg-[#f8d5bc]"],
+html[data-hc="1"] [class*="bg-[#eaeff7]"],
+html[data-hc="1"] [class*="bg-[#e6f4ea]"],
+html[data-hc="1"] [class*="bg-[#fff3e6]"],
+html[data-hc="1"] [class*="bg-[#eef2ff]"],
+html[data-hc="1"] [class*="bg-[#e8eefb]"],
+html[data-hc="1"] [class*="bg-[#e6f9fd]"],
+html[data-hc="1"] [class*="bg-[#F5F7FA]"],
+html[data-hc="1"] [class*="bg-[#f5f7fa]"] {
+  background-color: #1a1a1a !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ── Textos ──────────────────────────────────────────────── */
+/* Cinza → quase branco para legibilidade */
 html[data-hc="1"] .text-gray-400,
 html[data-hc="1"] .text-gray-500,
 html[data-hc="1"] .text-gray-600 {
-  color: #ccc !important;
+  color: #e8e8e8 !important;
 }
 
-/* Azul marinho (navy) → branco em texto */
+/* Navy e azul → branco */
 html[data-hc="1"] .text-\[\#1B3A6B\],
 html[data-hc="1"] .text-\[\#1565C0\] {
-  color: #fff !important;
+  color: #ffffff !important;
 }
 
-/* Links e CTAs → amarelo de alto contraste */
+/* ── Links ───────────────────────────────────────────────── */
 html[data-hc="1"] a:not([class*="bg-"]) {
-  color: #ffff00;
+  color: #ffff00 !important;
   text-decoration: underline;
 }
 
-/* Bordas claras → branco semi-transparente */
-html[data-hc="1"] .border-gray-100,
-html[data-hc="1"] .border-gray-200,
-html[data-hc="1"] [class*="border-\[#"] {
-  border-color: rgba(255, 255, 255, 0.35) !important;
+/* "Ler →" nos cards de notícia (inline style sobrescrito via classe) */
+html[data-hc="1"] .ler-btn {
+  color: #00ffff !important;
 }
 
-/* Sombras → removidas (alto contraste não precisa) */
+/* ── Bordas ──────────────────────────────────────────────── */
+html[data-hc="1"] .border-gray-100,
+html[data-hc="1"] .border-gray-200 {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+html[data-hc="1"] [class*="divide-gray"] > * {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ── Sombras ─────────────────────────────────────────────── */
 html[data-hc="1"] [class*="shadow"] {
   box-shadow: none !important;
 }
 
-/* Imagens — leve aumento de contraste */
+/* ── Imagens ─────────────────────────────────────────────── */
 html[data-hc="1"] img {
   filter: contrast(1.15);
 }

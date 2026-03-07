@@ -56,7 +56,7 @@ export default function DemonstrativoPage() {
         <div className="grid md:grid-cols-2 gap-6">
           {/* Receitas */}
           <div className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-100" style={{ background: '#eaeff7' }}>
+            <div className="px-6 py-4 border-b border-gray-100 bg-[#eaeff7]">
               <h2 className="font-bold text-[#1B3A6B] text-sm uppercase tracking-wide">Receitas</h2>
             </div>
             <ul className="divide-y divide-gray-50 list-none">
@@ -71,7 +71,7 @@ export default function DemonstrativoPage() {
 
           {/* Despesas */}
           <div className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-100" style={{ background: '#fef2ec' }}>
+            <div className="px-6 py-4 border-b border-gray-100 bg-[#fef2ec]">
               <h2 className="font-bold text-[#F26522] text-sm uppercase tracking-wide">Despesas</h2>
             </div>
             <ul className="divide-y divide-gray-50 list-none">

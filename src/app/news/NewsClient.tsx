@@ -113,7 +113,7 @@ export default function NewsClient({ noticias }: { noticias: Noticia[] }) {
                   <div className="flex items-center justify-between">
                     <p className="text-sm text-gray-600">{formatDate(noticia.dataPublicacao)}</p>
                     <span
-                      className="text-sm font-semibold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="ler-btn text-sm font-semibold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"
                       style={{ color: cor }}
                     >
                       Ler <ArrowRight size={12} />
