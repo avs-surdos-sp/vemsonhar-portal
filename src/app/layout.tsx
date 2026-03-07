@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/footer";
+import AccessibilityBar from "@/components/layout/AccessibilityBar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -35,8 +36,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} antialiased flex flex-col min-h-screen`}
       >
+        <AccessibilityBar />
         <Header />
-        <div className="flex-1 pt-16">{children}</div>
+        {/* pt-[100px] = barra acessibilidade (36px) + header (64px) */}
+        <div id="main-content" className="flex-1 pt-[100px]">{children}</div>
         <Footer />
       </body>
     </html>
