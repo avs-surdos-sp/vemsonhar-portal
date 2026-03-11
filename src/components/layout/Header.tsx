@@ -1,9 +1,14 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
+import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
-import { Menu, X, ChevronDown, FileText, BarChart2, ClipboardList, CheckSquare } from 'lucide-react'
+import {
+  Menu, X, ChevronDown,
+  FileText, BarChart2, ClipboardList, CheckSquare,
+  Handshake, Layers, Newspaper, BookOpen,
+} from 'lucide-react'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -24,7 +29,14 @@ type NavLink = {
 const navLinks: NavLink[] = [
   { href: '/about',    label: 'Quem Somos' },
   { href: '/board',    label: 'Diretoria'  },
-  { href: '/projects', label: 'Projetos'   },
+  {
+    href: '/projects',
+    label: 'Projetos',
+    submenu: [
+      { href: '/projects/nucleos',  label: 'Núcleos e Projetos',       icon: Layers    },
+      { href: '/partners',  label: 'Parcerias Institucionais', icon: Handshake },
+    ],
+  },
   {
     href: '/transparency',
     label: 'Transparência',
@@ -35,29 +47,35 @@ const navLinks: NavLink[] = [
       { href: '/transparency/projetos',      label: 'Projetos Aprovados',       icon: CheckSquare   },
     ],
   },
-  { href: '/news',    label: 'Notícias' },
-  { href: '/contact', label: 'Contato'  },
+  {
+    href: '/news',
+    label: 'Notícias',
+    submenu: [
+      { href: '/news', label: 'Últimas Notícias', icon: Newspaper },
+      { href: '/blog', label: 'Blog / Artigos',   icon: BookOpen  },
+    ],
+  },
+  { href: '/contact', label: 'Contato' },
 ]
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function Header() {
   const [menuAberto,     setMenuAberto]     = useState(false)
-  const [scrolled,       setScrolled]       = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
-  const [dropdownOpen,   setDropdownOpen]   = useState(false)
+  const [scrolled,       setScrolled]       = useState(false)
+  const [dropdownOpen,   setDropdownOpen]   = useState<string | null>(null)
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
 
-  const pathname    = usePathname()
-  const dropdownRef = useRef<HTMLDivElement>(null)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40)
+      const y = window.scrollY
       const docHeight = document.documentElement.scrollHeight - window.innerHeight
-      setScrollProgress(docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0)
+      setScrollProgress(docHeight > 0 ? (y / docHeight) * 100 : 0)
+      setScrolled(y > 10)
     }
-    handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -65,26 +83,25 @@ export default function Header() {
   useEffect(() => {
     setMenuAberto(false)
     setMobileExpanded(null)
+    setDropdownOpen(null)
   }, [pathname])
 
   useEffect(() => {
     function onClickOutside(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false)
+      if (!(e.target as Element).closest('[data-dropdown]')) {
+        setDropdownOpen(null)
       }
     }
     if (dropdownOpen) document.addEventListener('mousedown', onClickOutside)
     return () => document.removeEventListener('mousedown', onClickOutside)
   }, [dropdownOpen])
 
-  const isHome   = pathname === '/'
-  const solidNav = !isHome || scrolled
-
   return (
     <header
-      className={`fixed top-9 left-0 right-0 z-50 h-16 transition-all duration-500 ${
-        solidNav ? 'bg-[#1B3A6B]/95 backdrop-blur-md shadow-lg shadow-black/20' : 'bg-transparent'
+      className={`fixed top-9 left-0 right-0 z-50 h-16 border-b border-white/10 transition-all duration-300 ${
+        scrolled ? 'shadow-lg' : 'shadow-none'
       }`}
+      style={{ background: 'linear-gradient(135deg, #1B3A6B 0%, #0d2347 100%)' }}
     >
       {/* Scroll progress bar */}
       <div
@@ -96,60 +113,77 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group" aria-label="ASESP — Página inicial">
-          <div
-            className="w-9 h-9 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shrink-0"
-            style={{ background: 'linear-gradient(135deg, #F26522, #ff8c53)' }}
-            aria-hidden="true"
-          >
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="white" aria-hidden="true">
-              <path d="M6 4a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1v5.5a1 1 0 0 0 2 0V3a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1v6.5a1 1 0 0 0 2 0V5a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1v7.5C18 16 15.5 20 11 20S4 16.314 4 12.5V8a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1v3.5a.5.5 0 0 0 1 0V4Z" />
-            </svg>
-          </div>
-          <div>
-            <div className="text-white font-extrabold text-base leading-none tracking-tight">vemsonhar</div>
-            <div className="text-[#00B4D8] text-[10px] tracking-[0.18em] uppercase leading-none mt-0.5 font-semibold">ASESP</div>
-          </div>
+        <Link
+          href="/"
+          className="flex items-center hover:opacity-80 transition-opacity duration-200"
+          aria-label="VemSonhar ASESP — Página inicial"
+        >
+          <Image
+            src="/logo.svg"
+            alt="VemSonhar ASESP"
+            width={44}
+            height={44}
+            className="h-11 w-auto"
+            priority
+          />
         </Link>
 
         {/* ── Nav desktop ── */}
-        <nav className="hidden md:flex items-center gap-1" aria-label="Navegação principal">
+        <nav className="hidden md:flex items-center gap-0.5" aria-label="Navegação principal">
           {navLinks.map((link) => {
             const isActive = pathname === link.href || pathname.startsWith(link.href + '/')
 
             if (link.submenu) {
-              const isTranspActive = pathname.startsWith('/transparency')
+              const isGroupActive =
+                pathname.startsWith(link.href + '/') ||
+                pathname === link.href ||
+                link.submenu.some((s) => pathname.startsWith(s.href))
+              const isOpen = dropdownOpen === link.href
+
               return (
-                <div key={link.href} ref={dropdownRef} className="relative">
+                <div key={link.href} data-dropdown className="relative">
                   <button
-                    onClick={() => setDropdownOpen((v) => !v)}
+                    onClick={() => setDropdownOpen(isOpen ? null : link.href)}
                     aria-haspopup="true"
-                    aria-expanded={dropdownOpen}
-                    className={`relative flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                      isTranspActive ? 'text-white bg-white/10' : 'text-white/80 hover:text-white hover:bg-white/8'
+                    aria-expanded={isOpen}
+                    className={`group relative flex items-center gap-1 px-4 py-2 text-sm font-semibold rounded-lg transition-colors duration-200 ${
+                      isGroupActive
+                        ? 'text-white'
+                        : 'text-white/75 hover:text-white'
                     }`}
                   >
                     {link.label}
-                    <ChevronDown size={14} className={`transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} />
-                    {isTranspActive && (
-                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#F26522]" />
-                    )}
+                    <ChevronDown
+                      size={14}
+                      className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                    />
+                    {/* Animated underline */}
+                    <span
+                      className={`absolute bottom-1 left-4 right-5 h-[2px] rounded-full bg-[#F26522] transition-transform duration-300 origin-left ${
+                        isGroupActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                      }`}
+                    />
                   </button>
 
                   {/* Dropdown panel */}
-                  {dropdownOpen && (
+                  {isOpen && (
                     <div
-                      className="absolute top-[calc(100%+8px)] left-0 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden min-w-[240px] py-1"
+                      className="absolute top-[calc(100%+8px)] left-0 bg-white rounded-2xl overflow-hidden min-w-[260px] pb-2"
+                      style={{ boxShadow: '0 8px 32px rgba(27,58,107,0.13), 0 2px 8px rgba(0,0,0,0.06)' }}
                       role="menu"
                     >
+                      {/* Top accent gradient */}
+                      <div className="h-[3px] bg-gradient-to-r from-[#1B3A6B] via-[#F26522] to-[#00B4D8]" />
+
                       <Link
-                        href="/transparency"
+                        href={link.href}
                         role="menuitem"
-                        onClick={() => setDropdownOpen(false)}
-                        className="flex items-center px-4 py-2.5 text-sm font-bold text-[#1B3A6B] hover:bg-blue-50 transition-colors border-b border-gray-100"
+                        onClick={() => setDropdownOpen(null)}
+                        className="flex items-center px-4 py-3 text-sm font-bold text-[#1B3A6B] hover:bg-[#1B3A6B]/5 transition-colors border-b border-gray-100"
                       >
-                        Ver tudo em Transparência
+                        Ver tudo em {link.label} →
                       </Link>
+
                       {link.submenu.map((sub) => {
                         const Icon = sub.icon
                         return (
@@ -157,10 +191,12 @@ export default function Header() {
                             key={sub.href}
                             href={sub.href}
                             role="menuitem"
-                            onClick={() => setDropdownOpen(false)}
-                            className="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-[#1B3A6B] transition-colors"
+                            onClick={() => setDropdownOpen(null)}
+                            className="group/item flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:text-[#1B3A6B] transition-all duration-200 hover:bg-gradient-to-r hover:from-[#F26522]/8 hover:to-transparent"
                           >
-                            <Icon size={15} className="text-[#F26522] shrink-0" />
+                            <span className="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-50 group-hover/item:bg-[#F26522]/12 transition-colors duration-200 shrink-0">
+                              <Icon size={15} className="text-[#F26522]" />
+                            </span>
                             {sub.label}
                           </Link>
                         )
@@ -175,14 +211,19 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                  isActive ? 'text-white bg-white/10' : 'text-white/80 hover:text-white hover:bg-white/8'
+                className={`group relative px-4 py-2 text-sm font-semibold rounded-lg transition-colors duration-200 ${
+                  isActive
+                    ? 'text-white'
+                    : 'text-white/75 hover:text-white'
                 }`}
               >
                 {link.label}
-                {isActive && (
-                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#F26522]" />
-                )}
+                {/* Animated underline */}
+                <span
+                  className={`absolute bottom-1 left-4 right-4 h-[2px] rounded-full bg-[#F26522] transition-transform duration-300 origin-left ${
+                    isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                  }`}
+                />
               </Link>
             )
           })}
@@ -211,7 +252,7 @@ export default function Header() {
       <div
         id="mobile-menu"
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          menuAberto ? 'max-h-[560px] opacity-100' : 'max-h-0 opacity-0'
+          menuAberto ? 'max-h-[640px] opacity-100' : 'max-h-0 opacity-0'
         }`}
         style={{ background: 'rgba(27, 58, 107, 0.97)', backdropFilter: 'blur(12px)' }}
         aria-label="Navegação mobile"
@@ -232,7 +273,10 @@ export default function Header() {
                     }`}
                   >
                     {link.label}
-                    <ChevronDown size={15} className={`transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`} />
+                    <ChevronDown
+                      size={15}
+                      className={`transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
+                    />
                   </button>
 
                   <div
