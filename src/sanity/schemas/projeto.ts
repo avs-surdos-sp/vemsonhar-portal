@@ -37,9 +37,12 @@ export default defineType({
     }),
     defineField({
       name: 'cor',
-      title: 'Cor principal (hex)',
-      type: 'string',
-      description: 'Ex: #1B3A6B',
+      title: 'Cor principal',
+      type: 'color',
+      description: 'Escolha a cor de destaque do projeto.',
+      options: {
+        disableAlpha: true,
+      },
       validation: (Rule) => Rule.required(),
     }),
     defineField({
