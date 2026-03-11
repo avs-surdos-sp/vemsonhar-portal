@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Users, Star, BookOpen, Leaf, ArrowRight } from 'lucide-react'
+import SectionHeader from '@/components/shared/SectionHeader'
 
 const projetos = [
   {
@@ -42,12 +43,13 @@ export default function ProjetosSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-14 gap-4">
-          <div>
-            <p className="section-label text-[#00B4D8] mb-2">Nossos núcleos</p>
-            <h2 id="projetos-titulo" className="text-3xl font-extrabold text-[#1B3A6B] tracking-tight">
-              Projetos em andamento
-            </h2>
-          </div>
+          <SectionHeader
+            label="Nossos núcleos"
+            title="Projetos em andamento"
+            headingId="projetos-titulo"
+            labelColor="#00B4D8"
+            centered={false}
+          />
           <Link
             href="/projects"
             className="flex items-center gap-2 text-[#1565C0] font-semibold text-sm hover:gap-3 transition-all duration-200 group"
