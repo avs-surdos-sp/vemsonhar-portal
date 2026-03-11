@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation'
 import AccessibilityBar from './AccessibilityBar'
 import Header from './Header'
-import Footer from './footer'
+import Footer from './Footer'
 import BackToTop from '@/components/shared/BackToTop'
 
 /**
