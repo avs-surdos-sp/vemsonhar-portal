@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/footer";
-import AccessibilityBar from "@/components/layout/AccessibilityBar";
+import SiteChrome from "@/components/layout/SiteChrome";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -36,11 +34,11 @@ export default function RootLayout({
       <body
         className={`${inter.variable} antialiased flex flex-col min-h-screen`}
       >
-        <AccessibilityBar />
-        <Header />
-        {/* pt-[100px] = barra acessibilidade (36px) + header (64px) */}
-        <div id="main-content" className="flex-1 pt-[100px]">{children}</div>
-        <Footer />
+        {/*
+          SiteChrome renderiza AccessibilityBar + Header + Footer apenas
+          fora do /studio — o Sanity Studio precisa da tela toda livre.
+        */}
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );
