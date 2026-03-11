@@ -1,49 +1,50 @@
 import React from 'react'
 import Link from 'next/link'
-import { MapPin, Mail, Instagram, Youtube, Facebook, Linkedin } from 'lucide-react'
+import { MapPin, Mail, Instagram, Facebook, Linkedin } from 'lucide-react'
 
 const linksInstitucionais = [
-  { href: '/about', label: 'Quem Somos' },
-  { href: '/board', label: 'Diretoria' },
-  { href: '/transparency', label: 'Transparência' },
-  { href: '/news', label: 'Notícias' },
-  { href: '/contact', label: 'Contato' },
+  { href: '/about',   label: 'Quem Somos' },
+  { href: '/board',   label: 'Diretoria'  },
+  { href: '/contact', label: 'Contato'    },
 ]
 
 const linksProjetos = [
-  { href: '/projects', label: 'Todos os Projetos' },
-  { href: '/projects', label: 'Núcleo dos Idosos' },
-  { href: '/projects', label: 'Núcleo das Mulheres' },
-  { href: '/projects', label: 'Juventude Surda' },
-  { href: '/how-to-join', label: 'Seja Associado' },
-  { href: '/donations', label: 'Faça uma Doação' },
+  { href: '/projects/nucleos', label: 'Núcleos e Projetos'      },
+  { href: '/partners',         label: 'Parcerias Institucionais' },
+  { href: '/how-to-join',      label: 'Seja Associado'          },
+  { href: '/donations',        label: 'Faça uma Doação'         },
+]
+
+const linksTransparencia = [
+  { href: '/transparency/relatorios',     label: 'Relatórios Anuais'        },
+  { href: '/transparency/demonstrativo',  label: 'Demonstrativo Financeiro' },
+  { href: '/transparency/editais',        label: 'Editais e Parcerias'      },
+  { href: '/transparency/projetos',       label: 'Projetos Aprovados'       },
+]
+
+const linksNoticias = [
+  { href: '/news', label: 'Últimas Notícias' },
+  { href: '/blog', label: 'Blog / Artigos'   },
 ]
 
 const socialLinks = [
   {
     icon: Instagram,
-    href: 'https://instagram.com/asesp_oficial',
+    href: 'https://www.instagram.com/avemsonhar/',
     label: 'Instagram da ASESP',
     hoverBg: 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)',
     color: '#bc1888',
   },
   {
-    icon: Youtube,
-    href: 'https://youtube.com/@asesp',
-    label: 'YouTube da ASESP',
-    hoverBg: '#FF0000',
-    color: '#FF0000',
-  },
-  {
     icon: Facebook,
-    href: 'https://facebook.com/asesp.sp',
+    href: 'https://www.facebook.com/avemsonhar/',
     label: 'Facebook da ASESP',
     hoverBg: '#1877F2',
     color: '#1877F2',
   },
   {
     icon: Linkedin,
-    href: 'https://linkedin.com/company/asesp',
+    href: 'https://www.linkedin.com/company/avemsonhar/',
     label: 'LinkedIn da ASESP',
     hoverBg: '#0A66C2',
     color: '#0A66C2',
@@ -64,10 +65,10 @@ export default function Footer() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10">
 
           {/* Identidade — ocupa 2 colunas no lg */}
-          <div className="lg:col-span-2">
+          <div className="sm:col-span-2 lg:col-span-2">
             {/* Logo */}
             <div className="flex items-center gap-3 mb-4">
               <div
@@ -107,14 +108,19 @@ export default function Footer() {
 
             {/* Contato rápido */}
             <div className="mt-6 space-y-2">
-              <a href="mailto:contato@asesp.org.br" className="flex items-center gap-2 text-base text-white/60 hover:text-[#00B4D8] transition-colors">
+              <a href="mailto:contato@avemsonhar.org.br" className="flex items-center gap-2 text-base text-white/60 hover:text-[#00B4D8] transition-colors">
                 <Mail size={16} className="shrink-0" />
-                contato@asesp.org.br
+                contato@avemsonhar.org.br
               </a>
-              <span className="flex items-center gap-2 text-base text-white/60">
+              <a
+                href="https://maps.google.com/?q=Rua+Angaturama,+623,+São+Paulo,+SP"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-base text-white/60 hover:text-[#00B4D8] transition-colors"
+              >
                 <MapPin size={16} className="shrink-0" />
-                São Paulo, SP — Brasil
-              </span>
+                Rua Angaturama, 623 — São Paulo, SP
+              </a>
             </div>
           </div>
 
@@ -141,6 +147,40 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {linksProjetos.map((l) => (
                 <li key={l.label}>
+                  <Link
+                    href={l.href}
+                    className="text-base text-white/60 hover:text-white hover:font-bold transition-all duration-150 leading-none"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Links Transparência */}
+          <div>
+            <p className="font-semibold text-base mb-4 text-white">Transparência</p>
+            <ul className="space-y-2.5">
+              {linksTransparencia.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="text-base text-white/60 hover:text-white hover:font-bold transition-all duration-150 leading-none"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Links Notícias */}
+          <div>
+            <p className="font-semibold text-base mb-4 text-white">Notícias</p>
+            <ul className="space-y-2.5">
+              {linksNoticias.map((l) => (
+                <li key={l.href}>
                   <Link
                     href={l.href}
                     className="text-base text-white/60 hover:text-white hover:font-bold transition-all duration-150 leading-none"
