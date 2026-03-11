@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { ArrowRight, Newspaper, Tag } from 'lucide-react'
+import { ArrowRight, Newspaper, Tag, Clock } from 'lucide-react'
 import { sanityClient } from '@/lib/sanity'
 import EventosCarousel from '@/components/shared/EventosCarousel'
 
@@ -20,24 +20,6 @@ type NoticiaPreview = {
   categoria: 'noticia' | 'evento' | 'comunicado' | 'projeto'
   dataPublicacao: string
 }
-
-// ─── Fallback static data (shown while Sanity has no content) ─────────────────
-
-const EVENTOS_FALLBACK: Evento[] = [
-  {
-    titulo: 'Encontro do Núcleo dos Idosos Surdos',
-    data: '2026-03-15',
-    horaInicio: '14:00',
-    local: 'Sede da ASESP — São Paulo, SP',
-    descricao: 'Atividades recreativas, roda de conversa em Libras e almoço comunitário.',
-  },
-]
-
-const NOTICIAS_FALLBACK: NoticiaPreview[] = [
-  { titulo: 'ASESP participa do Conselho Municipal de Direitos', categoria: 'noticia', slug: '', dataPublicacao: '2026-02-28T00:00:00Z' },
-  { titulo: 'Encontro do Núcleo dos Idosos reúne 60 participantes', categoria: 'evento', slug: '', dataPublicacao: '2026-02-15T00:00:00Z' },
-  { titulo: 'Novo curso de Libras para profissionais da saúde', categoria: 'comunicado', slug: '', dataPublicacao: '2026-02-02T00:00:00Z' },
-]
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -82,17 +64,17 @@ export default async function EventoNoticiasSection() {
     sanityClient.fetch<NoticiaPreview[]>(QUERY_NOTICIAS, {}, { next: { revalidate: 60 } }),
   ]).catch(() => [[], []] as [Evento[], NoticiaPreview[]])
 
-  const eventos = eventosSanity?.length ? eventosSanity : EVENTOS_FALLBACK
-  const noticias = noticiasSanity?.length ? noticiasSanity : NOTICIAS_FALLBACK
+  const eventos = eventosSanity ?? []
+  const noticias = noticiasSanity ?? []
 
   return (
     <section
-      className="py-24 px-4 relative overflow-hidden"
+      className="py-24 px-4 relative"
       style={{ background: 'linear-gradient(135deg, #1B3A6B 0%, #1565C0 100%)' }}
       aria-label="Próximos eventos e últimas notícias"
     >
-      {/* Decorators */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+      {/* Decorators — overflow-hidden aqui apenas para clipar os glows, sem afetar o dropdown */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
           className="absolute -top-24 -right-24 w-72 h-72 rounded-full"
           style={{ background: 'radial-gradient(circle, rgba(0,180,216,0.15) 0%, transparent 70%)' }}
@@ -119,7 +101,14 @@ export default async function EventoNoticiasSection() {
             Próximos eventos
           </h2>
 
+            {eventos.length > 0 ? (
             <EventosCarousel eventos={eventos} />
+          ) : (
+            <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-6 py-5">
+              <Clock size={22} className="text-[#F26522] shrink-0" aria-hidden="true" />
+              <p className="text-white/70 text-base">Em breve divulgaremos os próximos eventos da ASESP.</p>
+            </div>
+          )}
         </div>
 
         {/* ── Últimas notícias ── */}
@@ -132,37 +121,44 @@ export default async function EventoNoticiasSection() {
             <Newspaper size={32} className="text-white/85 hidden sm:block" aria-hidden="true" />
           </div>
 
-          <ul className="space-y-0 list-none">
-            {noticias.map((n, i) => {
-              const cat = CATEGORIA[n.categoria] ?? CATEGORIA.noticia
-              const href = n.slug ? `/news/${n.slug}` : '/news'
-              return (
-                <li
-                  key={n.slug || n.titulo}
-                  className={`${i < noticias.length - 1 ? 'border-b border-white/10' : ''}`}
-                >
-                  <Link href={href} className="flex items-start gap-4 py-5 group">
-                    <span
-                      className="tag-badge mt-0.5 text-sm font-bold px-4 py-1.5 rounded-full shrink-0 flex items-center gap-1.5"
-                      style={{ '--tag-color': cat.color } as React.CSSProperties}
-                    >
-                      <Tag size={13} />
-                      {cat.label}
-                    </span>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-white font-semibold text-base leading-snug group-hover:text-[#00B4D8] transition-colors duration-150 line-clamp-2">
-                        {n.titulo}
-                      </p>
-                      <p className="text-white/75 text-sm mt-1.5">
-                        {formatNoticiaDate(n.dataPublicacao)}
-                      </p>
-                    </div>
-                    <ArrowRight size={16} className="text-white/25 group-hover:text-[#F26522] group-hover:translate-x-1 transition-all duration-150 shrink-0 mt-1" />
-                  </Link>
-                </li>
-              )
-            })}
-          </ul>
+          {noticias.length > 0 ? (
+            <ul className="space-y-0 list-none">
+              {noticias.map((n, i) => {
+                const cat = CATEGORIA[n.categoria] ?? CATEGORIA.noticia
+                const href = n.slug ? `/news/${n.slug}` : '/news'
+                return (
+                  <li
+                    key={n.slug || n.titulo}
+                    className={`${i < noticias.length - 1 ? 'border-b border-white/10' : ''}`}
+                  >
+                    <Link href={href} className="flex items-start gap-4 py-5 group">
+                      <span
+                        className="tag-badge mt-0.5 text-sm font-bold px-4 py-1.5 rounded-full shrink-0 flex items-center gap-1.5"
+                        style={{ '--tag-color': cat.color } as React.CSSProperties}
+                      >
+                        <Tag size={13} />
+                        {cat.label}
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-white font-semibold text-base leading-snug group-hover:text-[#00B4D8] transition-colors duration-150 line-clamp-2">
+                          {n.titulo}
+                        </p>
+                        <p className="text-white/75 text-sm mt-1.5">
+                          {formatNoticiaDate(n.dataPublicacao)}
+                        </p>
+                      </div>
+                      <ArrowRight size={16} className="text-white/25 group-hover:text-[#F26522] group-hover:translate-x-1 transition-all duration-150 shrink-0 mt-1" />
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          ) : (
+            <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-6 py-5">
+              <Clock size={22} className="text-[#F26522] shrink-0" aria-hidden="true" />
+              <p className="text-white/70 text-base">Em breve publicaremos as novidades da ASESP aqui.</p>
+            </div>
+          )}
 
           <Link
             href="/news"

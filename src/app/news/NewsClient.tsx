@@ -46,7 +46,7 @@ export default function NewsClient({ noticias }: { noticias: Noticia[] }) {
   if (noticias.length === 0) {
     return (
       <div className="max-w-5xl mx-auto px-4 py-20 text-center">
-        <p className="text-gray-500 text-lg">Nenhuma notícia publicada ainda. Acesse o Studio para adicionar conteúdo.</p>
+        <p className="text-gray-500 text-lg">Em breve publicaremos novidades da ASESP e da comunidade surda paulista. Volte em breve!</p>
       </div>
     )
   }
