@@ -1,149 +1,203 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ArrowDown, Users, Heart } from 'lucide-react'
+import { Users, Heart, ArrowRight } from 'lucide-react'
 
 export default function Hero() {
   return (
     <section
-      className="relative -mt-16 min-h-screen flex items-center overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #1B3A6B 0%, #0d2347 55%, #1a3a6e 100%)' }}
+      className="relative -mt-16 min-h-screen flex items-center overflow-hidden bg-white"
       aria-labelledby="hero-titulo"
     >
-      {/* Background decoration */}
+      {/* ── Decorative background elements ── */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        {/* Large top-right glow */}
+
+        {/* Large orange arc — top right */}
         <div
-          className="absolute -top-32 -right-32 w-[700px] h-[700px] rounded-full opacity-40"
-          style={{ background: 'radial-gradient(circle, rgba(0,180,216,0.15) 0%, transparent 70%)' }}
-        />
-        {/* Bottom-left glow */}
-        <div
-          className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full opacity-30"
-          style={{ background: 'radial-gradient(circle, rgba(242,101,34,0.15) 0%, transparent 70%)' }}
-        />
-        {/* Vertical accent line */}
-        <div
-          className="absolute top-1/4 right-[8%] w-[2px] h-[160px] opacity-40"
-          style={{ background: 'linear-gradient(to bottom, transparent, #00B4D8, transparent)' }}
-        />
-        {/* Dot grid */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute -top-40 -right-40 w-[680px] h-[680px] rounded-full"
           style={{
-            backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)',
-            backgroundSize: '32px 32px',
+            background: 'radial-gradient(circle at 60% 40%, rgba(242,101,34,0.13) 0%, rgba(242,101,34,0.04) 55%, transparent 75%)',
           }}
+        />
+
+        {/* Navy soft glow — bottom left */}
+        <div
+          className="absolute -bottom-24 -left-24 w-[420px] h-[420px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(27,58,107,0.06) 0%, transparent 70%)',
+          }}
+        />
+
+        {/* Thin orange vertical bar */}
+        <div
+          className="absolute top-[20%] right-[5%] w-[3px] h-[180px] rounded-full opacity-30"
+          style={{ background: 'linear-gradient(to bottom, transparent, #F26522 40%, transparent)' }}
+        />
+
+        {/* Thin cyan horizontal bar */}
+        <div
+          className="absolute bottom-[30%] left-[5%] w-[100px] h-[2px] rounded-full opacity-25"
+          style={{ background: 'linear-gradient(to right, transparent, #00B4D8, transparent)' }}
+        />
+
+        {/* Dot grid — subtle */}
+        <div
+          className="absolute inset-0 opacity-[0.035]"
+          style={{
+            backgroundImage: 'radial-gradient(circle, #1B3A6B 1px, transparent 1px)',
+            backgroundSize: '30px 30px',
+          }}
+        />
+
+        {/* Orange circle outline — right side mid */}
+        <div
+          className="absolute top-[35%] right-[12%] w-32 h-32 rounded-full border-[1.5px] border-[#F26522]/15"
+        />
+        <div
+          className="absolute top-[38%] right-[14%] w-20 h-20 rounded-full border-[1.5px] border-[#00B4D8]/12"
         />
       </div>
 
-      {/* Content */}
+      {/* ── Content ── */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-28 pb-28">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           {/* Left column */}
           <div>
-            {/* Badge */}
-            <div
-              className="inline-flex items-center gap-3 rounded-full mb-8 anim-hidden animate-fade-in-up"
-              style={{
-                background: 'rgba(255,255,255,0.1)',
-                backdropFilter: 'blur(12px)',
-                border: '1px solid rgba(255,255,255,0.25)',
-                boxShadow: '0 2px 16px rgba(0,0,0,0.15)',
-                padding: '6px 18px',
-              }}
-            >
-              <span className="text-white/90 text-sm font-medium">
-                Associação dos Surdos do Estado de São Paulo
+
+            {/* Pill badge */}
+            <div className="inline-flex items-center gap-2 mb-7 anim-hidden animate-fade-in-up">
+              <span
+                className="hero-badge inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border"
+                style={{
+                  color: '#1B3A6B',
+                  borderColor: 'rgba(27,58,107,0.15)',
+                  background: 'rgba(27,58,107,0.05)',
+                }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#F26522] animate-pulse" />
+                Associação dos Surdos do Estado de SP
               </span>
             </div>
 
+            {/* Headline */}
             <h1
               id="hero-titulo"
-              className="text-4xl lg:text-[3.2rem] xl:text-[3.6rem] font-extrabold text-white leading-[1.1] mb-6 tracking-tight anim-hidden animate-fade-in-up delay-100"
+              className="text-4xl lg:text-[3.2rem] xl:text-[3.8rem] font-extrabold text-[#1B3A6B] leading-[1.08] mb-6 tracking-tight anim-hidden animate-fade-in-up delay-100"
             >
-              Sonhando junto com a{' '}
-              <span
-                className="gradient-text"
-              >
-                Comunidade Surda
-              </span>{' '}
+              Sonhando junto<br />
+              com a{' '}
+              <span className="gradient-text">Comunidade<br />Surda</span>{' '}
               paulista
             </h1>
 
-            <p className="text-white/65 text-lg leading-relaxed mb-10 max-w-lg anim-hidden animate-fade-in-up delay-200">
+            {/* Orange divider */}
+            <div className="w-16 h-1 rounded-full bg-[#F26522] mb-6 anim-hidden animate-fade-in-up delay-150" />
+
+            <p className="text-gray-500 text-lg leading-relaxed mb-10 max-w-lg anim-hidden animate-fade-in-up delay-200">
               Há mais de 12 anos construindo pontes de inclusão, dignidade e
               pertencimento para a comunidade surda de São Paulo e região.
             </p>
 
-            <div className="flex flex-wrap gap-4 anim-hidden animate-fade-in-up delay-300">
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-4 mb-12 anim-hidden animate-fade-in-up delay-300">
               <Button
                 asChild
                 size="lg"
-                className="font-bold px-8 rounded-full text-white shadow-lg shadow-orange-500/30 hover:-translate-y-0.5 transition-all duration-200"
-                style={{ background: 'linear-gradient(135deg, #F26522, #e0541d)' }}
+                className="font-bold px-8 rounded-full text-white shadow-lg shadow-orange-500/25 hover:-translate-y-0.5 transition-all duration-200"
+                style={{ background: 'linear-gradient(135deg, #F26522, #d4501a)' }}
               >
-                <Link href="/how-to-join">🤟 Seja Associado</Link>
+                <Link href="/how-to-join">
+                  🤟 Seja Associado
+                  <ArrowRight size={16} className="ml-1" />
+                </Link>
               </Button>
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="font-semibold px-8 rounded-full border-white/30 text-white bg-white/8 hover:bg-white/15 hover:border-white/50 transition-all duration-200 backdrop-blur-sm"
+                className="hc-donation-btn font-semibold px-8 rounded-full border-[#1B3A6B]/30 text-[#1B3A6B] hover:bg-[#1B3A6B] hover:text-white hover:border-[#1B3A6B] transition-all duration-200"
               >
                 <Link href="/donations">💙 Faça uma Doação</Link>
               </Button>
             </div>
 
-            {/* Quick stats */}
-            <div className="flex items-center gap-6 mt-12 anim-hidden animate-fade-in-up delay-400">
-              <div className="flex items-center gap-2 text-white/50 text-sm">
-                <Users size={16} className="text-[#00B4D8]" />
-                <span><strong className="text-white font-bold">340+</strong> associados</span>
+            {/* Stats */}
+            <div className="flex items-center gap-7 anim-hidden animate-fade-in-up delay-400">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-[#00B4D8]/10 flex items-center justify-center">
+                  <Users size={16} className="text-[#00B4D8]" />
+                </div>
+                <div>
+                  <p className="text-[#1B3A6B] font-extrabold text-base leading-none">340+</p>
+                  <p className="text-gray-400 text-xs mt-0.5">associados</p>
+                </div>
               </div>
-              <div className="w-px h-4 bg-white/20" />
-              <div className="flex items-center gap-2 text-white/50 text-sm">
-                <Heart size={16} className="text-[#F26522]" />
-                <span><strong className="text-white font-bold">12</strong> anos de história</span>
+              <div className="w-px h-8" style={{ background: 'rgba(0,0,0,0.08)' }} />
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-[#F26522]/10 flex items-center justify-center">
+                  <Heart size={16} className="text-[#F26522]" />
+                </div>
+                <div>
+                  <p className="text-[#1B3A6B] font-extrabold text-base leading-none">12</p>
+                  <p className="text-gray-400 text-xs mt-0.5">anos de história</p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Right column — feature card */}
+          {/* Right column — card */}
           <div className="relative anim-hidden animate-fade-in-up delay-200">
+
             {/* Main card */}
-            <div className="glass-card rounded-3xl overflow-hidden p-0">
-              {/* Card header */}
+            <div className="bg-white rounded-3xl overflow-hidden border border-gray-100"
+              style={{ boxShadow: '0 20px 60px rgba(27,58,107,0.10), 0 4px 16px rgba(0,0,0,0.06)' }}>
+
+              {/* Card header with gradient bg */}
               <div
-                className="relative p-8 flex flex-col items-center justify-center min-h-[220px] text-center"
-                style={{ background: 'linear-gradient(135deg, rgba(0,180,216,0.2) 0%, rgba(27,58,107,0.4) 100%)' }}
+                className="relative flex flex-col items-center justify-center min-h-[260px] text-center p-8"
+                style={{ background: 'linear-gradient(135deg, rgba(27,58,107,0.04) 0%, rgba(242,101,34,0.06) 100%)' }}
               >
+                {/* Decorative ring */}
+                <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+                  <div className="w-[200px] h-[200px] rounded-full border border-[#F26522]/10" />
+                </div>
+
                 {/* Play button */}
                 <button
-                  className="relative w-20 h-20 rounded-full border-2 border-[#F26522]/80 flex items-center justify-center bg-[#F26522]/20 hover:bg-[#F26522]/35 transition-all duration-300 hover:scale-105 cursor-pointer group animate-float"
+                  className="relative z-10 w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer animate-float"
+                  style={{
+                    background: 'linear-gradient(135deg, #F26522, #d4501a)',
+                    boxShadow: '0 8px 24px rgba(242,101,34,0.4)',
+                  }}
                   aria-label="Reproduzir apresentação em Libras"
                 >
-                  <span className="sr-only">Reproduzir vídeo</span>
                   <svg viewBox="0 0 24 24" width="28" height="28" fill="white" className="ml-1" aria-hidden="true">
                     <path d="M8 5v14l11-7z" />
                   </svg>
-                  {/* Pulse ring */}
                   <span className="absolute inset-0 rounded-full border-2 border-[#F26522]/40 animate-pulse-ring" aria-hidden="true" />
                 </button>
-                <p className="text-white font-bold text-lg mt-5">Apresentação em Libras</p>
-                <p className="text-white/50 text-sm mt-1">Conheça a ASESP em Libras</p>
+
+                <p className="relative z-10 text-[#1B3A6B] font-bold text-lg mt-5">Apresentação em Libras</p>
+                <p className="relative z-10 text-gray-400 text-sm mt-1">Conheça a ASESP em Libras</p>
               </div>
 
-              {/* Card body — mini stats */}
             </div>
+
           </div>
         </div>
       </div>
 
-      {/* Wave transition */}
+      {/* Wave transition to next section */}
       <div className="absolute bottom-0 left-0 right-0" aria-hidden="true">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#ffffff" />
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+          <defs>
+            <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"   stopColor="#F26522" />
+              <stop offset="50%"  stopColor="#00B4D8" />
+              <stop offset="100%" stopColor="#F26522" />
+            </linearGradient>
+          </defs>
+          <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="url(#waveGradient)" />
         </svg>
       </div>
     </section>

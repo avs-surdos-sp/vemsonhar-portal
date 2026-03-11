@@ -114,12 +114,29 @@ export default function DoacaoForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Valor pretendido (opcional)</FormLabel>
+              {/* Preset buttons */}
+              <div className="flex flex-wrap gap-2 mb-2">
+                {['20', '50', '100', '400'].map((v) => (
+                  <button
+                    key={v}
+                    type="button"
+                    onClick={() => field.onChange(v)}
+                    className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-all duration-150 ${
+                      field.value === v
+                        ? 'bg-[#F26522] text-white border-[#F26522]'
+                        : 'bg-white text-[#1B3A6B] border-gray-200 hover:border-[#F26522] hover:text-[#F26522]'
+                    }`}
+                  >
+                    R$ {v}
+                  </button>
+                ))}
+              </div>
               <FormControl>
                 <Input
                   type="number"
                   min="1"
                   step="0.01"
-                  placeholder="Ex: 50.00"
+                  placeholder="Ou digite outro valor"
                   {...field}
                 />
               </FormControl>

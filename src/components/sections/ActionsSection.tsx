@@ -34,14 +34,20 @@ const acoes = [
 
 export default function AcoesSection() {
   return (
-    <section className="py-24 px-4 bg-[#F5F7FA]" aria-labelledby="acoes-titulo">
+    <section
+      className="py-24 px-4"
+      style={{ background: 'linear-gradient(135deg, #1B3A6B 0%, #0d2347 55%, #1a3a6e 100%)' }}
+      aria-labelledby="acoes-titulo"
+    >
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           label="Como você pode ajudar"
           title="Faça parte dessa história"
           headingId="acoes-titulo"
           description="Cada contribuição transforma vidas na comunidade surda paulista."
-          className="mb-16"
+          labelColor="#F26522"
+          titleColor="#ffffff"
+          className="mb-16 [&_p.text-gray-500]:text-white/60"
         />
 
         <ul className="grid md:grid-cols-3 gap-7 list-none">
@@ -50,7 +56,7 @@ export default function AcoesSection() {
             return (
               <li
                 key={a.titulo}
-                className={`group relative bg-white rounded-2xl p-9 shadow-sm border flex flex-col items-start hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden ${a.highlight ? 'border-[#1B3A6B]/30' : 'border-[#eef2f8]'
+                className={`group relative bg-white rounded-2xl p-9 shadow-sm border flex flex-col items-start hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden ${a.highlight ? 'border-[#1B3A6B]/30 hc-highlight-card' : 'border-[#eef2f8]'
                   }`}
               >
                 {/* Gradient accent on hover */}

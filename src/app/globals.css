@@ -403,6 +403,48 @@ html[data-hc="1"] [class*="divide-gray"] > * {
   border-color: rgba(255, 255, 255, 0.15) !important;
 }
 
+/* ── Hero badge (pill "Associação dos Surdos…") ──────────── */
+html[data-hc="1"] .hero-badge {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ── "Faça uma Doação" botão outline ────────────────────── */
+html[data-hc="1"] .hc-donation-btn {
+  border-color: #F26522 !important;
+  border-width: 2px !important;
+  color: #ffffff !important;
+}
+
+/* ── StatsSection — rótulo dd (#666) ────────────────────── */
+html[data-hc="1"] .text-\[\#666\] {
+  color: #ffffff !important;
+}
+
+/* ── ActionsSection — "Seja Associado" borda branca ─────── */
+html[data-hc="1"] .hc-highlight-card {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  border-width: 2px !important;
+}
+
+/* ── Calendar dropdown: text-gray-700 geral → claro ─────── */
+html[data-hc="1"] .text-gray-700 {
+  color: #e8e8e8 !important;
+}
+
+/* ── Calendar dropdown: hover azul marinho + texto branco ── */
+html[data-hc="1"] .cal-dropdown-item:hover {
+  background-color: #1B3A6B !important;
+  color: #ffffff !important;
+}
+
+/* ── Nav: botões dropdown (Projetos/Transparência/Notícias) → amarelo + underline */
+html[data-hc="1"] header button[aria-haspopup="true"] {
+  color: #ffff00 !important;
+  text-decoration: underline !important;
+}
+
 /* ── Sombras ─────────────────────────────────────────────── */
 html[data-hc="1"] [class*="shadow"] {
   box-shadow: none !important;

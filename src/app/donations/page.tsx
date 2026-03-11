@@ -1,32 +1,11 @@
 import DoacaoForm from '@/components/shared/DonationForm'
 import { Metadata } from 'next'
-import { Heart, BookOpen, Mic, Plane } from 'lucide-react'
+import { Heart } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Doações | ASESP',
   description: 'Apoie a ASESP e contribua com a comunidade surda do Estado de São Paulo.',
 }
-
-const impactos = [
-  {
-    valor: 'R$ 30',
-    descricao: 'Cobre materiais para um workshop de Libras',
-    icon: BookOpen,
-    color: '#00B4D8',
-  },
-  {
-    valor: 'R$ 100',
-    descricao: 'Apoia a produção de conteúdo acessível em Libras',
-    icon: Mic,
-    color: '#F26522',
-  },
-  {
-    valor: 'R$ 300',
-    descricao: 'Financia a participação de um surdo em evento nacional',
-    icon: Plane,
-    color: '#1B3A6B',
-  },
-]
 
 export default function DoacoesPage() {
   return (
@@ -56,36 +35,6 @@ export default function DoacoesPage() {
       </section>
 
       <div className="max-w-3xl mx-auto px-4 py-16 space-y-14">
-
-        {/* Impacto */}
-        <section aria-labelledby="impacto-titulo">
-          <p className="section-label text-[#F26522] mb-3">Seu impacto</p>
-          <h2 id="impacto-titulo" className="text-2xl font-extrabold text-[#1B3A6B] mb-7 tracking-tight">
-            O que sua doação faz
-          </h2>
-          <ul className="grid sm:grid-cols-3 gap-4 list-none">
-            {impactos.map((item) => {
-              const Icon = item.icon
-              return (
-                <li
-                  key={item.valor}
-                  className="group rounded-2xl p-6 text-center border border-[#eef2f8] bg-white hover:-translate-y-1 hover:shadow-md transition-all duration-200"
-                >
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform"
-                    style={{ background: `${item.color}18` }}
-                  >
-                    <Icon size={22} style={{ color: item.color }} />
-                  </div>
-                  <p className="text-2xl font-extrabold mb-2" style={{ color: item.color }}>
-                    {item.valor}
-                  </p>
-                  <p className="text-sm text-gray-500 leading-snug">{item.descricao}</p>
-                </li>
-              )
-            })}
-          </ul>
-        </section>
 
         {/* Form */}
         <section aria-labelledby="form-titulo">

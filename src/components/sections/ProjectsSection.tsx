@@ -63,12 +63,11 @@ export default function ProjetosSection() {
             return (
               <li
                 key={p.titulo}
-                className="group rounded-2xl overflow-hidden border border-[#eef2f8] hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer bg-white"
+                className="group rounded-2xl overflow-hidden border border-gray-100 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer bg-white"
               >
                 {/* Card header with color */}
                 <div
-                  className="relative pt-20 pb-10 px-6 flex flex-col items-center justify-center"
-                  style={{ background: p.bgLight }}
+                  className="relative pt-20 pb-10 px-6 flex flex-col items-center justify-center bg-[#F5F7FA]"
                 >
                   <div
                     className="w-16 h-16 rounded-2xl flex items-center justify-center mb-1 group-hover:scale-110 transition-transform duration-300"

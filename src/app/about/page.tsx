@@ -122,7 +122,7 @@ export default function SobrePage() {
             Missão e Visão
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="rounded-2xl p-7 bg-[#EAF0FA] border border-[#d0dcf0]">
+            <div className="rounded-2xl p-7 bg-[#EAF0FA] border border-gray-100">
               <div className="w-10 h-10 rounded-xl bg-[#1B3A6B] flex items-center justify-center mb-4">
                 <CheckCircle2 size={18} className="text-white" />
               </div>
@@ -133,7 +133,7 @@ export default function SobrePage() {
                 em todos os espaços da vida pública.
               </p>
             </div>
-            <div className="rounded-2xl p-7 bg-[#FEF2EC] border border-[#f8d5bc]">
+            <div className="rounded-2xl p-7 bg-[#FEF2EC] border border-gray-100">
               <div className="w-10 h-10 rounded-xl bg-[#F26522] flex items-center justify-center mb-4">
                 <Globe size={18} className="text-white" />
               </div>
@@ -159,7 +159,7 @@ export default function SobrePage() {
               return (
                 <li
                   key={v.titulo}
-                  className="group border border-[#eef2f8] rounded-2xl p-6 hover:-translate-y-1 hover:shadow-md transition-all duration-200 bg-white"
+                  className="group border border-gray-100 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-md transition-all duration-200 bg-white"
                 >
                   <div
                     className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"

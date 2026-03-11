@@ -65,7 +65,7 @@ export default function EventosCarousel({ eventos }: { eventos: EventoItem[] }) 
         )}
 
         {/* Footer: calendar button + navigation */}
-        <div className="flex items-center justify-between gap-4 mt-5">
+        <div className={`flex items-center gap-4 mt-5 ${total > 1 ? 'justify-between' : 'justify-left'}`}>
           <AddToCalendarButton
             titulo={evento.titulo}
             data={evento.data}

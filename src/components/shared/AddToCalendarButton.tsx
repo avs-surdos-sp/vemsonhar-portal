@@ -141,7 +141,7 @@ export default function AddToCalendarButton(props: Props) {
             rel="noopener noreferrer"
             role="menuitem"
             onClick={() => setOpen(false)}
-            className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-sm font-medium text-gray-700"
+            className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition-colors duration-150 text-sm font-medium text-gray-700 cal-dropdown-item"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
               <path fill="#4285F4" d="M23.745 12.27c0-.79-.07-1.54-.19-2.27h-11.3v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/>
@@ -161,7 +161,7 @@ export default function AddToCalendarButton(props: Props) {
             rel="noopener noreferrer"
             role="menuitem"
             onClick={() => setOpen(false)}
-            className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-sm font-medium text-gray-700"
+            className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition-colors duration-150 text-sm font-medium text-gray-700 cal-dropdown-item"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <rect x="1" y="5" width="13" height="14" rx="2" fill="#0078D4"/>
@@ -180,7 +180,7 @@ export default function AddToCalendarButton(props: Props) {
             download="evento-asesp.ics"
             role="menuitem"
             onClick={() => setOpen(false)}
-            className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-sm font-medium text-gray-700"
+            className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition-colors duration-150 text-sm font-medium text-gray-700 cal-dropdown-item"
           >
             {/* Apple logo SVG */}
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
