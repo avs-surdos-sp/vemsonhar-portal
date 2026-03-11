@@ -18,8 +18,9 @@ import {
 import { enviarContato } from '@/app/actions/contact'
 
 const schema = z.object({
-  nome: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),
-  email: z.string().email('E-mail inválido'),
+  nome:     z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),
+  email:    z.string().email('E-mail inválido'),
+  assunto:  z.string().min(3, 'Assunto deve ter pelo menos 3 caracteres'),
   mensagem: z.string().min(10, 'Mensagem deve ter pelo menos 10 caracteres'),
 })
 
@@ -30,7 +31,7 @@ export default function ContatoForm() {
 
   const form = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: { nome: '', email: '', mensagem: '' },
+    defaultValues: { nome: '', email: '', assunto: '', mensagem: '' },
   })
 
   async function onSubmit(data: FormData) {
@@ -48,7 +49,7 @@ export default function ContatoForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-6"
+        className="space-y-5"
         aria-label="Formulário de contato"
         noValidate
       >
@@ -82,6 +83,20 @@ export default function ContatoForm() {
 
         <FormField
           control={form.control}
+          name="assunto"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Assunto</FormLabel>
+              <FormControl>
+                <Input placeholder="Sobre o que você quer falar?" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
           name="mensagem"
           render={({ field }) => (
             <FormItem>
@@ -105,15 +120,15 @@ export default function ContatoForm() {
         )}
 
         {status === 'erro' && (
-          <p role="alert" className="text-sm text-destructive font-medium">
-            Erro ao enviar. Tente novamente.
+          <p role="alert" className="text-sm text-red-600 font-medium">
+            Erro ao enviar. Tente novamente ou escreva para contato@avemsonhar.org.br.
           </p>
         )}
 
         <Button
           type="submit"
           disabled={status === 'enviando'}
-          className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
+          className="w-full bg-[#F26522] hover:bg-[#d4501a] text-white font-bold rounded-full"
           aria-busy={status === 'enviando'}
         >
           {status === 'enviando' ? 'Enviando...' : 'Enviar mensagem'}
