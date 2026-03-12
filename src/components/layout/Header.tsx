@@ -98,11 +98,16 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-9 left-0 right-0 z-50 h-16 border-b border-white/10 transition-all duration-300 ${
-        scrolled ? 'shadow-lg' : 'shadow-none'
+      className={`fixed top-9 left-0 right-0 z-50 h-24 border-b border-gray-100 transition-all duration-300 ${
+        scrolled ? 'shadow-md' : 'shadow-none'
       }`}
-      style={{ background: 'linear-gradient(135deg, #1B3A6B 0%, #0d2347 100%)' }}
+      style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(12px)' }}
     >
+      {/* Linha de acento colorida no topo */}
+      <div
+        className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#1B3A6B] via-[#F26522] to-[#00B4D8]"
+        aria-hidden="true"
+      />
       {/* Scroll progress bar */}
       <div
         className="absolute bottom-0 left-0 h-[2px] bg-[#F26522] transition-all duration-100 pointer-events-none"
@@ -119,17 +124,17 @@ export default function Header() {
           aria-label="VemSonhar ASESP — Página inicial"
         >
           <Image
-            src="/logo.svg"
+            src="/logo-avs.svg"
             alt="VemSonhar ASESP"
-            width={44}
-            height={44}
-            className="h-11 w-auto"
+            width={200}
+            height={200}
+            className="h-15 w-auto"
             priority
           />
         </Link>
 
         {/* ── Nav desktop ── */}
-        <nav className="hidden md:flex items-center gap-0.5" aria-label="Navegação principal">
+        <nav className="hidden md:flex items-center gap-1" aria-label="Navegação principal">
           {navLinks.map((link) => {
             const isActive = pathname === link.href || pathname.startsWith(link.href + '/')
 
@@ -146,10 +151,10 @@ export default function Header() {
                     onClick={() => setDropdownOpen(isOpen ? null : link.href)}
                     aria-haspopup="true"
                     aria-expanded={isOpen}
-                    className={`group relative flex items-center gap-1 px-4 py-2 text-sm font-semibold rounded-lg transition-colors duration-200 ${
+                    className={`group relative flex items-center gap-1 px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 ${
                       isGroupActive
-                        ? 'text-white'
-                        : 'text-white/75 hover:text-white'
+                        ? 'text-[#1B3A6B] bg-transparent'
+                        : 'text-[#1B3A6B] hover:text-[#1B3A6B] hover:bg-transparent'
                     }`}
                   >
                     {link.label}
@@ -157,9 +162,9 @@ export default function Header() {
                       size={14}
                       className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                     />
-                    {/* Animated underline */}
+                    {/* Underline */}
                     <span
-                      className={`absolute bottom-1 left-4 right-5 h-[2px] rounded-full bg-[#F26522] transition-transform duration-300 origin-left ${
+                      className={`absolute bottom-1 left-4 right-5 h-[2.5px] rounded-full bg-[#F26522] transition-transform duration-300 origin-center ${
                         isGroupActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                       }`}
                     />
@@ -179,7 +184,7 @@ export default function Header() {
                         href={link.href}
                         role="menuitem"
                         onClick={() => setDropdownOpen(null)}
-                        className="flex items-center px-4 py-3 text-sm font-bold text-[#1B3A6B] hover:bg-[#1B3A6B]/5 transition-colors border-b border-gray-100"
+                        className="flex items-center px-4 py-3 text-sm font-bold text-[#1B3A6B] hover:bg-transparent transition-colors border-b border-gray-100"
                       >
                         Ver tudo em {link.label} →
                       </Link>
@@ -211,16 +216,16 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`group relative px-4 py-2 text-sm font-semibold rounded-lg transition-colors duration-200 ${
+                className={`group relative px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 ${
                   isActive
-                    ? 'text-white'
-                    : 'text-white/75 hover:text-white'
+                    ? 'text-[#1B3A6B] bg-transparent'
+                    : 'text-[#1B3A6B] hover:text-[#1B3A6B] hover:bg-transparent'
                 }`}
               >
                 {link.label}
-                {/* Animated underline */}
+                {/* Underline */}
                 <span
-                  className={`absolute bottom-1 left-4 right-4 h-[2px] rounded-full bg-[#F26522] transition-transform duration-300 origin-left ${
+                  className={`absolute bottom-1 left-4 right-4 h-[2.5px] rounded-full bg-[#F26522] transition-transform duration-300 origin-center ${
                     isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                   }`}
                 />
@@ -228,9 +233,12 @@ export default function Header() {
             )
           })}
 
+          {/* Separador */}
+          <div className="w-px h-6 bg-gray-200 mx-2" aria-hidden="true" />
+
           <Link
             href="/how-to-join"
-            className="ml-3 bg-[#F26522] text-white text-sm font-bold px-5 py-2 rounded-full hover:bg-[#d4501a] transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5"
+            className="bg-[#F26522] text-white text-sm font-bold px-5 py-2.5 rounded-full hover:bg-[#d4501a] transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5"
           >
             Seja Associado
           </Link>
@@ -238,7 +246,7 @@ export default function Header() {
 
         {/* Botão mobile */}
         <button
-          className="md:hidden p-2 text-white rounded-lg hover:bg-white/10 transition-colors"
+          className="md:hidden p-2 text-[#1B3A6B] rounded-lg hover:bg-gray-100 transition-colors"
           onClick={() => setMenuAberto(!menuAberto)}
           aria-label={menuAberto ? 'Fechar menu' : 'Abrir menu'}
           aria-expanded={menuAberto}

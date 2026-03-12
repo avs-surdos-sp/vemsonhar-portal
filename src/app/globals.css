@@ -313,6 +313,7 @@ html[data-hc="1"] body {
 
 /* ── Header ──────────────────────────────────────────────── */
 html[data-hc="1"] header {
+  background: #0d0d0d !important;
   border-bottom: 1px solid rgba(255,255,255,0.25) !important;
 }
 
@@ -439,10 +440,13 @@ html[data-hc="1"] .cal-dropdown-item:hover {
   color: #ffffff !important;
 }
 
-/* ── Nav: botões dropdown (Projetos/Transparência/Notícias) → amarelo + underline */
+/* ── Nav: botões dropdown (Projetos/Transparência/Notícias) */
 html[data-hc="1"] header button[aria-haspopup="true"] {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+html[data-hc="1"] header button[aria-haspopup="true"]:hover {
   color: #ffff00 !important;
-  text-decoration: underline !important;
 }
 
 /* ── Sombras ─────────────────────────────────────────────── */
