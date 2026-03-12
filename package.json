@@ -14,6 +14,7 @@
     "@sanity/image-url": "^2.0.3",
     "@sanity/vision": "^5.13.0",
     "@tailwindcss/typography": "^0.5.19",
+    "@vercel/speed-insights": "^2.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.576.0",

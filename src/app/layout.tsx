@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SiteChrome from "@/components/layout/SiteChrome";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -39,6 +40,7 @@ export default function RootLayout({
           fora do /studio — o Sanity Studio precisa da tela toda livre.
         */}
         <SiteChrome>{children}</SiteChrome>
+        <SpeedInsights />
       </body>
     </html>
   );
