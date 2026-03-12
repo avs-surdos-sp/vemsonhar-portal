@@ -28,7 +28,7 @@ const securityHeaders = [
       // Imagens: próprias + Sanity CDN + dados inline
       "img-src 'self' data: blob: https://cdn.sanity.io",
       // Iframes: somente YouTube (para os vídeos em Libras)
-      "frame-src https://www.youtube.com https://www.youtube-nocookie.com",
+      "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://docs.google.com",
       // Conexões de API/fetch: próprias + Sanity
       "connect-src 'self' https://vaonnaw6.api.sanity.io https://cdn.sanity.io https://vitals.vercel-insights.com",
       // Manifests e workers
