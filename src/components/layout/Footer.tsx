@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { MapPin, Mail, Instagram, Facebook, Linkedin } from 'lucide-react'
 
 const linksInstitucionais = [
@@ -70,20 +71,14 @@ export default function Footer() {
           {/* Identidade — ocupa 2 colunas no lg */}
           <div className="sm:col-span-2 lg:col-span-2">
             {/* Logo */}
-            <div className="flex items-center gap-3 mb-4">
-              <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                style={{ background: 'linear-gradient(135deg, #F26522, #ff8c53)' }}
-                aria-hidden="true"
-              >
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="white" aria-hidden="true">
-                  <path d="M6 4a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1v5.5a1 1 0 0 0 2 0V3a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1v6.5a1 1 0 0 0 2 0V5a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1v7.5C18 16 15.5 20 11 20S4 16.314 4 12.5V8a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1v3.5a.5.5 0 0 0 1 0V4Z" />
-                </svg>
-              </div>
-              <div>
-                <p className="font-extrabold text-lg leading-none tracking-tight">vemsonhar</p>
-                <p className="text-[#00B4D8] text-[10px] tracking-[0.18em] uppercase font-semibold mt-0.5">ASESP</p>
-              </div>
+            <div className="mb-5">
+              <Image
+                src="/logo-avs.svg"
+                alt="AVS — Associação dos Surdos do Estado de São Paulo"
+                width={200}
+                height={75}
+                className="h-20 w-auto brightness-0 invert"
+              />
             </div>
             <p className="text-white/60 text-base leading-relaxed max-w-xs text-justify">
               Associação dos Surdos do Estado de São Paulo. Representando e defendendo os direitos da comunidade surda paulista desde 2012.
