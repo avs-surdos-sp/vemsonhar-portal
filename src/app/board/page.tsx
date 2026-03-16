@@ -9,48 +9,96 @@ export const metadata: Metadata = {
     'Conheça a estrutura administrativa da ASESP — diretoria, conselhos e núcleos temáticos.',
 }
 
-const diretoria = [
+const diretoriaGrupos = [
   {
-    cargo: 'Presidência',
-    nome: 'A definir',
-    bio: 'Responsável pela representação institucional da ASESP junto a órgãos públicos, parceiros e comunidade surda do Estado de São Paulo.',
-    color: '#1B3A6B',
+    grupo: 'Presidência',
+    membros: [
+      {
+        cargo: 'Presidência',
+        nome: 'Priscilla Gaspar',
+        bio: 'Responsável pela representação institucional da ASESP junto a órgãos públicos, parceiros e comunidade surda do Estado de São Paulo.',
+        color: '#7C3AED',
+        borderColor: '#7C3AED',
+        foto: '/people/priscilla-gaspar.jpg',
+      },
+      {
+        cargo: 'Vice-Presidência',
+        nome: 'Laila Sankari',
+        bio: 'Auxilia a presidência nas decisões estratégicas e assume a gestão em ausências ou impedimentos do presidente.',
+        color: '#7C3AED',
+        borderColor: '#7C3AED',
+        foto: '/people/laila-sankari.jpg',
+        photoPosition: 'center 15%',
+      },
+    ],
   },
   {
-    cargo: 'Vice-Presidência',
-    nome: 'A definir',
-    bio: 'Auxilia a presidência nas decisões estratégicas e assume a gestão em ausências ou impedimentos do presidente.',
-    color: '#1565C0',
+    grupo: 'Secretaria',
+    membros: [
+      {
+        cargo: 'Secretaria',
+        nome: 'Renata Serafim',
+        bio: 'Responsável pela gestão documental, atas de reunião, comunicações oficiais e registros institucionais da associação.',
+        color: '#1B3A6B',
+        borderColor: '#1B3A6B',
+        foto: '/people/renata-serafim.jpg',
+      },
+      {
+        cargo: 'Secretaria Adjunta',
+        nome: 'Silva Sabanovaite',
+        bio: 'Auxilia na gestão documental, atas de reunião e comunicações oficiais da associação.',
+        color: '#1B3A6B',
+        borderColor: '#1B3A6B',
+        foto: '/people/silva-sabanovaite.jpg',
+      },
+    ],
   },
   {
-    cargo: 'Secretaria',
-    nome: 'A definir',
-    bio: 'Responsável pela gestão documental, atas de reunião, comunicações oficiais e registros institucionais da associação.',
-    color: '#00B4D8',
-  },
-  {
-    cargo: 'Diretoria de Marketing e Comunicação',
-    nome: 'A definir',
-    bio: 'Cuida da comunicação institucional, redes sociais, identidade visual e divulgação das ações da ASESP.',
-    color: '#F26522',
-  },
-  {
-    cargo: 'Diretoria de Núcleos Temáticos',
-    nome: 'A definir',
-    bio: 'Coordena os núcleos de idosos, mulheres, juventude e demais projetos sociais da associação.',
-    color: '#00B4D8',
-  },
-  {
-    cargo: 'Diretoria de Tecnologia da Informação',
-    nome: 'A definir',
-    bio: 'Responsável pela infraestrutura digital da ASESP, incluindo o portal institucional e o sistema de carteirinhas.',
-    color: '#1565C0',
-  },
-  {
-    cargo: 'Diretoria Financeira',
-    nome: 'A definir',
-    bio: 'Gerencia as finanças da ASESP, controla receitas e despesas, e garante a prestação de contas à comunidade.',
-    color: '#1B3A6B',
+    grupo: 'Diretorias',
+    membros: [
+      {
+        cargo: 'Diretoria de Marketing e Comunicação',
+        nome: 'Felipe Vieira',
+        bio: 'Cuida da comunicação institucional, redes sociais, identidade visual e divulgação das ações da ASESP.',
+        color: '#F26522',
+        borderColor: '#F26522',
+        foto: '/people/felipe-vieira.jpg',
+      },
+      {
+        cargo: 'Diretoria de Núcleos Temáticos',
+        nome: 'Natasha Oliveira',
+        bio: 'Coordena os núcleos de idosos, mulheres, juventude e demais projetos sociais da associação.',
+        color: '#0D9488',
+        borderColor: '#0D9488',
+        foto: '/people/natasha-oliveira.jpg',
+      },
+      {
+        cargo: 'Diretoria de Tecnologia da Informação',
+        nome: 'Fernando Kendi',
+        bio: 'Responsável pela infraestrutura digital da ASESP, incluindo o portal institucional e o sistema de carteirinhas.',
+        color: '#1F2937',
+        borderColor: '#1F2937',
+        foto: '/people/fernando-kendi.jpg',
+        photoScale: 1.3,
+      },
+      {
+        cargo: 'Diretoria Financeira',
+        nome: 'Reynaldo Falchi',
+        bio: 'Gerencia as finanças da ASESP, controla receitas e despesas, e garante a prestação de contas à comunidade.',
+        color: '#16A34A',
+        borderColor: '#16A34A',
+        foto: '/people/reynaldo-falchi.jpg',
+        photoPosition: 'center 20%',
+      },
+      {
+        cargo: 'Dir. Financeira Adjunta',
+        nome: 'Rosana Debartolo',
+        bio: 'Apoia a gestão financeira da ASESP, auxiliando no controle de receitas, despesas e prestação de contas.',
+        color: '#16A34A',
+        borderColor: '#16A34A',
+        foto: '/people/rosana.jpg',
+      },
+    ],
   },
 ]
 
@@ -58,10 +106,14 @@ const conselhos = [
   {
     nome: 'Conselho Fiscal',
     icon: Shield,
-    color: '#1B3A6B',
+    color: '#F26522',
     bgLight: '#eaeff7',
     desc: 'Responsável por fiscalizar a gestão financeira da ASESP, examinar as contas e relatórios da diretoria e emitir pareceres sobre a prestação de contas anual.',
-    membros: ['Membro 1 — a definir', 'Membro 2 — a definir', 'Membro 3 — a definir'],
+    membros: [
+      { nome: 'Francisco José',  cargo: 'Presidente', foto: '/people/francisco-jose.jpg' },
+      { nome: 'Leandro Fonseca', cargo: 'Vice-Presidente', foto: '/people/leandro-fonseca.jpg' },
+      { nome: 'Wagner Serafim',  cargo: 'Diretor', foto: '/people/wagner-serafim.jpg' },
+    ],
   },
   {
     nome: 'Conselho Deliberativo',
@@ -69,14 +121,18 @@ const conselhos = [
     color: '#F26522',
     bgLight: '#fef2ec',
     desc: 'Órgão máximo de deliberação da ASESP, responsável por aprovar o planejamento anual, alterações estatutárias e decisões estratégicas da associação.',
-    membros: ['Membro 1 — a definir', 'Membro 2 — a definir', 'Membro 3 — a definir'],
+    membros: [
+      { nome: 'Sergio Andrade',   cargo: 'Presidente', foto: '/people/sergio-andrade.jpg' },
+      { nome: 'Valdemir Patinho', cargo: 'Vice-Presidente', foto: '/people/valdemir-patinho.jpg' },
+      { nome: 'Raul Antônio',     cargo: 'Diretor', foto: '/people/raul-antonio.jpg' },
+    ],
   },
 ]
 
 const nucleos = [
-  { nome: 'Núcleo dos Idosos Surdos', icon: Users, color: '#00B4D8', bgLight: '#e6f9fd', href: '/projects' },
-  { nome: 'Núcleo das Mulheres Surdas', icon: Star, color: '#F26522', bgLight: '#fef2ec', href: '/projects' },
-  { nome: 'Núcleo da Juventude Surda', icon: BookOpen, color: '#1565C0', bgLight: '#e8eefb', href: '/projects' },
+  { nome: 'Núcleo dos Idosos Surdos', icon: Users, color: '#6B7280', bgLight: '#F3F4F6', href: '/projects' },
+  { nome: 'Núcleo das Mulheres Surdas', icon: Star, color: '#DB2777', bgLight: '#fce7f3', href: '/projects' },
+  { nome: 'Núcleo da Juventude Surda', icon: BookOpen, color: '#D97706', bgLight: '#fef3c7', href: '/projects' },
 ]
 
 export default function DiretoriaPage() {
@@ -122,77 +178,97 @@ export default function DiretoriaPage() {
             <div className="w-64 text-center rounded-2xl px-6 py-4 text-white font-bold text-sm shadow-lg" style={{ background: '#1B3A6B' }}>
               Presidência
             </div>
-            <div className="w-px h-6 bg-gray-300" aria-hidden="true" />
+            <div className="w-px h-6 bg-[#1B3A6B]/30" aria-hidden="true" />
 
             {/* Vice-Presidência + Secretaria */}
             <div className="relative flex justify-center w-full">
-              <div className="absolute top-0 w-64 h-px bg-gray-300" aria-hidden="true" />
+              <div className="absolute top-0 w-64 h-px bg-[#1B3A6B]/20" aria-hidden="true" />
               <div className="flex gap-16">
                 <div className="flex flex-col items-center">
-                  <div className="w-px h-6 bg-gray-300" aria-hidden="true" />
-                  <div className="w-44 text-center rounded-xl px-4 py-3 text-white font-bold text-xs shadow" style={{ background: '#1565C0' }}>
+                  <div className="w-px h-6 bg-[#1B3A6B]/20" aria-hidden="true" />
+                  <div className="w-44 text-center rounded-xl px-4 py-3 text-white font-bold text-xs shadow" style={{ background: '#2D5BA3' }}>
                     Vice-Presidência
                   </div>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div className="w-px h-6 bg-gray-300" aria-hidden="true" />
-                  <div className="w-44 text-center rounded-xl px-4 py-3 text-white font-bold text-xs shadow" style={{ background: '#00B4D8' }}>
+                  <div className="w-px h-6 bg-[#1B3A6B]/20" aria-hidden="true" />
+                  <div className="w-44 text-center rounded-xl px-4 py-3 text-white font-bold text-xs shadow" style={{ background: '#2D5BA3' }}>
                     Secretaria
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="w-px h-8 bg-gray-300 mt-6" aria-hidden="true" />
+            <div className="w-px h-8 bg-[#1B3A6B]/30 mt-6" aria-hidden="true" />
 
             {/* Conselhos */}
             <div className="relative flex justify-center w-full">
-              <div className="absolute top-0 w-64 h-px bg-gray-300" aria-hidden="true" />
+              <div className="absolute top-0 w-64 h-px bg-[#1B3A6B]/20" aria-hidden="true" />
               <div className="flex gap-12">
                 <div className="flex flex-col items-center">
-                  <div className="w-px h-6 bg-gray-300" aria-hidden="true" />
-                  <div className="w-48 text-center rounded-xl px-4 py-3 font-bold text-xs shadow border-2" style={{ borderColor: '#1B3A6B', color: '#1B3A6B', background: '#eaeff7' }}>
+                  <div className="w-px h-6 bg-[#1B3A6B]/20" aria-hidden="true" />
+                  <div className="w-48 text-center rounded-xl px-4 py-3 font-bold text-xs" style={{ borderColor: '#1B3A6B', color: '#1B3A6B', background: '#fff', border: '1.5px dashed #1B3A6B' }}>
                     Conselho Fiscal
                   </div>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div className="w-px h-6 bg-gray-300" aria-hidden="true" />
-                  <div className="w-48 text-center rounded-xl px-4 py-3 font-bold text-xs shadow border-2" style={{ borderColor: '#F26522', color: '#F26522', background: '#fef2ec' }}>
+                  <div className="w-px h-6 bg-[#1B3A6B]/20" aria-hidden="true" />
+                  <div className="w-48 text-center rounded-xl px-4 py-3 font-bold text-xs" style={{ borderColor: '#1B3A6B', color: '#1B3A6B', background: '#fff', border: '1.5px dashed #1B3A6B' }}>
                     Conselho Deliberativo
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="w-px h-8 bg-gray-300 mt-6" aria-hidden="true" />
+            <div className="w-px h-8 bg-[#1B3A6B]/30 mt-6" aria-hidden="true" />
 
             {/* Diretoria Executiva */}
             <div className="w-64 text-center rounded-2xl px-6 py-4 text-white font-bold text-sm shadow-lg" style={{ background: '#1B3A6B' }}>
               Diretoria Executiva
             </div>
-            <div className="w-px h-6 bg-gray-300" aria-hidden="true" />
+            <div className="w-px h-6 bg-[#1B3A6B]/30" aria-hidden="true" />
 
             {/* 4 diretorias temáticas */}
             <div className="relative flex justify-center w-full">
-              <div className="absolute top-0 w-[90%] h-px bg-gray-300" aria-hidden="true" />
+              <div className="absolute top-0 w-[90%] h-px bg-[#1B3A6B]/20" aria-hidden="true" />
               <div className="flex gap-4 flex-wrap justify-center">
                 {[
-                  { label: 'Marketing e\nComunicação', color: '#F26522', bg: '#fef2ec' },
-                  { label: 'Núcleos\nTemáticos',       color: '#00B4D8', bg: '#e6f9fd' },
-                  { label: 'Tecnologia da\nInformação', color: '#1565C0', bg: '#e8eefb' },
-                  { label: 'Diretoria\nFinanceira',     color: '#1B3A6B', bg: '#eaeff7' },
-                ].map((d) => (
-                  <div key={d.label} className="flex flex-col items-center">
-                    <div className="w-px h-6 bg-gray-300" aria-hidden="true" />
+                  'Marketing e\nComunicação',
+                  'Núcleos\nTemáticos',
+                  'Tecnologia da\nInformação',
+                  'Diretoria\nFinanceira',
+                ].map((label) => (
+                  <div key={label} className="flex flex-col items-center">
+                    <div className="w-px h-6 bg-[#1B3A6B]/20" aria-hidden="true" />
                     <div
-                      className="w-36 text-center rounded-xl px-3 py-3 font-bold text-xs shadow border"
-                      style={{ borderColor: d.color + '60', color: d.color, background: d.bg, whiteSpace: 'pre-line' }}
+                      className="w-36 text-center rounded-xl px-3 py-3 font-bold text-xs border"
+                      style={{ borderColor: '#1B3A6B30', color: '#1B3A6B', background: '#F0F4FA', whiteSpace: 'pre-line' }}
                     >
-                      {d.label}
+                      {label}
                     </div>
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Adjuntos */}
+            <div className="w-px h-6 bg-[#1B3A6B]/20 mt-1" aria-hidden="true" />
+            <p className="text-[10px] font-bold uppercase tracking-widest text-[#1B3A6B]/40 mb-1">Cargos Adjuntos</p>
+            <div className="flex gap-8">
+              {[
+                'Sec. Adjunta',
+                'Dir. Fin. Adjunta',
+              ].map((label) => (
+                <div key={label} className="flex flex-col items-center">
+                  <div className="w-px h-4 bg-[#1B3A6B]/15" aria-hidden="true" />
+                  <div
+                    className="w-36 text-center rounded-xl px-3 py-2 font-semibold text-xs border"
+                    style={{ borderColor: '#1B3A6B18', color: '#2D5BA3', background: '#F8FAFD' }}
+                  >
+                    {label}
+                  </div>
+                </div>
+              ))}
             </div>
 
           </div>
@@ -204,33 +280,56 @@ export default function DiretoriaPage() {
           <h2 id="membros-titulo" className="text-2xl font-extrabold text-[#1B3A6B] mb-8 tracking-tight">
             Membros da Diretoria
           </h2>
-          <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 list-none">
-            {diretoria.map((m) => (
-              <li
-                key={m.cargo}
-                className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:-translate-y-1 hover:shadow-md transition-all duration-200"
-              >
-                <div className="h-2" style={{ background: m.color }} />
-                <div className="p-6">
-                  {/* Foto placeholder */}
-                  <div
-                    className="w-16 h-16 rounded-full mb-4 flex items-center justify-center text-white font-extrabold text-lg"
-                    style={{ background: `${m.color}22` }}
-                    aria-hidden="true"
-                  >
-                    <span style={{ color: m.color }}>
-                      {m.nome === 'A definir' ? '?' : m.nome.charAt(0)}
-                    </span>
-                  </div>
-                  <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: m.color }}>
-                    {m.cargo}
-                  </p>
-                  <h3 className="font-extrabold text-[#1B3A6B] text-lg mb-3">{m.nome}</h3>
-                  <p className="text-gray-600 text-base leading-relaxed">{m.bio}</p>
-                </div>
-              </li>
+          <div className="space-y-10">
+            {diretoriaGrupos.map((g) => (
+              <div key={g.grupo}>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-[#1B3A6B]/50 mb-4 border-b border-gray-100 pb-2">
+                  {g.grupo}
+                </h3>
+                <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 list-none">
+                  {g.membros.map((m) => (
+                    <li
+                      key={m.cargo}
+                      className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:-translate-y-1 hover:shadow-md transition-all duration-200"
+                    >
+                      <div className="h-2" style={{ background: m.borderColor }} />
+                      <div className="p-6 flex flex-col items-center text-center">
+                        <div className="flex justify-center mb-5">
+                          {m.foto ? (
+                            <div className="w-36 h-36 rounded-full overflow-hidden border-2 flex-shrink-0" style={{ borderColor: `${m.borderColor}40` }}>
+                              <img
+                                src={m.foto}
+                                alt={m.nome}
+                                className="w-full h-full object-cover"
+                                style={{
+                                  objectPosition: (m as any).photoPosition ?? 'center',
+                                  transform: `scale(${(m as any).photoScale ?? 1})`,
+                                  transformOrigin: (m as any).photoPosition ?? 'center',
+                                }}
+                              />
+                            </div>
+                          ) : (
+                            <div
+                              className="w-36 h-36 rounded-full flex items-center justify-center font-extrabold text-2xl"
+                              style={{ background: `${m.color}22`, color: m.color }}
+                              aria-hidden="true"
+                            >
+                              {m.nome === 'A definir' ? '?' : m.nome.charAt(0)}
+                            </div>
+                          )}
+                        </div>
+                        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: m.borderColor }}>
+                          {m.cargo}
+                        </p>
+                        <h3 className="font-extrabold text-gray-900 text-lg mb-3">{m.nome}</h3>
+                        <p className="text-gray-600 text-base leading-relaxed">{m.bio}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </section>
 
         {/* Conselhos */}
@@ -255,15 +354,27 @@ export default function DiretoriaPage() {
                   </div>
                   <h3 className="font-extrabold text-[#1B3A6B] text-lg mb-3">{c.nome}</h3>
                   <p className="text-gray-600 text-base leading-relaxed mb-5">{c.desc}</p>
-                  <ul className="space-y-2">
+                  <ul className="grid grid-cols-3 gap-4 mt-2 list-none">
                     {c.membros.map((m) => (
-                      <li key={m} className="flex items-center gap-2 text-base text-gray-600">
-                        <span
-                          className="w-1.5 h-1.5 rounded-full shrink-0"
-                          style={{ background: c.color }}
-                          aria-hidden="true"
-                        />
-                        {m}
+                      <li key={m.nome} className="flex flex-col items-center text-center gap-2">
+                        {m.foto ? (
+                          <img
+                            src={m.foto}
+                            alt={m.nome}
+                            className="w-28 h-28 rounded-full object-cover border-2"
+                            style={{ borderColor: c.color + '40' }}
+                          />
+                        ) : (
+                          <div
+                            className="w-28 h-28 rounded-full flex items-center justify-center font-extrabold text-2xl"
+                            style={{ background: c.bgLight, color: c.color }}
+                            aria-hidden="true"
+                          >
+                            {m.nome.charAt(0)}
+                          </div>
+                        )}
+                        <p className="font-bold text-[#1B3A6B] text-sm leading-snug">{m.nome}</p>
+                        <p className="text-xs font-semibold" style={{ color: c.color }}>{m.cargo}</p>
                       </li>
                     ))}
                   </ul>
