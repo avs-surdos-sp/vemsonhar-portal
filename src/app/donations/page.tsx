@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 }
 
 // TODO: substituir pela chave PIX real da ASESP
-const CHAVE_PIX = 'pix@asesp.org.br'
+const CHAVE_PIX = 'financeiro@avemsonhar.org.br'
 
 export default function DoacoesPage() {
   return (
