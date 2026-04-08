@@ -27,35 +27,35 @@ type NavLink = {
 // ─── Nav data ─────────────────────────────────────────────────────────────────
 
 const navLinks: NavLink[] = [
-  { href: '/about',    label: 'Quem Somos' },
-  { href: '/board',    label: 'Diretoria'  },
+  { href: '/sobre',    label: 'Quem Somos' },
+  { href: '/diretoria', label: 'Diretoria'  },
   {
-    href: '/projects',
+    href: '/projetos',
     label: 'Projetos',
     submenu: [
-      { href: '/projects/nucleos',  label: 'Núcleos e Projetos',       icon: Layers    },
-      { href: '/partners',  label: 'Parcerias Institucionais', icon: Handshake },
+      { href: '/projetos/nucleos', label: 'Núcleos e Projetos',       icon: Layers    },
+      { href: '/parceiros',        label: 'Parcerias Institucionais', icon: Handshake },
     ],
   },
   {
-    href: '/transparency',
+    href: '/transparencia',
     label: 'Transparência',
     submenu: [
-      { href: '/transparency/relatorios',    label: 'Relatórios Anuais',        icon: FileText      },
-      { href: '/transparency/demonstrativo', label: 'Demonstrativo Financeiro', icon: BarChart2     },
-      { href: '/transparency/editais',       label: 'Editais e Parcerias',      icon: ClipboardList },
-      { href: '/transparency/projetos',      label: 'Projetos Aprovados',       icon: CheckSquare   },
+      { href: '/transparencia/relatorios',    label: 'Relatórios Anuais',        icon: FileText      },
+      { href: '/transparencia/demonstrativo', label: 'Demonstrativo Financeiro', icon: BarChart2     },
+      { href: '/transparencia/editais',       label: 'Editais e Parcerias',      icon: ClipboardList },
+      { href: '/transparencia/projetos',      label: 'Projetos Aprovados',       icon: CheckSquare   },
     ],
   },
   {
-    href: '/news',
+    href: '/noticias',
     label: 'Notícias',
     submenu: [
-      { href: '/news', label: 'Últimas Notícias', icon: Newspaper },
-      { href: '/blog', label: 'Blog / Artigos',   icon: BookOpen  },
+      { href: '/noticias', label: 'Últimas Notícias', icon: Newspaper },
+      { href: '/blog',     label: 'Blog / Artigos',   icon: BookOpen  },
     ],
   },
-  { href: '/contact', label: 'Contato' },
+  { href: '/contato', label: 'Contato' },
 ]
 
 // ─── Component ────────────────────────────────────────────────────────────────
