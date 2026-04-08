@@ -81,7 +81,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-white/60 text-base leading-relaxed max-w-xs text-justify">
-              Associação dos Surdos do Estado de São Paulo. Representando e defendendo os direitos da comunidade surda paulista desde 2012.
+              Associação dos Surdos do Estado de São Paulo. Representando e defendendo os direitos da comunidade surda paulista desde 2017.
             </p>
 
             {/* Redes sociais */}
