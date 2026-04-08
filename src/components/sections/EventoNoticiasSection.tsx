@@ -161,7 +161,7 @@ export default async function EventoNoticiasSection() {
           )}
 
           <Link
-            href="/news"
+            href="/noticias"
             className="inline-flex items-center gap-2 mt-4 text-[#F26522] font-semibold text-base hover:gap-3 transition-all duration-200 group"
           >
             Ver todas as notícias

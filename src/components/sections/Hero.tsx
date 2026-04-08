@@ -106,7 +106,7 @@ export default function Hero() {
                 className="font-bold px-8 rounded-full text-white shadow-lg shadow-orange-500/25 hover:-translate-y-0.5 transition-all duration-200"
                 style={{ background: 'linear-gradient(135deg, #F26522, #d4501a)' }}
               >
-                <Link href="/how-to-join">
+                <Link href="/como-se-associar">
                   🤟 Seja Associado
                   <ArrowRight size={16} className="ml-1" />
                 </Link>
@@ -117,7 +117,7 @@ export default function Hero() {
                 variant="outline"
                 className="hc-donation-btn font-semibold px-8 rounded-full border-[#1B3A6B]/30 text-[#1B3A6B] hover:bg-[#1B3A6B] hover:text-white hover:border-[#1B3A6B] transition-all duration-200"
               >
-                <Link href="/donations">💙 Faça uma Doação</Link>
+                <Link href="/doacoes">💙 Faça uma Doação</Link>
               </Button>
             </div>
 

@@ -237,7 +237,7 @@ export default function Header() {
           <div className="w-px h-6 bg-gray-200 mx-2" aria-hidden="true" />
 
           <Link
-            href="/how-to-join"
+            href="/como-se-associar"
             className="bg-[#F26522] text-white text-sm font-bold px-5 py-2.5 rounded-full hover:bg-[#d4501a] transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5"
           >
             Seja Associado
@@ -328,7 +328,7 @@ export default function Header() {
           })}
 
           <Link
-            href="/how-to-join"
+            href="/como-se-associar"
             className="mt-2 text-center bg-[#F26522] text-white text-sm font-bold px-5 py-3 rounded-full hover:bg-[#d4501a] transition-colors"
             onClick={() => setMenuAberto(false)}
           >

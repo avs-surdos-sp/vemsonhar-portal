@@ -41,6 +41,20 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  async redirects() {
+    return [
+      { source: '/about',        destination: '/sobre',            permanent: true },
+      { source: '/board',        destination: '/diretoria',        permanent: true },
+      { source: '/contact',      destination: '/contato',          permanent: true },
+      { source: '/donations',    destination: '/doacoes',          permanent: true },
+      { source: '/how-to-join',  destination: '/como-se-associar', permanent: true },
+      { source: '/news',         destination: '/noticias',         permanent: true },
+      { source: '/news/:slug',   destination: '/noticias/:slug',   permanent: true },
+      { source: '/projects',     destination: '/projetos',         permanent: true },
+      { source: '/transparency', destination: '/transparencia',    permanent: true },
+      { source: '/partners',     destination: '/parceiros',        permanent: true },
+    ]
+  },
   images: {
     remotePatterns: [
       {

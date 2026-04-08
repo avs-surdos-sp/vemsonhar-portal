@@ -51,7 +51,7 @@ export default function ProjetosSection() {
             centered={false}
           />
           <Link
-            href="/projects"
+            href="/projetos"
             className="flex items-center gap-2 text-[#1565C0] font-semibold text-sm hover:gap-3 transition-all duration-200 group"
           >
             Ver todos

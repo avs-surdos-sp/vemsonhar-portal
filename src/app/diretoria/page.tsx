@@ -3,31 +3,39 @@ import Link from 'next/link'
 import { Users, Shield, BookOpen, Star } from 'lucide-react'
 import LibrasVideo from '@/components/shared/LibrasVideo'
 
+type Membro = {
+  role: string
+  name: string
+  bio: string
+  color: string
+  photo: string
+  photoPosition?: string
+  photoScale?: number
+}
+
 export const metadata: Metadata = {
   title: 'Diretoria | ASESP',
   description:
     'Conheça a estrutura administrativa da ASESP — diretoria, conselhos e núcleos temáticos.',
 }
 
-const diretoriaGrupos = [
+const diretoriaGrupos: { grupo: string; membros: Membro[] }[] = [
   {
     grupo: 'Presidência',
     membros: [
       {
-        cargo: 'Presidência',
-        nome: 'Priscilla Gaspar',
+        role: 'Presidência',
+        name: 'Priscilla Gaspar',
         bio: 'Responsável pela representação institucional da ASESP junto a órgãos públicos, parceiros e comunidade surda do Estado de São Paulo.',
         color: '#7C3AED',
-        borderColor: '#7C3AED',
-        foto: '/people/priscilla-gaspar.jpg',
+        photo: '/people/priscilla-gaspar.jpg',
       },
       {
-        cargo: 'Vice-Presidência',
-        nome: 'Laila Sankari',
+        role: 'Vice-Presidência',
+        name: 'Laila Sankari',
         bio: 'Auxilia a presidência nas decisões estratégicas e assume a gestão em ausências ou impedimentos do presidente.',
         color: '#7C3AED',
-        borderColor: '#7C3AED',
-        foto: '/people/laila-sankari.jpg',
+        photo: '/people/laila-sankari.jpg',
         photoPosition: 'center 15%',
       },
     ],
@@ -36,20 +44,18 @@ const diretoriaGrupos = [
     grupo: 'Secretaria',
     membros: [
       {
-        cargo: 'Secretaria',
-        nome: 'Renata Serafim',
+        role: 'Secretaria',
+        name: 'Renata Serafim',
         bio: 'Responsável pela gestão documental, atas de reunião, comunicações oficiais e registros institucionais da associação.',
         color: '#1B3A6B',
-        borderColor: '#1B3A6B',
-        foto: '/people/renata-serafim.jpg',
+        photo: '/people/renata-serafim.jpg',
       },
       {
-        cargo: 'Secretaria Adjunta',
-        nome: 'Silva Sabanovaite',
+        role: 'Secretaria Adjunta',
+        name: 'Silva Sabanovaite',
         bio: 'Auxilia na gestão documental, atas de reunião e comunicações oficiais da associação.',
         color: '#1B3A6B',
-        borderColor: '#1B3A6B',
-        foto: '/people/silva-sabanovaite.jpg',
+        photo: '/people/silva-sabanovaite.jpg',
       },
     ],
   },
@@ -57,46 +63,41 @@ const diretoriaGrupos = [
     grupo: 'Diretorias',
     membros: [
       {
-        cargo: 'Diretoria de Marketing e Comunicação',
-        nome: 'Felipe Vieira',
+        role: 'Diretoria de Marketing e Comunicação',
+        name: 'Felipe Vieira',
         bio: 'Cuida da comunicação institucional, redes sociais, identidade visual e divulgação das ações da ASESP.',
         color: '#F26522',
-        borderColor: '#F26522',
-        foto: '/people/felipe-vieira.jpg',
+        photo: '/people/felipe-vieira.jpg',
       },
       {
-        cargo: 'Diretoria de Núcleos Temáticos',
-        nome: 'Natasha Oliveira',
+        role: 'Diretoria de Núcleos Temáticos',
+        name: 'Natasha Oliveira',
         bio: 'Coordena os núcleos de idosos, mulheres, juventude e demais projetos sociais da associação.',
         color: '#0D9488',
-        borderColor: '#0D9488',
-        foto: '/people/natasha-oliveira.jpg',
+        photo: '/people/natasha-oliveira.jpg',
       },
       {
-        cargo: 'Diretoria de Tecnologia da Informação',
-        nome: 'Fernando Kendi',
+        role: 'Diretoria de Tecnologia da Informação',
+        name: 'Fernando Kendi',
         bio: 'Responsável pela infraestrutura digital da ASESP, incluindo o portal institucional e o sistema de carteirinhas.',
         color: '#1F2937',
-        borderColor: '#1F2937',
-        foto: '/people/fernando-kendi.jpg',
+        photo: '/people/fernando-kendi.jpg',
         photoScale: 1.3,
       },
       {
-        cargo: 'Diretoria Financeira',
-        nome: 'Reynaldo Falchi',
+        role: 'Diretoria Financeira',
+        name: 'Reynaldo Falchi',
         bio: 'Gerencia as finanças da ASESP, controla receitas e despesas, e garante a prestação de contas à comunidade.',
         color: '#16A34A',
-        borderColor: '#16A34A',
-        foto: '/people/reynaldo-falchi.jpg',
+        photo: '/people/reynaldo-falchi.jpg',
         photoPosition: 'center 20%',
       },
       {
-        cargo: 'Dir. Financeira Adjunta',
-        nome: 'Rosana Debartolo',
+        role: 'Dir. Financeira Adjunta',
+        name: 'Rosana Debartolo',
         bio: 'Apoia a gestão financeira da ASESP, auxiliando no controle de receitas, despesas e prestação de contas.',
         color: '#16A34A',
-        borderColor: '#16A34A',
-        foto: '/people/rosana.jpg',
+        photo: '/people/rosana.jpg',
       },
     ],
   },
@@ -130,9 +131,9 @@ const conselhos = [
 ]
 
 const nucleos = [
-  { nome: 'Núcleo dos Idosos Surdos', icon: Users, color: '#6B7280', bgLight: '#F3F4F6', href: '/projects' },
-  { nome: 'Núcleo das Mulheres Surdas', icon: Star, color: '#DB2777', bgLight: '#fce7f3', href: '/projects' },
-  { nome: 'Núcleo da Juventude Surda', icon: BookOpen, color: '#D97706', bgLight: '#fef3c7', href: '/projects' },
+  { nome: 'Núcleo dos Idosos Surdos', icon: Users, color: '#6B7280', bgLight: '#F3F4F6', href: '/projetos' },
+  { nome: 'Núcleo das Mulheres Surdas', icon: Star, color: '#DB2777', bgLight: '#fce7f3', href: '/projetos' },
+  { nome: 'Núcleo da Juventude Surda', icon: BookOpen, color: '#D97706', bgLight: '#fef3c7', href: '/projetos' },
 ]
 
 export default function DiretoriaPage() {
@@ -289,22 +290,22 @@ export default function DiretoriaPage() {
                 <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 list-none">
                   {g.membros.map((m) => (
                     <li
-                      key={m.cargo}
+                      key={m.role}
                       className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:-translate-y-1 hover:shadow-md transition-all duration-200"
                     >
-                      <div className="h-2" style={{ background: m.borderColor }} />
+                      <div className="h-2" style={{ background: m.color }} />
                       <div className="p-6 flex flex-col items-center text-center">
                         <div className="flex justify-center mb-5">
-                          {m.foto ? (
-                            <div className="w-36 h-36 rounded-full overflow-hidden border-2 flex-shrink-0" style={{ borderColor: `${m.borderColor}40` }}>
+                          {m.photo ? (
+                            <div className="w-36 h-36 rounded-full overflow-hidden border-2 flex-shrink-0" style={{ borderColor: `${m.color}40` }}>
                               <img
-                                src={m.foto}
-                                alt={m.nome}
+                                src={m.photo}
+                                alt={m.name}
                                 className="w-full h-full object-cover"
                                 style={{
-                                  objectPosition: (m as any).photoPosition ?? 'center',
-                                  transform: `scale(${(m as any).photoScale ?? 1})`,
-                                  transformOrigin: (m as any).photoPosition ?? 'center',
+                                  objectPosition: m.photoPosition ?? 'center',
+                                  transform: `scale(${m.photoScale ?? 1})`,
+                                  transformOrigin: m.photoPosition ?? 'center',
                                 }}
                               />
                             </div>
@@ -314,14 +315,14 @@ export default function DiretoriaPage() {
                               style={{ background: `${m.color}22`, color: m.color }}
                               aria-hidden="true"
                             >
-                              {m.nome === 'A definir' ? '?' : m.nome.charAt(0)}
+                              {m.name === 'A definir' ? '?' : m.name.charAt(0)}
                             </div>
                           )}
                         </div>
-                        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: m.borderColor }}>
-                          {m.cargo}
+                        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: m.color }}>
+                          {m.role}
                         </p>
-                        <h3 className="font-extrabold text-gray-900 text-lg mb-3">{m.nome}</h3>
+                        <h3 className="font-extrabold text-gray-900 text-lg mb-3">{m.name}</h3>
                         <p className="text-gray-600 text-base leading-relaxed">{m.bio}</p>
                       </div>
                     </li>
@@ -427,13 +428,13 @@ export default function DiretoriaPage() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
-              href="/how-to-join"
+              href="/como-se-associar"
               className="bg-[#F26522] text-white font-bold px-8 py-3 rounded-full hover:bg-[#d4501a] transition-colors hover:shadow-lg"
             >
               🤟 Associar-se
             </Link>
             <Link
-              href="/contact"
+              href="/contato"
               className="bg-white/10 border border-white/30 text-white font-semibold px-8 py-3 rounded-full hover:bg-white/20 transition-colors"
             >
               Falar com a diretoria

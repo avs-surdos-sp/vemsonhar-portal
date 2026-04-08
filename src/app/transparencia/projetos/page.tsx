@@ -72,7 +72,7 @@ export default async function ProjetosAprovadosPage() {
         style={{ background: 'linear-gradient(135deg, #1B3A6B 0%, #0d2347 100%)' }}
       >
         <div className="relative max-w-4xl mx-auto">
-          <Link href="/transparency"
+          <Link href="/transparencia"
             className="inline-flex items-center gap-2 text-white/60 text-sm mb-6 hover:text-white transition-colors">
             <ArrowLeft size={14} /> Transparência
           </Link>
@@ -145,7 +145,7 @@ export default async function ProjetosAprovadosPage() {
         </p>
 
         <div className="mt-10 text-center">
-          <Link href="/transparency"
+          <Link href="/transparencia"
             className="inline-flex items-center gap-2 text-[#1B3A6B] font-semibold text-sm hover:underline">
             <ArrowLeft size={14} /> Voltar para Transparência
           </Link>

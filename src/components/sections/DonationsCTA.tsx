@@ -55,7 +55,7 @@ export default function DoacoesCTA() {
             size="lg"
             className="font-bold px-10 bg-white text-[#1B3A6B] hover:bg-white/90 shadow-xl hover:-translate-y-0.5 transition-all duration-200 rounded-full"
           >
-            <Link href="/donations" className="flex items-center gap-2">
+            <Link href="/doacoes" className="flex items-center gap-2">
               <Heart size={18} className="text-[#F26522]" />
               Quero Contribuir
             </Link>
@@ -66,7 +66,7 @@ export default function DoacoesCTA() {
             variant="outline"
             className="font-semibold px-8 border-white/40 text-white hover:bg-white/10 hover:border-white/60 transition-all duration-200 rounded-full backdrop-blur-sm"
           >
-            <Link href="/how-to-join" className="flex items-center gap-2">
+            <Link href="/como-se-associar" className="flex items-center gap-2">
               <UserPlus size={18} />
               Seja Associado
             </Link>

@@ -94,7 +94,7 @@ export default async function NoticiaPage({ params }: Props) {
         )}
         <div className="relative max-w-3xl mx-auto">
           <Link
-            href="/news"
+            href="/noticias"
             className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm mb-8 transition-colors"
           >
             <ArrowLeft size={16} /> Voltar às notícias
@@ -134,7 +134,7 @@ export default async function NoticiaPage({ params }: Props) {
 
         <div className="mt-14 pt-8 border-t border-[#eef2f8]">
           <Link
-            href="/news"
+            href="/noticias"
             className="inline-flex items-center gap-2 font-semibold transition-colors"
             style={{ color: cor }}
           >

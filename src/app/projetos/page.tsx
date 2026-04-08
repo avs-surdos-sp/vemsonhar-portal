@@ -1,54 +1,36 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { FileText, BarChart2, ClipboardList, CheckSquare, ArrowRight, ShieldCheck } from 'lucide-react'
+import { Layers, Handshake, ArrowRight } from 'lucide-react'
 import LibrasVideo from '@/components/shared/LibrasVideo'
 
 export const metadata: Metadata = {
-  title: 'Transparência | ASESP',
+  title: 'Projetos | ASESP',
   description:
-    'Prestação de contas da ASESP — relatórios anuais, demonstrativo financeiro, editais e projetos aprovados.',
+    'Conheça os projetos, núcleos e parcerias institucionais da ASESP em prol da comunidade surda paulista.',
 }
 
 const sections = [
   {
-    href: '/transparency/relatorios',
-    icon: FileText,
-    label: 'Documentos',
-    title: 'Relatórios Anuais',
-    desc: 'Atividades realizadas, impacto social e balanço de associados de cada exercício anual.',
-    color: '#1B3A6B',
-    count: '3 relatórios',
-  },
-  {
-    href: '/transparency/demonstrativo',
-    icon: BarChart2,
-    label: 'Finanças',
-    title: 'Demonstrativo Financeiro',
-    desc: 'Categorias de receitas e despesas, auditadas pelo Conselho Fiscal da ASESP.',
-    color: '#1565C0',
-    count: 'Simplificado',
-  },
-  {
-    href: '/transparency/editais',
-    icon: ClipboardList,
-    label: 'Convênios',
-    title: 'Editais e Parcerias',
-    desc: 'Contratos vigentes e concluídos com secretarias, fundos culturais e institutos.',
-    color: '#00B4D8',
-    count: '3 editais',
-  },
-  {
-    href: '/transparency/projetos',
-    icon: CheckSquare,
-    label: 'Aprovados',
-    title: 'Projetos Aprovados',
-    desc: 'Projetos com financiamento aprovado por órgãos públicos e privados.',
+    href: '/projects/nucleos',
+    icon: Layers,
+    label: 'Ação social',
+    title: 'Núcleos e Projetos',
+    desc: 'Idosos, mulheres, jovens, cursos de Libras e eventos culturais — ações para todas as fases da vida surda.',
     color: '#F26522',
-    count: '3 projetos',
+    badge: '6 núcleos',
+  },
+  {
+    href: '/partners',
+    icon: Handshake,
+    label: 'Institucional',
+    title: 'Parcerias Institucionais',
+    desc: 'Governo, educação, organizações sociais e empresas que caminham ao lado da ASESP.',
+    color: '#1B3A6B',
+    badge: 'Ver parceiros',
   },
 ]
 
-export default function TransparenciaPage() {
+export default function ProjetosHubPage() {
   return (
     <main>
       {/* Hero */}
@@ -59,26 +41,30 @@ export default function TransparenciaPage() {
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
           <div
             className="absolute -right-20 -top-20 w-72 h-72 rounded-full opacity-10"
+            style={{ background: 'radial-gradient(circle, #F26522, transparent)' }}
+          />
+          <div
+            className="absolute -left-16 -bottom-16 w-56 h-56 rounded-full opacity-10"
             style={{ background: 'radial-gradient(circle, #00B4D8, transparent)' }}
           />
         </div>
         <div className="relative max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-5">
-            <ShieldCheck size={15} className="text-[#00B4D8]" />
-            <span className="text-white/80 text-sm font-medium">Prestação de contas</span>
+            <Layers size={15} className="text-[#F26522]" aria-hidden="true" />
+            <span className="text-white/80 text-sm font-medium">O que fazemos</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
-            Transparência
+            Projetos
           </h1>
           <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            A ASESP acredita na transparência como pilar da confiança. Acesse relatórios, balanço financeiro, editais e projetos aprovados.
+            Conheça as iniciativas e parcerias da ASESP que fortalecem a comunidade surda paulista.
           </p>
-          <LibrasVideo title="Transparência da ASESP em Libras" />
+          <LibrasVideo title="Projetos da ASESP em Libras" />
         </div>
       </section>
 
       {/* Cards de navegação */}
-      <div className="max-w-5xl mx-auto px-4 py-16">
+      <div className="max-w-4xl mx-auto px-4 py-16">
         <ul className="grid sm:grid-cols-2 gap-6 list-none">
           {sections.map((s) => {
             const Icon = s.icon
@@ -106,7 +92,7 @@ export default function TransparenciaPage() {
                       className="text-xs font-bold px-3 py-1 rounded-full"
                       style={{ background: `${s.color}12`, color: s.color }}
                     >
-                      {s.count}
+                      {s.badge}
                     </span>
                   </div>
 
@@ -120,7 +106,10 @@ export default function TransparenciaPage() {
                     {s.desc}
                   </p>
 
-                  <div className="flex items-center gap-1.5 mt-5 font-semibold text-sm group-hover:gap-2.5 transition-all duration-200" style={{ color: s.color }}>
+                  <div
+                    className="flex items-center gap-1.5 mt-5 font-semibold text-sm group-hover:gap-2.5 transition-all duration-200"
+                    style={{ color: s.color }}
+                  >
                     Acessar
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -133,25 +122,25 @@ export default function TransparenciaPage() {
         {/* CTA */}
         <section
           className="mt-16 rounded-3xl p-10 text-center"
-          style={{ background: 'linear-gradient(135deg, #1B3A6B, #1565C0)' }}
-          aria-labelledby="cta-transparencia"
+          style={{ background: 'linear-gradient(135deg, #F26522, #d4501a)' }}
+          aria-labelledby="cta-projetos"
         >
-          <h2 id="cta-transparencia" className="text-2xl font-extrabold text-white mb-3">
-            Dúvidas sobre as contas?
+          <h2 id="cta-projetos" className="text-2xl font-extrabold text-white mb-3">
+            Apoie as nossas iniciativas
           </h2>
-          <p className="text-white/65 mb-7 max-w-md mx-auto text-base leading-relaxed">
-            Entre em contato com a diretoria. A ASESP está comprometida com a máxima transparência para seus associados e a sociedade.
+          <p className="text-white/80 mb-7 max-w-md mx-auto text-base leading-relaxed">
+            Sua doação financia encontros, cursos e eventos que transformam vidas na comunidade surda paulista.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
-              href="/contact"
-              className="bg-[#F26522] text-white font-bold px-8 py-3 rounded-full hover:bg-[#d4501a] transition-colors hover:shadow-lg"
+              href="/doacoes"
+              className="bg-white text-[#F26522] font-bold px-8 py-3 rounded-full hover:shadow-lg transition-all"
             >
-              Falar com a diretoria
+              💙 Fazer uma doação
             </Link>
             <Link
-              href="/how-to-join"
-              className="bg-white/10 border border-white/30 text-white font-semibold px-8 py-3 rounded-full hover:bg-white/20 transition-colors"
+              href="/como-se-associar"
+              className="bg-white/15 border border-white/30 text-white font-semibold px-8 py-3 rounded-full hover:bg-white/25 transition-colors"
             >
               🤟 Seja Associado
             </Link>
