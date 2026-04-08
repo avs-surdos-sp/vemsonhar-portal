@@ -55,7 +55,7 @@ export default function AccessibilityBar() {
   /* ── Render ────────────────────────────────────────────────────────────── */
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-[60] h-9 flex items-center px-4"
+      className="fixed top-0 left-0 right-0 z-60 h-9 flex items-center px-4"
       style={{ background: '#0a1c38', borderBottom: '1px solid rgba(255,255,255,0.07)' }}
       role="navigation"
       aria-label="Barra de acessibilidade"
@@ -65,7 +65,7 @@ export default function AccessibilityBar() {
         href="#main-content"
         className="
           sr-only
-          focus:not-sr-only focus:absolute focus:top-1 focus:left-4 focus:z-[70]
+          focus:not-sr-only focus:absolute focus:top-1 focus:left-4 focus:z-70
           focus:bg-[#F26522] focus:text-white focus:px-3 focus:py-1
           focus:rounded focus:text-xs focus:font-bold focus:outline-none
         "
