@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { Globe, GraduationCap, AccessibilityIcon, CheckCircle2, Heart } from 'lucide-react'
+import { Globe, GraduationCap, AccessibilityIcon, CheckCircle2, Heart, Shield, Eye, Star, Zap, Users, BookOpen } from 'lucide-react'
 import Link from 'next/link'
 import LibrasVideo from '@/components/shared/LibrasVideo'
 
@@ -10,32 +10,25 @@ export const metadata: Metadata = {
 }
 
 const valores = [
-  {
-    titulo: 'Inclusão',
-    descricao: 'Lutamos por uma sociedade que reconhece e inclui a diversidade da comunidade surda em todos os espaços.',
-    icon: Globe,
-    color: '#1B3A6B',
-  },
-  {
-    titulo: 'Acessibilidade',
-    descricao: 'Defendemos o direito de acesso à informação, educação e serviços públicos em Libras.',
-    icon: AccessibilityIcon,
-    color: '#00B4D8',
-  },
-  {
-    titulo: 'Identidade',
-    descricao: 'Valorizamos a cultura surda, a Língua Brasileira de Sinais e a identidade única da nossa comunidade.',
-    icon: GraduationCap,
-    color: '#F26522',
-  },
+  { titulo: 'Inclusão e equidade',            icon: Users,            color: '#1B3A6B' },
+  { titulo: 'Respeito à identidade surda',    icon: BookOpen,         color: '#00B4D8' },
+  { titulo: 'Defesa dos direitos humanos',    icon: Shield,           color: '#F26522' },
+  { titulo: 'Ética e transparência',          icon: Eye,              color: '#1B3A6B' },
+  { titulo: 'Compromisso social',             icon: Heart,            color: '#F26522' },
+  { titulo: 'Valorização da comunidade surda',icon: Star,             color: '#00B4D8' },
+  { titulo: 'Acessibilidade universal',       icon: AccessibilityIcon,color: '#1B3A6B' },
+  { titulo: 'Protagonismo e autonomia',       icon: Zap,              color: '#F26522' },
 ]
 
 const timeline = [
-  { ano: '2012', evento: 'Fundação da ASESP com foco em representação da comunidade surda paulista.' },
-  { ano: '2015', evento: 'Criação do Núcleo dos Idosos Surdos, pioneiro no Estado de SP.' },
-  { ano: '2018', evento: 'Lançamento dos Cursos em Libras abertos à comunidade ouvinte.' },
-  { ano: '2021', evento: 'Núcleo das Mulheres Surdas e Núcleo da Juventude Surda formalizados.' },
-  { ano: '2024', evento: 'Participação ativa no Conselho Municipal de Direitos da Pessoa com Deficiência.' },
+  { titulo: 'Fundação', evento: 'Criação da ASESP-VS com foco na organização da comunidade surda e defesa de direitos.' },
+  { titulo: 'Primeiros Projetos', evento: 'Implementação de ações sociais voltadas à inclusão e acessibilidade em Libras.' },
+  { titulo: 'Expansão Institucional', evento: 'Ampliação das atividades com projetos educacionais, culturais e eventos comunitários.' },
+  { titulo: 'Fortalecimento de Parcerias', evento: 'Estabelecimento de cooperação com instituições públicas e privadas.' },
+  { titulo: 'Núcleos Temáticos', evento: 'Implantação de iniciativas específicas: Núcleo dos Idosos Surdos, Mulheres Surdas e futuramente outros Núcleos voltados à Comunidade Surda do Estado de São Paulo.' },
+  { titulo: 'Políticas Públicas', evento: 'Participação ativa em debates, fóruns e construção de políticas voltadas à comunidade surda.' },
+  { titulo: 'Consolidação Institucional', evento: 'Estruturação administrativa, atualização do Estatuto Social e ampliação do impacto social.' },
+  { titulo: 'Atualidade', evento: 'ASESP-VS como referência na promoção da inclusão social, acessibilidade e protagonismo da pessoa surda no Estado de São Paulo.' },
 ]
 
 export default function SobrePage() {
@@ -61,7 +54,7 @@ export default function SobrePage() {
             Sobre a ASESP
           </h1>
           <p className="text-white/60 text-lg max-w-3xl mx-auto">
-            Representando e defendendo os direitos da comunidade surda paulista desde 2012.
+            Representando e defendendo os direitos da comunidade surda paulista desde 2017.
           </p>
           <LibrasVideo title="Quem Somos — ASESP em Libras" />
         </div>
@@ -71,47 +64,79 @@ export default function SobrePage() {
 
         {/* História */}
         <section aria-labelledby="historia-titulo">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div>
-              <p className="section-label text-[#F26522] mb-3">Nossa história</p>
-              <h2 id="historia-titulo" className="text-2xl font-extrabold text-[#1B3A6B] mb-5 tracking-tight">
-                Mais de uma década de luta e conquistas
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-4 text-justify">
-                A ASESP — Associação dos Surdos do Estado de São Paulo — foi fundada com o
-                propósito de representar a comunidade surda paulista, promovendo seus direitos,
-                cultura e identidade. Ao longo de mais de uma década de atuação, construímos
-                pontes entre a comunidade surda e a sociedade, conquistando avanços importantes
-                em educação, trabalho e acessibilidade.
-              </p>
-              <p className="text-gray-600 leading-relaxed text-justify">
-                Nossa atuação abrange todo o Estado de São Paulo, com programas e projetos que
-                impactam diretamente a vida de centenas de famílias surdas, promovendo dignidade,
-                pertencimento e protagonismo social.
-              </p>
+          {/* Texto introdutório */}
+          {/* Texto introdutório */}
+          <div className="mb-12">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="h-px flex-1 bg-gray-200" />
+              <p className="text-[#F26522] text-xs font-extrabold uppercase tracking-widest shrink-0">História da ASESP – Vem Sonhar</p>
+              <div className="h-px flex-1 bg-gray-200" />
             </div>
-            {/* Timeline */}
-            <div className="space-y-4">
-              {timeline.map((item, i) => (
-                <div key={item.ano} className="flex items-start gap-4">
-                  <div className="shrink-0 flex flex-col items-center">
-                    <div
-                      className="w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-extrabold"
-                      style={{ background: i % 2 === 0 ? '#1B3A6B' : '#F26522' }}
-                    >
-                      {item.ano.slice(2)}
+            <h2 id="historia-titulo" className="text-2xl font-extrabold text-[#1B3A6B] text-center mb-8 tracking-tight">
+              Uma associação nascida da mobilização surda
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6 text-gray-600 text-base leading-relaxed">
+              <div className="space-y-4">
+                <p>
+                  A Associação de Surdos do Estado de São Paulo – Vem Sonhar (ASESP-VS) surgiu a partir
+                  da mobilização de lideranças da comunidade surda comprometidas com a promoção da
+                  inclusão social, acessibilidade comunicacional e valorização da identidade surda.
+                </p>
+                <p>
+                  Fundada em <span className="text-[#1B3A6B] font-bold">12 de novembro de 2017</span>, com o propósito
+                  de ampliar oportunidades para pessoas surdas, especialmente em situação de vulnerabilidade
+                  social, a ASESP consolidou-se como entidade de referência no desenvolvimento de projetos
+                  educacionais, culturais, sociais e de cidadania, em especial aos Idosos Surdos.
+                </p>
+              </div>
+              <div className="space-y-4">
+                <p>
+                  Desde sua criação, a associação tem atuado de forma ativa na defesa de direitos,
+                  no fortalecimento da Língua Brasileira de Sinais (Libras) e na construção de espaços
+                  inclusivos, com atenção especial a públicos historicamente negligenciados, como
+                  idosos surdos, mulheres surdas e jovens em formação.
+                </p>
+                <p>
+                  Ao longo de sua trajetória, a ASESP-VS vem expandindo suas ações por meio de parcerias
+                  institucionais, participação em políticas públicas e eventos que promovem visibilidade,
+                  protagonismo e empoderamento da comunidade surda.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Timeline alternada */}
+          <div className="relative">
+            {/* Linha central */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gray-200 hidden md:block" aria-hidden="true" />
+            <ol className="space-y-8 list-none">
+              {timeline.map((item, i) => {
+                const isLeft = i % 2 === 0
+                const accent = i % 2 === 0 ? '#1B3A6B' : '#F26522'
+                return (
+                  <li key={item.titulo} className={`flex items-center gap-6 md:gap-0 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                    {/* Card */}
+                    <div className={`flex-1 ${isLeft ? 'md:pr-10 md:text-right' : 'md:pl-10'}`}>
+                      <div className="bg-white border border-gray-100 rounded-2xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow inline-block w-full">
+                        <p className="text-xs font-extrabold uppercase tracking-widest mb-1" style={{ color: accent }}>
+                          {item.titulo}
+                        </p>
+                        <p className="text-gray-600 text-sm leading-relaxed">{item.evento}</p>
+                      </div>
                     </div>
-                    {i < timeline.length - 1 && (
-                      <div className="w-px h-6 bg-gray-200 mt-1" />
-                    )}
-                  </div>
-                  <div className="pt-1">
-                    <p className="text-xs font-bold text-[#F26522] mb-0.5">{item.ano}</p>
-                    <p className="text-gray-600 text-base leading-snug">{item.evento}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+                    {/* Bolinha central */}
+                    <div
+                      className="w-10 h-10 rounded-full text-white text-xs font-extrabold flex items-center justify-center shrink-0 z-10 shadow"
+                      style={{ background: accent }}
+                    >
+                      {String(i + 1).padStart(2, '0')}
+                    </div>
+                    {/* Espaço vazio do outro lado */}
+                    <div className="flex-1 hidden md:block" />
+                  </li>
+                )
+              })}
+            </ol>
           </div>
         </section>
 
@@ -128,9 +153,9 @@ export default function SobrePage() {
               </div>
               <h3 className="font-bold text-lg text-[#1B3A6B] mb-3">Missão</h3>
               <p className="text-gray-600 text-base leading-relaxed">
-                Defender e promover os direitos da comunidade surda no Estado de São Paulo,
-                garantindo inclusão social, educação bilíngue e acessibilidade de qualidade
-                em todos os espaços da vida pública.
+                Promover a inclusão social, educacional e cultural da comunidade surda, garantindo
+                acessibilidade, defesa de direitos e fortalecimento da identidade linguística e
+                cultural por meio da Libras.
               </p>
             </div>
             <div className="rounded-2xl p-7 bg-[#FEF2EC] border border-gray-100">
@@ -139,9 +164,9 @@ export default function SobrePage() {
               </div>
               <h3 className="font-bold text-lg text-[#1B3A6B] mb-3">Visão</h3>
               <p className="text-gray-600 text-base leading-relaxed">
-                Ser referência nacional na defesa dos direitos das pessoas surdas, contribuindo
-                para uma sociedade plenamente inclusiva onde a diversidade linguística e cultural
-                seja reconhecida e celebrada.
+                Ser reconhecida como uma instituição de excelência e referência estadual de São Paulo
+                na promoção de políticas inclusivas, inovação social e desenvolvimento humano da
+                comunidade surda.
               </p>
             </div>
           </div>
@@ -153,22 +178,65 @@ export default function SobrePage() {
           <h2 id="valores-titulo" className="text-2xl font-extrabold text-[#1B3A6B] mb-8 tracking-tight">
             Nossos Valores
           </h2>
-          <ul className="grid md:grid-cols-3 gap-6 list-none">
+          <ul className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 list-none">
             {valores.map((v) => {
               const Icon = v.icon
               return (
                 <li
                   key={v.titulo}
-                  className="group border border-gray-100 rounded-2xl p-6 hover:-translate-y-1 hover:shadow-md transition-all duration-200 bg-white"
+                  className="group border border-gray-100 rounded-2xl p-5 hover:-translate-y-1 hover:shadow-md transition-all duration-200 bg-white flex items-center gap-3"
                 >
                   <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform"
                     style={{ background: `${v.color}18` }}
                   >
-                    <Icon size={20} style={{ color: v.color }} />
+                    <Icon size={18} style={{ color: v.color }} />
                   </div>
-                  <h3 className="font-bold text-[#1B3A6B] mb-2 text-lg">{v.titulo}</h3>
-                  <p className="text-gray-600 text-base leading-relaxed">{v.descricao}</p>
+                  <h3 className="font-semibold text-[#1B3A6B] text-sm leading-snug">{v.titulo}</h3>
+                </li>
+              )
+            })}
+          </ul>
+        </section>
+
+        {/* Finalidades Institucionais */}
+        <section aria-labelledby="finalidades-titulo">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-8">
+            <div>
+              <p className="section-label text-[#00B4D8] mb-2">Estatuto Social</p>
+              <h2 id="finalidades-titulo" className="text-2xl font-extrabold text-[#1B3A6B] tracking-tight">
+                Finalidades Institucionais
+              </h2>
+            </div>
+            <span className="text-xs text-gray-400 font-medium">12 finalidades previstas no Estatuto Social</span>
+          </div>
+          <ul className="divide-y divide-gray-100 list-none">
+            {[
+              'Promover a inclusão social e a garantia de direitos das pessoas surdas.',
+              'Desenvolver ações nas áreas de educação, cultura, saúde, assistência social e cidadania.',
+              'Incentivar o uso, ensino e difusão da Língua Brasileira de Sinais (Libras).',
+              'Oferecer suporte e acolhimento a grupos específicos, como mulheres, jovens e idosos surdos.',
+              'Atuar na formação profissional e valorização da pessoa surda no mercado de trabalho.',
+              'Promover atividades esportivas, culturais e de lazer acessíveis.',
+              'Desenvolver projetos de acessibilidade comunicacional em instituições públicas e privadas.',
+              'Prestar orientação jurídica e social à comunidade surda.',
+              'Estabelecer parcerias com órgãos públicos, privados e organizações da sociedade civil.',
+              'Fomentar a pesquisa, produção de conhecimento e inovação em acessibilidade.',
+              'Defender políticas públicas inclusivas e atuar no controle social.',
+              'Promover a cidadania, autonomia e protagonismo da pessoa surda.',
+            ].map((item, i) => {
+              const accent = i % 3 === 0 ? '#1B3A6B' : i % 3 === 1 ? '#F26522' : '#00B4D8'
+              return (
+                <li key={i} className="flex items-center gap-6 py-4 group hover:bg-gray-50 px-3 rounded-xl transition-colors">
+                  <span
+                    className="text-4xl font-extrabold w-12 text-right shrink-0 leading-none tabular-nums"
+                    style={{ color: accent }}
+                    aria-hidden="true"
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div className="w-px h-8 shrink-0 rounded-full" style={{ background: `${accent}40` }} aria-hidden="true" />
+                  <p className="text-gray-700 text-base leading-relaxed">{item}</p>
                 </li>
               )
             })}
