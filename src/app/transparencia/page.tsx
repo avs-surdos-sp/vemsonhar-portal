@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const sections = [
   {
-    href: '/transparency/relatorios',
+    href: '/transparencia/relatorios',
     icon: FileText,
     label: 'Documentos',
     title: 'Relatórios Anuais',
@@ -20,7 +20,7 @@ const sections = [
     count: '3 relatórios',
   },
   {
-    href: '/transparency/demonstrativo',
+    href: '/transparencia/demonstrativo',
     icon: BarChart2,
     label: 'Finanças',
     title: 'Demonstrativo Financeiro',
@@ -29,7 +29,7 @@ const sections = [
     count: 'Simplificado',
   },
   {
-    href: '/transparency/editais',
+    href: '/transparencia/editais',
     icon: ClipboardList,
     label: 'Convênios',
     title: 'Editais e Parcerias',
@@ -38,7 +38,7 @@ const sections = [
     count: '3 editais',
   },
   {
-    href: '/transparency/projetos',
+    href: '/transparencia/projetos',
     icon: CheckSquare,
     label: 'Aprovados',
     title: 'Projetos Aprovados',
