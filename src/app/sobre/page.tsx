@@ -106,38 +106,56 @@ export default function SobrePage() {
           </div>
 
           {/* Timeline alternada */}
-          <div className="relative">
-            {/* Linha central */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gray-200 hidden md:block" aria-hidden="true" />
-            <ol className="space-y-8 list-none">
-              {timeline.map((item, i) => {
-                const isLeft = i % 2 === 0
-                const accent = i % 2 === 0 ? '#1B3A6B' : '#F26522'
-                return (
-                  <li key={item.titulo} className={`flex items-center gap-6 md:gap-0 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+          <ol className="list-none">
+            {timeline.map((item, i) => {
+              const isLeft = i % 2 === 0
+              const accent = i % 2 === 0 ? '#1B3A6B' : '#F26522'
+              const isFirst = i === 0
+              const isLast = i === timeline.length - 1
+              return (
+                <li key={item.titulo} className={`flex gap-0 ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}>
+
+                  {/* Card + braço horizontal */}
+                  <div className={`flex-1 flex items-center py-4 ${isLeft ? 'flex-row-reverse' : 'flex-row'} gap-0`}
+                    style={{ display: 'flex', flexDirection: isLeft ? 'row-reverse' : 'row', alignItems: 'center' }}>
+                    {/* Braço horizontal */}
+                    <div className="hidden md:block h-px w-8 shrink-0" style={{ background: accent }} aria-hidden="true" />
                     {/* Card */}
-                    <div className={`flex-1 ${isLeft ? 'md:pr-10 md:text-right' : 'md:pl-10'}`}>
-                      <div className="bg-white border border-gray-100 rounded-2xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow inline-block w-full">
-                        <p className="text-xs font-extrabold uppercase tracking-widest mb-1" style={{ color: accent }}>
-                          {item.titulo}
-                        </p>
-                        <p className="text-gray-600 text-sm leading-relaxed">{item.evento}</p>
-                      </div>
+                    <div className={`bg-white border border-gray-100 rounded-2xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow w-full ${isLeft ? 'text-right' : ''}`}>
+                      <p className="text-xs font-extrabold uppercase tracking-widest mb-1" style={{ color: accent }}>
+                        {item.titulo}
+                      </p>
+                      <p className="text-gray-600 text-sm leading-relaxed">{item.evento}</p>
                     </div>
-                    {/* Bolinha central */}
+                  </div>
+
+                  {/* Coluna central: linha ↕ + círculo */}
+                  <div className="hidden md:flex flex-col items-center w-10 shrink-0">
+                    <div className="w-px flex-1" style={{ background: isFirst ? 'transparent' : '#e5e7eb' }} aria-hidden="true" />
                     <div
-                      className="w-10 h-10 rounded-full text-white text-xs font-extrabold flex items-center justify-center shrink-0 z-10 shadow"
+                      className="w-10 h-10 rounded-full text-white text-xs font-extrabold flex items-center justify-center shrink-0 shadow"
                       style={{ background: accent }}
                     >
                       {String(i + 1).padStart(2, '0')}
                     </div>
-                    {/* Espaço vazio do outro lado */}
-                    <div className="flex-1 hidden md:block" />
-                  </li>
-                )
-              })}
-            </ol>
-          </div>
+                    <div className="w-px flex-1" style={{ background: isLast ? 'transparent' : '#e5e7eb' }} aria-hidden="true" />
+                  </div>
+
+                  {/* Mobile: círculo inline */}
+                  <div
+                    className="md:hidden w-10 h-10 rounded-full text-white text-xs font-extrabold flex items-center justify-center shrink-0 mt-4 shadow"
+                    style={{ background: accent }}
+                    aria-hidden="true"
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+
+                  {/* Espaço vazio do outro lado */}
+                  <div className="flex-1 hidden md:block" />
+                </li>
+              )
+            })}
+          </ol>
         </section>
 
         {/* Missão e Visão */}
