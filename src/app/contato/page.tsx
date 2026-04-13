@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { Mail, MessageSquare, Instagram, Facebook, Linkedin } from 'lucide-react'
+import { Mail, MessageSquare, Instagram, Linkedin } from 'lucide-react'
 import LibrasVideo from '@/components/shared/LibrasVideo'
 
 export const metadata: Metadata = {
@@ -100,21 +100,6 @@ export default function ContatoPage() {
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-0.5">Instagram</p>
                 <p className="text-sm font-semibold text-[#1B3A6B] group-hover:text-[#F26522] transition-colors">@avemsonhar</p>
-              </div>
-            </a>
-
-            <a
-              href="https://www.facebook.com/avemsonhar/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 flex-1 p-4 rounded-2xl border border-gray-100 bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
-            >
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 bg-[#1877F2]">
-                <Facebook size={18} className="text-white" aria-hidden="true" />
-              </div>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-0.5">Facebook</p>
-                <p className="text-sm font-semibold text-[#1B3A6B] group-hover:text-[#F26522] transition-colors">avemsonhar</p>
               </div>
             </a>
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { MapPin, Mail, Instagram, Facebook, Linkedin } from 'lucide-react'
+import { MapPin, Mail, Instagram, Linkedin } from 'lucide-react'
 
 const linksInstitucionais = [
   { href: '/about',   label: 'Quem Somos' },
@@ -35,13 +35,6 @@ const socialLinks = [
     label: 'Instagram da ASESP',
     hoverBg: 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)',
     color: '#bc1888',
-  },
-  {
-    icon: Facebook,
-    href: 'https://www.facebook.com/avemsonhar/',
-    label: 'Facebook da ASESP',
-    hoverBg: '#1877F2',
-    color: '#1877F2',
   },
   {
     icon: Linkedin,
