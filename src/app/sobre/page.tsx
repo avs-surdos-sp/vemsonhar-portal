@@ -6,7 +6,7 @@ import LibrasVideo from '@/components/shared/LibrasVideo'
 export const metadata: Metadata = {
   title: 'Sobre | ASESP',
   description:
-    'Conheça a história, missão e valores da ASESP — Associação dos Surdos do Estado de São Paulo.',
+    'Conheça a história, missão e valores da ASESP — Associação de Surdos do Estado de São Paulo.',
 }
 
 const valores = [

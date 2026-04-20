@@ -75,7 +75,7 @@ export default function Hero() {
                 }}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#F26522] animate-pulse" />
-                Associação dos Surdos do Estado de SP
+                Associação de Surdos do Estado de SP
               </span>
             </div>
 

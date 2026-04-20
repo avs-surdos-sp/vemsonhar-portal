@@ -12,12 +12,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ASESP — Associação dos Surdos do Estado de São Paulo",
+  title: "ASESP — Associação de Surdos do Estado de São Paulo",
   description:
     "Site oficial da ASESP. Conheça nossa missão, associe-se e apoie a comunidade surda de São Paulo.",
   keywords: ["ASESP", "surdos", "Libras", "inclusão", "São Paulo", "associação"],
   openGraph: {
-    title: "ASESP — Associação dos Surdos do Estado de São Paulo",
+    title: "ASESP — Associação de Surdos do Estado de São Paulo",
     description:
       "Site oficial da ASESP. Conheça nossa missão, associe-se e apoie a comunidade surda de São Paulo.",
     locale: "pt_BR",

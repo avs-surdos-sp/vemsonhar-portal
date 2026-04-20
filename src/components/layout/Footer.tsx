@@ -67,14 +67,14 @@ export default function Footer() {
             <div className="mb-5">
               <Image
                 src="/logo-avs.svg"
-                alt="AVS — Associação dos Surdos do Estado de São Paulo"
+                alt="AVS — Associação de Surdos do Estado de São Paulo"
                 width={200}
                 height={75}
                 className="h-20 w-auto brightness-0 invert"
               />
             </div>
             <p className="text-white/60 text-base leading-relaxed max-w-xs text-justify">
-              Associação dos Surdos do Estado de São Paulo. Representando e defendendo os direitos da comunidade surda paulista desde 2017.
+              Associação de Surdos do Estado de São Paulo. Representando e defendendo os direitos da comunidade surda paulista desde 2017.
             </p>
 
             {/* Redes sociais */}

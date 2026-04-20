@@ -6,7 +6,7 @@ import EventoNoticiasSection from '@/components/sections/EventoNoticiasSection'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'ASESP — Associação dos Surdos do Estado de São Paulo',
+  title: 'ASESP — Associação de Surdos do Estado de São Paulo',
   description: 'A ASESP representa e defende os direitos da comunidade surda paulista. Associe-se e apoie nossa causa.',
 }
 

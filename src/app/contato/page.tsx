@@ -4,7 +4,7 @@ import LibrasVideo from '@/components/shared/LibrasVideo'
 
 export const metadata: Metadata = {
   title: 'Contato | ASESP',
-  description: 'Entre em contato com a ASESP — Associação dos Surdos do Estado de São Paulo.',
+  description: 'Entre em contato com a ASESP — Associação de Surdos do Estado de São Paulo.',
 }
 
 // Ícone WhatsApp (lucide não tem, inline SVG)

@@ -404,7 +404,7 @@ html[data-hc="1"] [class*="divide-gray"] > * {
   border-color: rgba(255, 255, 255, 0.15) !important;
 }
 
-/* ── Hero badge (pill "Associação dos Surdos…") ──────────── */
+/* ── Hero badge (pill "Associação de Surdos…") ──────────── */
 html[data-hc="1"] .hero-badge {
   color: #ffffff !important;
   border-color: rgba(255, 255, 255, 0.45) !important;
