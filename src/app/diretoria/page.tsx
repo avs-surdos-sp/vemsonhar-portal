@@ -27,14 +27,14 @@ const diretoriaGrupos: { grupo: string; membros: Membro[] }[] = [
         role: 'Presidência',
         name: 'Priscilla Gaspar',
         bio: 'Responsável pela representação institucional da ASESP junto a órgãos públicos, parceiros e comunidade surda do Estado de São Paulo.',
-        color: '#7C3AED',
+        color: '#F26522',
         photo: '/people/priscilla-gaspar.jpg',
       },
       {
         role: 'Vice-Presidência',
         name: 'Laila Sankari',
         bio: 'Auxilia a presidência nas decisões estratégicas e assume a gestão em ausências ou impedimentos do presidente.',
-        color: '#7C3AED',
+        color: '#F26522',
         photo: '/people/laila-sankari.jpg',
         photoPosition: 'center 15%',
       },
@@ -47,14 +47,14 @@ const diretoriaGrupos: { grupo: string; membros: Membro[] }[] = [
         role: 'Secretaria',
         name: 'Renata Serafim',
         bio: 'Responsável pela gestão documental, atas de reunião, comunicações oficiais e registros institucionais da associação.',
-        color: '#1B3A6B',
+        color: '#F26522',
         photo: '/people/renata-serafim.jpg',
       },
       {
         role: 'Secretaria Adjunta',
         name: 'Silva Sabanovaite',
         bio: 'Auxilia na gestão documental, atas de reunião e comunicações oficiais da associação.',
-        color: '#1B3A6B',
+        color: '#F26522',
         photo: '/people/silva-sabanovaite.jpg',
       },
     ],
@@ -73,14 +73,14 @@ const diretoriaGrupos: { grupo: string; membros: Membro[] }[] = [
         role: 'Diretoria de Núcleos Temáticos',
         name: 'Natasha Oliveira',
         bio: 'Coordena os núcleos de idosos, mulheres, juventude e demais projetos sociais da associação.',
-        color: '#0D9488',
+        color: '#F26522',
         photo: '/people/natasha-oliveira.jpg',
       },
       {
         role: 'Diretoria de Tecnologia da Informação',
         name: 'Fernando Kendi',
         bio: 'Responsável pela infraestrutura digital da ASESP, incluindo o portal institucional e o sistema de carteirinhas.',
-        color: '#1F2937',
+        color: '#F26522',
         photo: '/people/fernando-kendi.jpg',
         photoScale: 1.3,
       },
@@ -88,7 +88,7 @@ const diretoriaGrupos: { grupo: string; membros: Membro[] }[] = [
         role: 'Diretoria Financeira',
         name: 'Reynaldo Falchi',
         bio: 'Gerencia as finanças da ASESP, controla receitas e despesas, e garante a prestação de contas à comunidade.',
-        color: '#16A34A',
+        color: '#F26522',
         photo: '/people/reynaldo-falchi.jpg',
         photoPosition: 'center 20%',
       },
@@ -96,8 +96,10 @@ const diretoriaGrupos: { grupo: string; membros: Membro[] }[] = [
         role: 'Dir. Financeira Adjunta',
         name: 'Rosana Debartolo',
         bio: 'Apoia a gestão financeira da ASESP, auxiliando no controle de receitas, despesas e prestação de contas.',
-        color: '#16A34A',
+        color: '#F26522',
         photo: '/people/rosana.jpg',
+        photoScale: 1.4,
+        photoPosition: 'center 20%',
       },
     ],
   },
@@ -173,215 +175,204 @@ export default function DiretoriaPage() {
           <h2 id="organograma-titulo" className="text-2xl font-extrabold text-[#1B3A6B] mb-8 tracking-tight">
             Organograma
           </h2>
-          <div className="flex flex-col items-center w-full max-w-3xl mx-auto">
 
-            {/* Presidência */}
-            <div className="w-64 text-center rounded-2xl px-6 py-4 text-white font-bold text-sm shadow-lg" style={{ background: '#1B3A6B' }}>
-              Presidência
-            </div>
-            <div className="w-px h-6 bg-[#1B3A6B]/30" aria-hidden="true" />
+          <div className="flex flex-col items-center w-full max-w-4xl mx-auto gap-0">
 
-            {/* Vice-Presidência + Secretaria */}
-            <div className="relative flex justify-center w-full">
-              <div className="absolute top-0 w-64 h-px bg-[#1B3A6B]/20" aria-hidden="true" />
-              <div className="flex gap-16">
-                <div className="flex flex-col items-center">
-                  <div className="w-px h-6 bg-[#1B3A6B]/20" aria-hidden="true" />
-                  <div className="w-44 text-center rounded-xl px-4 py-3 text-white font-bold text-xs shadow" style={{ background: '#2D5BA3' }}>
-                    Vice-Presidência
-                  </div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div className="w-px h-6 bg-[#1B3A6B]/20" aria-hidden="true" />
-                  <div className="w-44 text-center rounded-xl px-4 py-3 text-white font-bold text-xs shadow" style={{ background: '#2D5BA3' }}>
-                    Secretaria
-                  </div>
-                </div>
+            {/* Nível 1 — Presidência */}
+            <div className="flex justify-center">
+              <div className="flex items-center gap-3 px-8 py-4 rounded-2xl text-white font-extrabold text-sm shadow-lg"
+                style={{ background: 'linear-gradient(135deg, #1B3A6B, #2D5BA3)' }}>
+                <Users size={16} className="opacity-80" />
+                Presidência
               </div>
             </div>
+            <div className="w-px h-6 bg-gray-300" aria-hidden="true" />
 
-            <div className="w-px h-8 bg-[#1B3A6B]/30 mt-6" aria-hidden="true" />
+            {/* Nível 2 — VP + Secretaria */}
+            <div className="relative flex justify-center w-full">
+              <div className="absolute top-0 w-48 h-px bg-gray-300" aria-hidden="true" />
+              <div className="flex gap-12">
+                {[
+                  { label: 'Vice-Presidência', sub: null },
+                  { label: 'Secretaria', sub: 'Secretaria Adjunta' },
+                ].map(({ label, sub }) => (
+                  <div key={label} className="flex flex-col items-center gap-0">
+                    <div className="w-px h-6 bg-gray-300" aria-hidden="true" />
+                    <div className="px-5 py-3 rounded-xl text-white font-bold text-xs shadow text-center min-w-[140px]"
+                      style={{ background: 'linear-gradient(135deg, #2D5BA3, #1B3A6B)' }}>
+                      {label}
+                    </div>
+                    {sub && (
+                      <>
+                        <div className="w-px h-3 bg-gray-200" aria-hidden="true" />
+                        <div className="px-4 py-2 rounded-lg text-xs font-semibold text-center min-w-[130px]"
+                          style={{ background: '#EAF0FA', color: '#2D5BA3', border: '1px solid #D0DCF0' }}>
+                          {sub}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="w-px h-6 bg-gray-300 mt-1" aria-hidden="true" />
 
             {/* Conselhos */}
             <div className="relative flex justify-center w-full">
-              <div className="absolute top-0 w-64 h-px bg-[#1B3A6B]/20" aria-hidden="true" />
-              <div className="flex gap-12">
-                <div className="flex flex-col items-center">
-                  <div className="w-px h-6 bg-[#1B3A6B]/20" aria-hidden="true" />
-                  <div className="w-48 text-center rounded-xl px-4 py-3 font-bold text-xs" style={{ borderColor: '#1B3A6B', color: '#1B3A6B', background: '#fff', border: '1.5px dashed #1B3A6B' }}>
-                    Conselho Fiscal
-                  </div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div className="w-px h-6 bg-[#1B3A6B]/20" aria-hidden="true" />
-                  <div className="w-48 text-center rounded-xl px-4 py-3 font-bold text-xs" style={{ borderColor: '#1B3A6B', color: '#1B3A6B', background: '#fff', border: '1.5px dashed #1B3A6B' }}>
-                    Conselho Deliberativo
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="w-px h-8 bg-[#1B3A6B]/30 mt-6" aria-hidden="true" />
-
-            {/* Diretoria Executiva */}
-            <div className="w-64 text-center rounded-2xl px-6 py-4 text-white font-bold text-sm shadow-lg" style={{ background: '#1B3A6B' }}>
-              Diretoria Executiva
-            </div>
-            <div className="w-px h-6 bg-[#1B3A6B]/30" aria-hidden="true" />
-
-            {/* 4 diretorias temáticas */}
-            <div className="relative flex justify-center w-full">
-              <div className="absolute top-0 w-[90%] h-px bg-[#1B3A6B]/20" aria-hidden="true" />
-              <div className="flex gap-4 flex-wrap justify-center">
+              <div className="absolute top-0 w-56 h-px bg-gray-300" aria-hidden="true" />
+              <div className="flex gap-8">
                 {[
-                  'Marketing e\nComunicação',
-                  'Núcleos\nTemáticos',
-                  'Tecnologia da\nInformação',
-                  'Diretoria\nFinanceira',
-                ].map((label) => (
+                  { label: 'Conselho Fiscal', icon: Shield },
+                  { label: 'Conselho Deliberativo', icon: BookOpen },
+                ].map(({ label, icon: Icon }) => (
                   <div key={label} className="flex flex-col items-center">
-                    <div className="w-px h-6 bg-[#1B3A6B]/20" aria-hidden="true" />
-                    <div
-                      className="w-36 text-center rounded-xl px-3 py-3 font-bold text-xs border"
-                      style={{ borderColor: '#1B3A6B30', color: '#1B3A6B', background: '#F0F4FA', whiteSpace: 'pre-line' }}
-                    >
+                    <div className="w-px h-6 bg-gray-300" aria-hidden="true" />
+                    <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold text-center"
+                      style={{ border: '1.5px dashed #1B3A6B', color: '#1B3A6B', background: '#F8FAFF' }}>
+                      <Icon size={13} />
                       {label}
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+            <div className="w-px h-6 bg-gray-300 mt-1" aria-hidden="true" />
 
-            {/* Adjuntos */}
-            <div className="w-px h-6 bg-[#1B3A6B]/20 mt-1" aria-hidden="true" />
-            <p className="text-[10px] font-bold uppercase tracking-widest text-[#1B3A6B]/40 mb-1">Cargos Adjuntos</p>
-            <div className="flex gap-8">
-              {[
-                'Sec. Adjunta',
-                'Dir. Fin. Adjunta',
-              ].map((label) => (
-                <div key={label} className="flex flex-col items-center">
-                  <div className="w-px h-4 bg-[#1B3A6B]/15" aria-hidden="true" />
-                  <div
-                    className="w-36 text-center rounded-xl px-3 py-2 font-semibold text-xs border"
-                    style={{ borderColor: '#1B3A6B18', color: '#2D5BA3', background: '#F8FAFD' }}
-                  >
-                    {label}
+            {/* Diretoria Executiva */}
+            <div className="flex justify-center">
+              <div className="flex items-center gap-3 px-8 py-4 rounded-2xl text-white font-extrabold text-sm shadow-lg"
+                style={{ background: 'linear-gradient(135deg, #1B3A6B, #2D5BA3)' }}>
+                <Users size={16} className="opacity-80" />
+                Diretoria Executiva
+              </div>
+            </div>
+            <div className="w-px h-6 bg-gray-300" aria-hidden="true" />
+
+            {/* Diretorias */}
+            <div className="relative flex justify-center w-full">
+              <div className="absolute top-0 w-[88%] h-px bg-gray-300" aria-hidden="true" />
+              <div className="flex gap-3 flex-wrap justify-center items-start">
+                {['Marketing e Comunicação', 'Núcleos Temáticos', 'Tecnologia da Informação'].map((label) => (
+                  <div key={label} className="flex flex-col items-center">
+                    <div className="w-px h-6 bg-gray-300" aria-hidden="true" />
+                    <div className="w-36 min-h-[52px] flex items-center justify-center text-center px-3 py-3 rounded-xl text-xs font-bold"
+                      style={{ background: '#FFF3EC', color: '#F26522', border: '1.5px solid #F2652230' }}>
+                      {label}
+                    </div>
+                  </div>
+                ))}
+
+                {/* Diretoria Financeira + Adjunta */}
+                <div className="flex flex-col items-center">
+                  <div className="w-px h-6 bg-gray-300" aria-hidden="true" />
+                  <div className="w-36 min-h-[52px] flex items-center justify-center text-center px-3 py-3 rounded-xl text-xs font-bold"
+                    style={{ background: '#FFF3EC', color: '#F26522', border: '1.5px solid #F2652230' }}>
+                    Diretoria Financeira
+                  </div>
+                  <div className="w-px h-3 bg-gray-200" aria-hidden="true" />
+                  <div className="px-4 py-2 rounded-lg text-xs font-semibold text-center"
+                    style={{ background: '#EAF0FA', color: '#2D5BA3', border: '1px solid #D0DCF0' }}>
+                    Dir. Fin. Adjunta
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
 
           </div>
         </section>
 
-        {/* Membros da Diretoria */}
-        <section aria-labelledby="membros-titulo">
-          <p className="text-[#00B4D8] text-xs font-bold uppercase tracking-widest mb-3">Gestão</p>
-          <h2 id="membros-titulo" className="text-2xl font-extrabold text-[#1B3A6B] mb-8 tracking-tight">
-            Membros da Diretoria
+        {/* Equipe — Diretoria + Conselhos */}
+        <section aria-labelledby="equipe-titulo">
+          <p className="text-[#00B4D8] text-xs font-bold uppercase tracking-widest mb-3">Equipe</p>
+          <h2 id="equipe-titulo" className="text-2xl font-extrabold text-[#1B3A6B] mb-8 tracking-tight">
+            Membros e Conselhos
           </h2>
           <div className="space-y-10">
+
+            {/* Grupos da diretoria */}
             {diretoriaGrupos.map((g) => (
               <div key={g.grupo}>
-                <h3 className="text-sm font-bold uppercase tracking-widest text-[#1B3A6B]/50 mb-4 border-b border-gray-100 pb-2">
+                <h3 className="text-sm font-bold uppercase tracking-widest text-[#1B3A6B] mb-4 border-b border-gray-100 pb-2">
                   {g.grupo}
                 </h3>
-                <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 list-none">
+                <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 list-none">
                   {g.membros.map((m) => (
-                    <li
-                      key={m.role}
-                      className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:-translate-y-1 hover:shadow-md transition-all duration-200"
-                    >
-                      <div className="h-2" style={{ background: m.color }} />
-                      <div className="p-6 flex flex-col items-center text-center">
-                        <div className="flex justify-center mb-5">
-                          {m.photo ? (
-                            <div className="w-36 h-36 rounded-full overflow-hidden border-2 flex-shrink-0" style={{ borderColor: `${m.color}40` }}>
-                              <img
-                                src={m.photo}
-                                alt={m.name}
-                                className="w-full h-full object-cover"
-                                style={{
-                                  objectPosition: m.photoPosition ?? 'center',
-                                  transform: `scale(${m.photoScale ?? 1})`,
-                                  transformOrigin: m.photoPosition ?? 'center',
-                                }}
-                              />
-                            </div>
-                          ) : (
-                            <div
-                              className="w-36 h-36 rounded-full flex items-center justify-center font-extrabold text-2xl"
-                              style={{ background: `${m.color}22`, color: m.color }}
-                              aria-hidden="true"
-                            >
-                              {m.name === 'A definir' ? '?' : m.name.charAt(0)}
-                            </div>
-                          )}
+                    <li key={m.role} className="rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 relative group">
+                      <div className="relative h-64 w-full">
+                        {/* Foto */}
+                        {m.photo ? (
+                          <img
+                            src={m.photo}
+                            alt={m.name}
+                            className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-20"
+                            style={{
+                              objectPosition: m.photoPosition ?? 'center top',
+                              transform: `scale(${m.photoScale ?? 1})`,
+                              transformOrigin: m.photoPosition ?? 'center top',
+                            }}
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center font-extrabold text-4xl transition-opacity duration-300 group-hover:opacity-20" style={{ background: `${m.color}22`, color: m.color }}>
+                            {m.name === 'A definir' ? '?' : m.name.charAt(0)}
+                          </div>
+                        )}
+                        {/* Rodapé normal — some no hover */}
+                        <div className="absolute bottom-0 left-0 right-0 px-4 py-4 transition-opacity duration-300 group-hover:opacity-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.80) 0%, transparent 100%)' }}>
+                          <p className="text-[10px] font-bold uppercase tracking-widest mb-0.5 text-white" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.6)' }}>{m.role}</p>
+                          <h3 className="font-extrabold text-white text-base leading-snug">{m.name}</h3>
                         </div>
-                        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: m.color }}>
-                          {m.role}
-                        </p>
-                        <h3 className="font-extrabold text-gray-900 text-lg mb-3">{m.name}</h3>
-                        <p className="text-gray-600 text-base leading-relaxed">{m.bio}</p>
+                        {/* Overlay hover — bio no centro */}
+                        <div className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: 'rgba(27,58,107,0.93)' }}>
+                          <p className="text-[10px] font-bold uppercase tracking-widest text-[#F26522] mb-1">{m.role}</p>
+                          <h3 className="font-extrabold text-white text-base mb-3 leading-snug">{m.name}</h3>
+                          <p className="text-white/80 text-xs leading-relaxed">{m.bio}</p>
+                        </div>
                       </div>
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
-          </div>
-        </section>
 
-        {/* Conselhos */}
-        <section aria-labelledby="conselhos-titulo">
-          <p className="text-[#F26522] text-xs font-bold uppercase tracking-widest mb-3">Fiscalização e Deliberação</p>
-          <h2 id="conselhos-titulo" className="text-2xl font-extrabold text-[#1B3A6B] mb-8 tracking-tight">
-            Conselhos
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
+            {/* Conselhos */}
             {conselhos.map((c) => {
               const Icon = c.icon
               return (
-                <div
-                  key={c.nome}
-                  className="rounded-2xl border border-gray-100 p-7 bg-white shadow-sm"
-                >
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                    style={{ background: c.bgLight }}
-                  >
-                    <Icon size={22} style={{ color: c.color }} />
-                  </div>
-                  <h3 className="font-extrabold text-[#1B3A6B] text-lg mb-3">{c.nome}</h3>
-                  <p className="text-gray-600 text-base leading-relaxed mb-5">{c.desc}</p>
-                  <ul className="grid grid-cols-3 gap-4 mt-2 list-none">
+                <div key={c.nome}>
+                  <h3 className="text-sm font-bold uppercase tracking-widest text-[#1B3A6B] mb-4 border-b border-gray-100 pb-2 flex items-center gap-2">
+                    <Icon size={14} style={{ color: c.color }} />
+                    {c.nome}
+                  </h3>
+                  <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 list-none">
                     {c.membros.map((m) => (
-                      <li key={m.nome} className="flex flex-col items-center text-center gap-2">
-                        {m.foto ? (
-                          <img
-                            src={m.foto}
-                            alt={m.nome}
-                            className="w-28 h-28 rounded-full object-cover border-2"
-                            style={{ borderColor: c.color + '40' }}
-                          />
-                        ) : (
-                          <div
-                            className="w-28 h-28 rounded-full flex items-center justify-center font-extrabold text-2xl"
-                            style={{ background: c.bgLight, color: c.color }}
-                            aria-hidden="true"
-                          >
-                            {m.nome.charAt(0)}
+                      <li key={m.nome} className="rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 relative group">
+                        <div className="relative h-64 w-full">
+                          {/* Foto */}
+                          {m.foto ? (
+                            <img src={m.foto} alt={m.nome} className="w-full h-full object-cover object-center transition-opacity duration-300 group-hover:opacity-20" />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center font-extrabold text-4xl transition-opacity duration-300 group-hover:opacity-20" style={{ background: c.bgLight, color: c.color }}>
+                              {m.nome.charAt(0)}
+                            </div>
+                          )}
+                          {/* Rodapé normal */}
+                          <div className="absolute bottom-0 left-0 right-0 px-4 py-4 transition-opacity duration-300 group-hover:opacity-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.80) 0%, transparent 100%)' }}>
+                            <p className="text-[10px] font-bold uppercase tracking-widest mb-0.5 text-white" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.6)' }}>{m.cargo}</p>
+                            <h4 className="font-extrabold text-white text-base leading-snug">{m.nome}</h4>
                           </div>
-                        )}
-                        <p className="font-bold text-[#1B3A6B] text-sm leading-snug">{m.nome}</p>
-                        <p className="text-xs font-semibold" style={{ color: c.color }}>{m.cargo}</p>
+                          {/* Overlay hover */}
+                          <div className="absolute inset-0 flex flex-col items-center justify-center px-5 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: 'rgba(27,58,107,0.93)' }}>
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-[#F26522] mb-1">{m.cargo}</p>
+                            <h4 className="font-extrabold text-white text-base leading-snug">{m.nome}</h4>
+                          </div>
+                        </div>
                       </li>
                     ))}
                   </ul>
                 </div>
               )
             })}
+
           </div>
         </section>
 

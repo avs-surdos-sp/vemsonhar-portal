@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Users, Heart, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 export default function Hero() {
   return (
@@ -94,7 +94,7 @@ export default function Hero() {
             <div className="w-16 h-1 rounded-full bg-[#F26522] mb-6 anim-hidden animate-fade-in-up delay-150" />
 
             <p className="text-gray-500 text-lg leading-relaxed mb-10 max-w-lg anim-hidden animate-fade-in-up delay-200">
-              Há mais de 12 anos construindo pontes de inclusão, dignidade e
+              Há mais de 9 anos construindo pontes de inclusão, dignidade e
               pertencimento para a comunidade surda de São Paulo e região.
             </p>
 
@@ -121,28 +121,6 @@ export default function Hero() {
               </Button>
             </div>
 
-            {/* Stats */}
-            <div className="flex items-center gap-7 anim-hidden animate-fade-in-up delay-400">
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-[#00B4D8]/10 flex items-center justify-center">
-                  <Users size={16} className="text-[#00B4D8]" />
-                </div>
-                <div>
-                  <p className="text-[#1B3A6B] font-extrabold text-base leading-none">340+</p>
-                  <p className="text-gray-400 text-xs mt-0.5">associados</p>
-                </div>
-              </div>
-              <div className="w-px h-8" style={{ background: 'rgba(0,0,0,0.08)' }} />
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-[#F26522]/10 flex items-center justify-center">
-                  <Heart size={16} className="text-[#F26522]" />
-                </div>
-                <div>
-                  <p className="text-[#1B3A6B] font-extrabold text-base leading-none">12</p>
-                  <p className="text-gray-400 text-xs mt-0.5">anos de história</p>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Right column — card */}
