@@ -1,5 +1,5 @@
 import { createClient } from 'next-sanity'
-import imageUrlBuilder from '@sanity/image-url'
+import { createImageUrlBuilder } from '@sanity/image-url'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type SanityImageSource = any
 
@@ -10,7 +10,7 @@ export const sanityClient = createClient({
   useCdn: true,
 })
 
-const builder = imageUrlBuilder(sanityClient)
+const builder = createImageUrlBuilder(sanityClient)
 
 export function urlFor(source: SanityImageSource) {
   return builder.image(source)
