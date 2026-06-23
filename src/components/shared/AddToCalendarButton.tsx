@@ -119,7 +119,7 @@ export default function AddToCalendarButton(props: Props) {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="true"
         aria-expanded={open}
-        className="inline-flex items-center gap-2 bg-[#F26522] text-white text-sm font-bold px-6 py-2.5 rounded-full hover:bg-[#d4501a] transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/30 select-none"
+        className="inline-flex items-center gap-2 bg-[#F7931E] text-white text-sm font-bold px-6 py-2.5 rounded-full hover:bg-[#C27215] transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/30 select-none"
       >
         <CalendarDays size={15} />
         Adicionar ao calendário
@@ -131,7 +131,7 @@ export default function AddToCalendarButton(props: Props) {
 
       {open && (
         <div
-          className="absolute left-0 top-[calc(100%+8px)] z-50 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden min-w-[220px]"
+          className="absolute left-0 top-[calc(100%+8px)] z-50 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden min-w-55"
           role="menu"
         >
           {/* Google Calendar */}
