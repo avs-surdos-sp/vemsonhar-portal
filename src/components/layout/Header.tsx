@@ -105,12 +105,12 @@ export default function Header() {
     >
       {/* Linha de acento colorida no topo */}
       <div
-        className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#1B3A6B] via-[#F26522] to-[#00B4D8]"
+        className="absolute top-0 left-0 right-0 h-0.75 bg-linear-to-r from-[#14387F] via-[#F7931E] to-[#0069B4]"
         aria-hidden="true"
       />
       {/* Scroll progress bar */}
       <div
-        className="absolute bottom-0 left-0 h-[2px] bg-[#F26522] transition-all duration-100 pointer-events-none"
+        className="absolute bottom-0 left-0 h-0.5 bg-[#F7931E] transition-all duration-100 pointer-events-none"
         style={{ width: `${scrollProgress}%` }}
         aria-hidden="true"
       />
@@ -153,8 +153,8 @@ export default function Header() {
                     aria-expanded={isOpen}
                     className={`group relative flex items-center gap-1 px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 ${
                       isGroupActive
-                        ? 'text-[#1B3A6B] bg-transparent'
-                        : 'text-[#1B3A6B] hover:text-[#1B3A6B] hover:bg-transparent'
+                        ? 'text-[#14387F] bg-transparent'
+                        : 'text-[#14387F] hover:text-[#14387F] hover:bg-transparent'
                     }`}
                   >
                     {link.label}
@@ -164,7 +164,7 @@ export default function Header() {
                     />
                     {/* Underline */}
                     <span
-                      className={`absolute bottom-1 left-4 right-5 h-[2.5px] rounded-full bg-[#F26522] transition-transform duration-300 origin-center ${
+                      className={`absolute bottom-1 left-4 right-5 h-0.625 rounded-full bg-[#F7931E] transition-transform duration-300 origin-center ${
                         isGroupActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                       }`}
                     />
@@ -173,18 +173,18 @@ export default function Header() {
                   {/* Dropdown panel */}
                   {isOpen && (
                     <div
-                      className="absolute top-[calc(100%+8px)] left-0 bg-white rounded-2xl overflow-hidden min-w-[260px] pb-2"
+                        className="absolute top-[calc(100%+8px)] left-0 bg-white rounded-2xl overflow-hidden min-w-65 pb-2"
                       style={{ boxShadow: '0 8px 32px rgba(27,58,107,0.13), 0 2px 8px rgba(0,0,0,0.06)' }}
                       role="menu"
                     >
                       {/* Top accent gradient */}
-                      <div className="h-[3px] bg-gradient-to-r from-[#1B3A6B] via-[#F26522] to-[#00B4D8]" />
+                      <div className="h-0.75 bg-linear-to-r from-[#14387F] via-[#F7931E] to-[#0069B4]" />
 
                       <Link
                         href={link.href}
                         role="menuitem"
                         onClick={() => setDropdownOpen(null)}
-                        className="flex items-center px-4 py-3 text-sm font-bold text-[#1B3A6B] hover:bg-transparent transition-colors border-b border-gray-100"
+                        className="flex items-center px-4 py-3 text-sm font-bold text-[#14387F] hover:bg-transparent transition-colors border-b border-gray-100"
                       >
                         Ver tudo em {link.label} →
                       </Link>
@@ -197,10 +197,10 @@ export default function Header() {
                             href={sub.href}
                             role="menuitem"
                             onClick={() => setDropdownOpen(null)}
-                            className="group/item flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:text-[#1B3A6B] transition-all duration-200 hover:bg-gradient-to-r hover:from-[#F26522]/8 hover:to-transparent"
+                            className="group/item flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:text-[#14387F] transition-all duration-200 hover:bg-linear-to-r hover:from-[#F7931E]/8 hover:to-transparent"
                           >
-                            <span className="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-50 group-hover/item:bg-[#F26522]/12 transition-colors duration-200 shrink-0">
-                              <Icon size={15} className="text-[#F26522]" />
+                            <span className="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-50 group-hover/item:bg-[#F7931E]/12 transition-colors duration-200 shrink-0">
+                              <Icon size={15} className="text-[#F7931E]" />
                             </span>
                             {sub.label}
                           </Link>
@@ -218,14 +218,14 @@ export default function Header() {
                 href={link.href}
                 className={`group relative px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 ${
                   isActive
-                    ? 'text-[#1B3A6B] bg-transparent'
-                    : 'text-[#1B3A6B] hover:text-[#1B3A6B] hover:bg-transparent'
+                    ? 'text-[#14387F] bg-transparent'
+                    : 'text-[#14387F] hover:text-[#14387F] hover:bg-transparent'
                 }`}
               >
                 {link.label}
                 {/* Underline */}
                 <span
-                  className={`absolute bottom-1 left-4 right-4 h-[2.5px] rounded-full bg-[#F26522] transition-transform duration-300 origin-center ${
+                  className={`absolute bottom-1 left-4 right-4 h-0.625 rounded-full bg-[#F7931E] transition-transform duration-300 origin-center ${
                     isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                   }`}
                 />
@@ -237,16 +237,16 @@ export default function Header() {
           <div className="w-px h-6 bg-gray-200 mx-2" aria-hidden="true" />
 
           <Link
-            href="/como-se-associar"
-            className="bg-[#F26522] text-white text-sm font-bold px-5 py-2.5 rounded-full hover:bg-[#d4501a] transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5"
+            href="/doacoes"
+            className="bg-[#F7931E] text-white text-sm font-bold px-5 py-2.5 rounded-full hover:bg-[#C27215] transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5"
           >
-            Seja Associado
+            Faça uma Doação
           </Link>
         </nav>
 
         {/* Botão mobile */}
         <button
-          className="md:hidden p-2 text-[#1B3A6B] rounded-lg hover:bg-gray-100 transition-colors"
+          className="md:hidden p-2 text-[#14387F] rounded-lg hover:bg-gray-100 transition-colors"
           onClick={() => setMenuAberto(!menuAberto)}
           aria-label={menuAberto ? 'Fechar menu' : 'Abrir menu'}
           aria-expanded={menuAberto}
@@ -260,7 +260,7 @@ export default function Header() {
       <div
         id="mobile-menu"
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          menuAberto ? 'max-h-[640px] opacity-100' : 'max-h-0 opacity-0'
+          menuAberto ? 'max-h-160 opacity-100' : 'max-h-0 opacity-0'
         }`}
         style={{ background: 'rgba(27, 58, 107, 0.97)', backdropFilter: 'blur(12px)' }}
         aria-label="Navegação mobile"
@@ -302,7 +302,7 @@ export default function Header() {
                             onClick={() => setMenuAberto(false)}
                             className="flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/8 transition-colors"
                           >
-                            <Icon size={14} className="text-[#F26522] shrink-0" />
+                            <Icon size={14} className="text-[#F7931E] shrink-0" />
                             {sub.label}
                           </Link>
                         )
@@ -328,11 +328,11 @@ export default function Header() {
           })}
 
           <Link
-            href="/como-se-associar"
-            className="mt-2 text-center bg-[#F26522] text-white text-sm font-bold px-5 py-3 rounded-full hover:bg-[#d4501a] transition-colors"
+            href="/doacoes"
+            className="mt-2 text-center bg-[#F7931E] text-white text-sm font-bold px-5 py-3 rounded-full hover:bg-[#C27215] transition-colors"
             onClick={() => setMenuAberto(false)}
           >
-            Seja Associado
+            Faça uma Doação
           </Link>
         </div>
       </div>
