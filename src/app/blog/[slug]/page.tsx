@@ -19,9 +19,9 @@ interface Artigo {
 }
 
 const categoriaColors: Record<string, string> = {
-  artigo:     '#1B3A6B',
-  reflexao:   '#00B4D8',
-  entrevista: '#F26522',
+  artigo:     '#14387F',
+  reflexao:   '#0069B4',
+  entrevista: '#F7931E',
   tutorial:   '#1565C0',
 }
 
@@ -83,7 +83,7 @@ const ptComponents = {
         href={value?.href}
         target={value?.blank ? '_blank' : undefined}
         rel={value?.blank ? 'noopener noreferrer' : undefined}
-        className="text-[#F26522] underline underline-offset-2 hover:text-[#d4501a] transition-colors"
+        className="text-[#F7931E] underline underline-offset-2 hover:text-[#C27215] transition-colors"
       >
         {children}
       </a>
@@ -91,7 +91,7 @@ const ptComponents = {
   },
   block: {
     blockquote: ({ children }: { children?: React.ReactNode }) => (
-      <blockquote className="border-l-4 border-[#F26522] pl-5 italic text-gray-500 my-6">
+      <blockquote className="border-l-4 border-[#F7931E] pl-5 italic text-gray-500 my-6">
         {children}
       </blockquote>
     ),
@@ -109,7 +109,7 @@ export default async function ArtigoPage({ params }: Props) {
 
   if (!artigo) notFound()
 
-  const cor   = categoriaColors[artigo.categoria] ?? '#1B3A6B'
+  const cor   = categoriaColors[artigo.categoria] ?? '#14387F'
   const label = categoriaLabels[artigo.categoria] ?? artigo.categoria
 
   return (
@@ -117,7 +117,7 @@ export default async function ArtigoPage({ params }: Props) {
       {/* Hero */}
       <section
         className="relative py-24 px-4 overflow-hidden"
-        style={{ background: `linear-gradient(135deg, ${cor}ee 0%, #0d2347 100%)` }}
+        style={{ background: `linear-gradient(135deg, ${cor}ee 0%, #061B45 100%)` }}
         aria-labelledby="artigo-titulo"
       >
         {artigo.imagemCapa && (
@@ -163,7 +163,7 @@ export default async function ArtigoPage({ params }: Props) {
       {/* Conteúdo */}
       <article className="max-w-3xl mx-auto px-4 py-14">
         {artigo.conteudo && artigo.conteudo.length > 0 ? (
-          <div className="prose prose-lg prose-headings:text-[#1B3A6B] prose-a:text-[#F26522] prose-blockquote:border-[#F26522] max-w-none">
+          <div className="prose prose-lg prose-headings:text-[#14387F] prose-a:text-[#F7931E] prose-blockquote:border-[#F7931E] max-w-none">
             <PortableText
               value={artigo.conteudo as Parameters<typeof PortableText>[0]['value']}
               components={ptComponents}

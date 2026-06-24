@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
-import { Mail, MessageSquare, Instagram, Linkedin } from 'lucide-react'
-import LibrasVideo from '@/components/shared/LibrasVideo'
+import { Mail, Instagram, Linkedin } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Contato | ASESP',
@@ -19,23 +18,12 @@ function WhatsAppIcon({ size = 20 }: { size?: number }) {
 export default function ContatoPage() {
   return (
     <main>
-      {/* Hero */}
-      <section
-        className="py-20 px-4 relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #1B3A6B 0%, #0d2347 100%)' }}
-      >
-        <div aria-hidden="true" className="absolute -right-16 -top-16 w-64 h-64 rounded-full opacity-10" style={{ background: 'radial-gradient(circle, #F26522, transparent)' }} />
-        <div className="relative max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-5">
-            <MessageSquare size={15} className="text-[#F26522]" aria-hidden="true" />
-            <span className="text-white/80 text-sm font-medium">Fale conosco</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">Contato</h1>
-          <p className="text-white/60 text-lg">
-            Entre em contato para dúvidas, parcerias ou suporte à comunidade surda.
-          </p>
-          <LibrasVideo title="Contato da ASESP em Libras" />
-        </div>
+      {/* Page Header */}
+      <section className="py-12 px-4 text-center" style={{ background: 'linear-gradient(135deg, #14387F 0%, #061B45 100%)' }}>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-3">Contato</h1>
+        <p className="text-white/60 text-lg max-w-2xl mx-auto">
+          Entre em contato para dúvidas, parcerias ou suporte à comunidade surda.
+        </p>
       </section>
 
       <div className="max-w-2xl mx-auto px-4 py-16 space-y-8">
@@ -47,14 +35,14 @@ export default function ContatoPage() {
             {/* E-mail */}
             <div
               className="rounded-3xl p-8 text-center flex flex-col items-center justify-center gap-3"
-              style={{ background: 'linear-gradient(135deg, #1B3A6B 0%, #0d2347 100%)' }}
+              style={{ background: 'linear-gradient(135deg, #14387F 0%, #061B45 100%)' }}
             >
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#F26522]/20">
-                <Mail size={22} className="text-[#F26522]" aria-hidden="true" />
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#F7931E]/20">
+                <Mail size={22} className="text-[#F7931E]" aria-hidden="true" />
               </div>
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-white/40 mb-1">E-mail</p>
-                <p className="font-mono text-base font-bold text-[#F26522] select-all leading-snug">
+                <p className="font-mono text-base font-bold text-[#F7931E] select-all leading-snug">
                   contato@avemsonhar.org.br
                 </p>
               </div>
@@ -84,7 +72,7 @@ export default function ContatoPage() {
 
         {/* Redes sociais */}
         <section aria-labelledby="redes-titulo">
-          <h2 id="redes-titulo" className="text-2xl font-extrabold text-[#1B3A6B] mb-5 tracking-tight">
+          <h2 id="redes-titulo" className="text-2xl font-extrabold text-[#14387F] mb-5 tracking-tight">
             Redes sociais
           </h2>
           <div className="flex flex-col sm:flex-row gap-3">
@@ -99,7 +87,7 @@ export default function ContatoPage() {
               </div>
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-0.5">Instagram</p>
-                <p className="text-sm font-semibold text-[#1B3A6B] group-hover:text-[#F26522] transition-colors">@avemsonhar</p>
+                <p className="text-sm font-semibold text-[#14387F] group-hover:text-[#F7931E] transition-colors">@avemsonhar</p>
               </div>
             </a>
 
@@ -114,7 +102,7 @@ export default function ContatoPage() {
               </div>
               <div>
                 <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-0.5">LinkedIn</p>
-                <p className="text-sm font-semibold text-[#1B3A6B] group-hover:text-[#F26522] transition-colors">avemsonhar</p>
+                <p className="text-sm font-semibold text-[#14387F] group-hover:text-[#F7931E] transition-colors">avemsonhar</p>
               </div>
             </a>
           </div>
@@ -122,7 +110,7 @@ export default function ContatoPage() {
 
         {/* Mapa */}
         <section aria-labelledby="mapa-titulo">
-          <h2 id="mapa-titulo" className="text-2xl font-extrabold text-[#1B3A6B] mb-6 tracking-tight">
+          <h2 id="mapa-titulo" className="text-2xl font-extrabold text-[#14387F] mb-6 tracking-tight">
             Como chegar
           </h2>
           <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm">

@@ -25,9 +25,9 @@ const categoriaLabels: Record<string, string> = {
 }
 
 const categoriaColors: Record<string, string> = {
-  noticia: '#1B3A6B',
-  evento: '#F26522',
-  comunicado: '#00B4D8',
+  noticia: '#14387F',
+  evento: '#F7931E',
+  comunicado: '#0069B4',
   projeto: '#1565C0',
 }
 
@@ -73,14 +73,14 @@ export default async function NoticiaPage({ params }: Props) {
 
   if (!noticia) notFound()
 
-  const cor = categoriaColors[noticia.categoria] ?? '#1B3A6B'
+  const cor = categoriaColors[noticia.categoria] ?? '#14387F'
   const label = categoriaLabels[noticia.categoria] ?? noticia.categoria
 
   return (
     <main>
       <section
         className="relative py-24 px-4 overflow-hidden"
-        style={{ background: `linear-gradient(135deg, ${cor}ee 0%, #0d2347 100%)` }}
+        style={{ background: `linear-gradient(135deg, ${cor}ee 0%, #061B45 100%)` }}
         aria-labelledby="noticia-titulo"
       >
         {noticia.imagemCapa && (
@@ -125,7 +125,7 @@ export default async function NoticiaPage({ params }: Props) {
 
       <article className="max-w-3xl mx-auto px-4 py-14">
         {noticia.conteudo && noticia.conteudo.length > 0 ? (
-          <div className="prose prose-lg prose-headings:text-[#1B3A6B] prose-a:text-[#F26522] max-w-none">
+          <div className="prose prose-lg prose-headings:text-[#14387F] prose-a:text-[#F7931E] max-w-none">
             <PortableText value={noticia.conteudo as Parameters<typeof PortableText>[0]['value']} />
           </div>
         ) : (

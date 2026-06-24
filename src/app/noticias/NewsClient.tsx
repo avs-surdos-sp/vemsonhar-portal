@@ -16,9 +16,9 @@ export interface Noticia {
 }
 
 const categoriaColors: Record<string, string> = {
-  noticia: '#1B3A6B',
-  evento: '#F26522',
-  comunicado: '#00B4D8',
+  noticia: '#14387F',
+  evento: '#F7931E',
+  comunicado: '#0069B4',
   projeto: '#1565C0',
 }
 
@@ -63,7 +63,7 @@ export default function NewsClient({ noticias }: { noticias: Noticia[] }) {
             onClick={() => setFiltro(cat)}
             className={`px-4 py-2 rounded-full text-base font-semibold transition-all duration-200 ${
               filtro === cat
-                ? 'bg-[#1B3A6B] text-white shadow-md'
+                ? 'bg-[#14387F] text-white shadow-md'
                 : 'bg-[#F5F7FA] text-gray-500 hover:bg-[#eef2f8]'
             }`}
           >
@@ -74,13 +74,13 @@ export default function NewsClient({ noticias }: { noticias: Noticia[] }) {
 
       <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none">
         {filtered.map((noticia) => {
-          const cor = categoriaColors[noticia.categoria] ?? '#1B3A6B'
+          const cor = categoriaColors[noticia.categoria] ?? '#14387F'
           const label = categoriaLabels[noticia.categoria] ?? noticia.categoria
           return (
             <li key={noticia._id} className="group">
               <Link
                 href={`/news/${noticia.slug.current}`}
-                className="block h-full rounded-2xl overflow-hidden border border-[#eef2f8] bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1B3A6B]"
+                className="block h-full rounded-2xl overflow-hidden border border-[#eef2f8] bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#14387F]"
                 aria-label={`Leia: ${noticia.titulo}`}
               >
                 {/* Cover */}
@@ -104,7 +104,7 @@ export default function NewsClient({ noticias }: { noticias: Noticia[] }) {
 
                 {/* Body */}
                 <div className="p-5">
-                  <p className="text-[#1B3A6B] font-bold text-base leading-snug mb-2 group-hover:text-[#F26522] transition-colors line-clamp-2">
+                  <p className="text-[#14387F] font-bold text-base leading-snug mb-2 group-hover:text-[#F7931E] transition-colors line-clamp-2">
                     {noticia.titulo}
                   </p>
                   {noticia.resumo && (

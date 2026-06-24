@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { Layers, Handshake, ArrowRight } from 'lucide-react'
-import LibrasVideo from '@/components/shared/LibrasVideo'
 
 export const metadata: Metadata = {
   title: 'Projetos | ASESP',
@@ -11,21 +10,21 @@ export const metadata: Metadata = {
 
 const sections = [
   {
-    href: '/projects/nucleos',
+    href: '/projetos/nucleos',
     icon: Layers,
     label: 'Ação social',
     title: 'Núcleos e Projetos',
     desc: 'Idosos, mulheres, jovens, cursos de Libras e eventos culturais — ações para todas as fases da vida surda.',
-    color: '#F26522',
-    badge: '6 núcleos',
+    color: '#F7931E',
+    badge: '2 núcleos',
   },
   {
-    href: '/partners',
+    href: '/projetos/parceiros',
     icon: Handshake,
     label: 'Institucional',
     title: 'Parcerias Institucionais',
     desc: 'Governo, educação, organizações sociais e empresas que caminham ao lado da ASESP.',
-    color: '#1B3A6B',
+    color: '#14387F',
     badge: 'Ver parceiros',
   },
 ]
@@ -33,34 +32,14 @@ const sections = [
 export default function ProjetosHubPage() {
   return (
     <main>
-      {/* Hero */}
-      <section
-        className="py-20 px-4 relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #1B3A6B 0%, #0d2347 100%)' }}
-      >
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-          <div
-            className="absolute -right-20 -top-20 w-72 h-72 rounded-full opacity-10"
-            style={{ background: 'radial-gradient(circle, #F26522, transparent)' }}
-          />
-          <div
-            className="absolute -left-16 -bottom-16 w-56 h-56 rounded-full opacity-10"
-            style={{ background: 'radial-gradient(circle, #00B4D8, transparent)' }}
-          />
-        </div>
-        <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-5">
-            <Layers size={15} className="text-[#F26522]" aria-hidden="true" />
-            <span className="text-white/80 text-sm font-medium">O que fazemos</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
-            Projetos
-          </h1>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            Conheça as iniciativas e parcerias da ASESP que fortalecem a comunidade surda paulista.
-          </p>
-          <LibrasVideo title="Projetos da ASESP em Libras" />
-        </div>
+      {/* Page Header */}
+      <section className="py-12 px-4 text-center" style={{ background: 'linear-gradient(135deg, #14387F 0%, #061B45 100%)' }}>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-3">
+          Projetos
+        </h1>
+        <p className="text-white/60 text-lg max-w-2xl mx-auto">
+          Conheça as iniciativas e parcerias da ASESP que fortalecem a comunidade surda paulista.
+        </p>
       </section>
 
       {/* Cards de navegação */}
@@ -99,7 +78,7 @@ export default function ProjetosHubPage() {
                   <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: s.color }}>
                     {s.label}
                   </p>
-                  <h2 className="text-xl font-extrabold text-[#1B3A6B] mb-3 tracking-tight group-hover:text-[#1565C0] transition-colors">
+                  <h2 className="text-xl font-extrabold text-[#14387F] mb-3 tracking-tight group-hover:text-[#1565C0] transition-colors">
                     {s.title}
                   </h2>
                   <p className="text-gray-500 text-sm leading-relaxed flex-1">
@@ -122,7 +101,7 @@ export default function ProjetosHubPage() {
         {/* CTA */}
         <section
           className="mt-16 rounded-3xl p-10 text-center"
-          style={{ background: 'linear-gradient(135deg, #F26522, #d4501a)' }}
+          style={{ background: 'linear-gradient(135deg, #F7931E, #C27215)' }}
           aria-labelledby="cta-projetos"
         >
           <h2 id="cta-projetos" className="text-2xl font-extrabold text-white mb-3">
@@ -134,15 +113,9 @@ export default function ProjetosHubPage() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/doacoes"
-              className="bg-white text-[#F26522] font-bold px-8 py-3 rounded-full hover:shadow-lg transition-all"
+              className="bg-white text-[#F7931E] font-bold px-8 py-3 rounded-full hover:shadow-lg transition-all"
             >
               💙 Fazer uma doação
-            </Link>
-            <Link
-              href="/como-se-associar"
-              className="bg-white/15 border border-white/30 text-white font-semibold px-8 py-3 rounded-full hover:bg-white/25 transition-colors"
-            >
-              🤟 Seja Associado
             </Link>
           </div>
         </section>

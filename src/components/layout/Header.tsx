@@ -2,20 +2,15 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
-import {
-  Menu, X, ChevronDown,
-  FileText, BarChart2, ClipboardList, CheckSquare,
-  Handshake, Layers, Newspaper, BookOpen,
-} from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 type SubItem = {
   href: string
   label: string
-  icon: React.ElementType
 }
 
 type NavLink = {
@@ -33,26 +28,26 @@ const navLinks: NavLink[] = [
     href: '/projetos',
     label: 'Projetos',
     submenu: [
-      { href: '/projetos/nucleos', label: 'Núcleos e Projetos',       icon: Layers    },
-      { href: '/parceiros',        label: 'Parcerias Institucionais', icon: Handshake },
+      { href: '/projetos/nucleos',   label: 'Núcleos e Projetos'      },
+      { href: '/projetos/parceiros', label: 'Parcerias Institucionais' },
     ],
   },
   {
     href: '/transparencia',
     label: 'Transparência',
     submenu: [
-      { href: '/transparencia/relatorios',    label: 'Relatórios Anuais',        icon: FileText      },
-      { href: '/transparencia/demonstrativo', label: 'Demonstrativo Financeiro', icon: BarChart2     },
-      { href: '/transparencia/editais',       label: 'Editais e Parcerias',      icon: ClipboardList },
-      { href: '/transparencia/projetos',      label: 'Projetos Aprovados',       icon: CheckSquare   },
+      { href: '/transparencia/relatorios',    label: 'Relatórios Anuais'        },
+      { href: '/transparencia/demonstrativo', label: 'Demonstrativo Financeiro' },
+      { href: '/transparencia/editais',       label: 'Editais e Parcerias'      },
+      { href: '/transparencia/projetos',      label: 'Projetos Aprovados'       },
     ],
   },
   {
     href: '/noticias',
     label: 'Notícias',
     submenu: [
-      { href: '/noticias', label: 'Últimas Notícias', icon: Newspaper },
-      { href: '/blog',     label: 'Blog / Artigos',   icon: BookOpen  },
+      { href: '/noticias', label: 'Últimas Notícias' },
+      { href: '/blog',     label: 'Blog / Artigos'   },
     ],
   },
   { href: '/contato', label: 'Contato' },
@@ -66,8 +61,25 @@ export default function Header() {
   const [scrolled,       setScrolled]       = useState(false)
   const [dropdownOpen,   setDropdownOpen]   = useState<string | null>(null)
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const pathname = usePathname()
+
+  /* ── Hover handlers ──────────────────────────────────────────────────── */
+  const openDropdown = (href: string) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current)
+      closeTimeoutRef.current = null
+    }
+    setDropdownOpen(href)
+  }
+
+  const scheduleClose = () => {
+    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current)
+    closeTimeoutRef.current = setTimeout(() => {
+      setDropdownOpen(null)
+    }, 150)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -98,16 +110,25 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-9 left-0 right-0 z-50 h-24 border-b border-gray-100 transition-all duration-300 ${
+      className={`fixed top-12 left-0 right-0 z-50 h-24 border-b border-[#14387F] transition-all duration-300 ${
         scrolled ? 'shadow-md' : 'shadow-none'
       }`}
       style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(12px)' }}
     >
-      {/* Linha de acento colorida no topo */}
+      {/* Linha de acento colorida animada no topo */}
       <div
-        className="absolute top-0 left-0 right-0 h-0.75 bg-linear-to-r from-[#14387F] via-[#F7931E] to-[#0069B4]"
+        className="absolute top-0 left-0 right-0 h-1 overflow-hidden"
         aria-hidden="true"
-      />
+      >
+        <div
+          className="h-full w-[200%] header-accent-shimmer"
+          style={{
+            background:
+              'linear-gradient(90deg, #14387F 0%, #F7931E 25%, #0069B4 50%, #F7931E 75%, #14387F 100%)',
+          }}
+        />
+      </div>
+
       {/* Scroll progress bar */}
       <div
         className="absolute bottom-0 left-0 h-0.5 bg-[#F7931E] transition-all duration-100 pointer-events-none"
@@ -146,9 +167,16 @@ export default function Header() {
               const isOpen = dropdownOpen === link.href
 
               return (
-                <div key={link.href} data-dropdown className="relative">
+                <div
+                  key={link.href}
+                  data-dropdown
+                  className="relative"
+                  onMouseEnter={() => openDropdown(link.href)}
+                  onMouseLeave={scheduleClose}
+                >
                   <button
                     onClick={() => setDropdownOpen(isOpen ? null : link.href)}
+                    onFocus={() => openDropdown(link.href)}
                     aria-haspopup="true"
                     aria-expanded={isOpen}
                     className={`group relative flex items-center gap-1 px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 ${
@@ -164,7 +192,7 @@ export default function Header() {
                     />
                     {/* Underline */}
                     <span
-                      className={`absolute bottom-1 left-4 right-5 h-0.625 rounded-full bg-[#F7931E] transition-transform duration-300 origin-center ${
+                      className={`absolute bottom-1 left-4 right-5 h-[2.5px] rounded-full bg-[#F7931E] transition-transform duration-300 origin-center ${
                         isGroupActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                       }`}
                     />
@@ -173,39 +201,25 @@ export default function Header() {
                   {/* Dropdown panel */}
                   {isOpen && (
                     <div
-                        className="absolute top-[calc(100%+8px)] left-0 bg-white rounded-2xl overflow-hidden min-w-65 pb-2"
-                      style={{ boxShadow: '0 8px 32px rgba(27,58,107,0.13), 0 2px 8px rgba(0,0,0,0.06)' }}
+                      className="absolute top-full left-0 pt-2"
                       role="menu"
                     >
-                      {/* Top accent gradient */}
-                      <div className="h-0.75 bg-linear-to-r from-[#14387F] via-[#F7931E] to-[#0069B4]" />
-
-                      <Link
-                        href={link.href}
-                        role="menuitem"
-                        onClick={() => setDropdownOpen(null)}
-                        className="flex items-center px-4 py-3 text-sm font-bold text-[#14387F] hover:bg-transparent transition-colors border-b border-gray-100"
+                      <div
+                        className="bg-white overflow-hidden min-w-56"
+                        style={{ boxShadow: '0 8px 32px rgba(27,58,107,0.13), 0 2px 8px rgba(0,0,0,0.06)' }}
                       >
-                        Ver tudo em {link.label} →
-                      </Link>
-
-                      {link.submenu.map((sub) => {
-                        const Icon = sub.icon
-                        return (
+                        {link.submenu.map((sub) => (
                           <Link
                             key={sub.href}
                             href={sub.href}
                             role="menuitem"
                             onClick={() => setDropdownOpen(null)}
-                            className="group/item flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:text-[#14387F] transition-all duration-200 hover:bg-linear-to-r hover:from-[#F7931E]/8 hover:to-transparent"
+                            className="block px-4 py-2.5 text-sm font-medium text-gray-700 hover:text-white hover:bg-[#14387F] transition-colors"
                           >
-                            <span className="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-50 group-hover/item:bg-[#F7931E]/12 transition-colors duration-200 shrink-0">
-                              <Icon size={15} className="text-[#F7931E]" />
-                            </span>
                             {sub.label}
                           </Link>
-                        )
-                      })}
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -225,7 +239,7 @@ export default function Header() {
                 {link.label}
                 {/* Underline */}
                 <span
-                  className={`absolute bottom-1 left-4 right-4 h-0.625 rounded-full bg-[#F7931E] transition-transform duration-300 origin-center ${
+                  className={`absolute bottom-1 left-4 right-4 h-[2.5px] rounded-full bg-[#F7931E] transition-transform duration-300 origin-center ${
                     isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                   }`}
                 />
@@ -293,20 +307,16 @@ export default function Header() {
                     }`}
                   >
                     <div className="pl-3 pt-1 pb-1 flex flex-col gap-0.5">
-                      {link.submenu.map((sub) => {
-                        const Icon = sub.icon
-                        return (
-                          <Link
-                            key={sub.href}
-                            href={sub.href}
-                            onClick={() => setMenuAberto(false)}
-                            className="flex items-center gap-2.5 py-2 px-3 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/8 transition-colors"
-                          >
-                            <Icon size={14} className="text-[#F7931E] shrink-0" />
-                            {sub.label}
-                          </Link>
-                        )
-                      })}
+                      {link.submenu.map((sub) => (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          onClick={() => setMenuAberto(false)}
+                          className="block py-2 px-3 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/8 transition-colors"
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 </div>

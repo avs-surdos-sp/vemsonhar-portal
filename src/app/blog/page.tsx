@@ -2,7 +2,6 @@ import { sanityClient, urlFor } from '@/lib/sanity'
 import { BookOpen, ArrowRight, User, Calendar } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
-import LibrasVideo from '@/components/shared/LibrasVideo'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -29,9 +28,9 @@ const QUERY = `*[_type == "artigo" && ativo == true] | order(destaque desc, data
 export const revalidate = 60
 
 const categoriaColors: Record<string, string> = {
-  artigo:     '#1B3A6B',
-  reflexao:   '#00B4D8',
-  entrevista: '#F26522',
+  artigo:     '#14387F',
+  reflexao:   '#0069B4',
+  entrevista: '#F7931E',
   tutorial:   '#1565C0',
 }
 
@@ -53,27 +52,14 @@ export default async function BlogPage() {
 
   return (
     <main>
-      {/* Hero */}
-      <section
-        className="py-20 px-4 relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #1B3A6B 0%, #0d2347 100%)' }}
-        aria-labelledby="blog-titulo"
-      >
-        <div aria-hidden="true" className="absolute -right-16 -top-16 w-64 h-64 rounded-full opacity-10"
-          style={{ background: 'radial-gradient(circle, #F26522, transparent)' }} />
-        <div className="relative max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-5">
-            <BookOpen size={15} className="text-[#F26522]" aria-hidden="true" />
-            <span className="text-white/80 text-sm font-medium">Reflexões e conhecimento</span>
-          </div>
-          <h1 id="blog-titulo" className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
-            Blog / Artigos
-          </h1>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            Artigos, reflexões, entrevistas e tutoriais sobre a comunidade surda, Libras e inclusão.
-          </p>
-          <LibrasVideo title="Blog da ASESP em Libras" />
-        </div>
+      {/* Page Header */}
+      <section className="py-12 px-4 text-center" style={{ background: 'linear-gradient(135deg, #14387F 0%, #061B45 100%)' }} aria-labelledby="blog-titulo">
+        <h1 id="blog-titulo" className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-3">
+          Blog / Artigos
+        </h1>
+        <p className="text-white/60 text-lg max-w-2xl mx-auto">
+          Artigos, reflexões, entrevistas e tutoriais sobre a comunidade surda, Libras e inclusão.
+        </p>
       </section>
 
       <div className="max-w-5xl mx-auto px-4 py-14">
@@ -89,7 +75,7 @@ export default async function BlogPage() {
             {/* Destaque */}
             {destaque && (
               <div className="mb-14">
-                <p className="text-xs font-bold uppercase tracking-widest text-[#F26522] mb-4">Destaque</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-[#F7931E] mb-4">Destaque</p>
                 <Link
                   href={`/blog/${destaque.slug.current}`}
                   className="group flex flex-col md:flex-row rounded-2xl overflow-hidden border border-gray-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
@@ -104,17 +90,17 @@ export default async function BlogPage() {
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center"
-                        style={{ background: `linear-gradient(135deg, ${categoriaColors[destaque.categoria] ?? '#1B3A6B'}44, ${categoriaColors[destaque.categoria] ?? '#1B3A6B'}88)` }}>
+                        style={{ background: `linear-gradient(135deg, ${categoriaColors[destaque.categoria] ?? '#14387F'}44, ${categoriaColors[destaque.categoria] ?? '#14387F'}88)` }}>
                         <BookOpen size={48} className="text-white/40" aria-hidden="true" />
                       </div>
                     )}
                   </div>
                   <div className="flex flex-col justify-center p-8 flex-1">
                     <span className="text-xs font-bold uppercase tracking-widest mb-3"
-                      style={{ color: categoriaColors[destaque.categoria] ?? '#1B3A6B' }}>
+                      style={{ color: categoriaColors[destaque.categoria] ?? '#14387F' }}>
                       {categoriaLabels[destaque.categoria] ?? destaque.categoria}
                     </span>
-                    <h2 className="text-2xl font-extrabold text-[#1B3A6B] leading-snug mb-3 group-hover:text-[#F26522] transition-colors line-clamp-2">
+                    <h2 className="text-2xl font-extrabold text-[#14387F] leading-snug mb-3 group-hover:text-[#F7931E] transition-colors line-clamp-2">
                       {destaque.titulo}
                     </h2>
                     {destaque.resumo && (
@@ -126,7 +112,7 @@ export default async function BlogPage() {
                         <span className="flex items-center gap-1"><Calendar size={12} /> {formatDate(destaque.dataPublicacao)}</span>
                       </div>
                       <span className="flex items-center gap-1 text-sm font-semibold group-hover:gap-2 transition-all"
-                        style={{ color: categoriaColors[destaque.categoria] ?? '#1B3A6B' }}>
+                        style={{ color: categoriaColors[destaque.categoria] ?? '#14387F' }}>
                         Ler artigo <ArrowRight size={14} />
                       </span>
                     </div>
@@ -141,12 +127,12 @@ export default async function BlogPage() {
                 {destaque && <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Mais artigos</p>}
                 <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none">
                   {demais.map((artigo) => {
-                    const cor   = categoriaColors[artigo.categoria] ?? '#1B3A6B'
+                    const cor   = categoriaColors[artigo.categoria] ?? '#14387F'
                     const label = categoriaLabels[artigo.categoria] ?? artigo.categoria
                     return (
                       <li key={artigo._id} className="group">
                         <Link href={`/blog/${artigo.slug.current}`}
-                          className="flex flex-col h-full rounded-2xl overflow-hidden border border-[#eef2f8] bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1B3A6B]"
+                          className="flex flex-col h-full rounded-2xl overflow-hidden border border-[#eef2f8] bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#14387F]"
                           aria-label={`Leia: ${artigo.titulo}`}>
                           {/* Capa */}
                           <div className="h-36 relative flex items-end p-4"
@@ -162,7 +148,7 @@ export default async function BlogPage() {
                           </div>
                           {/* Body */}
                           <div className="flex flex-col flex-1 p-5">
-                            <p className="text-[#1B3A6B] font-bold text-base leading-snug mb-2 group-hover:text-[#F26522] transition-colors line-clamp-2">
+                            <p className="text-[#14387F] font-bold text-base leading-snug mb-2 group-hover:text-[#F7931E] transition-colors line-clamp-2">
                               {artigo.titulo}
                             </p>
                             {artigo.resumo && (

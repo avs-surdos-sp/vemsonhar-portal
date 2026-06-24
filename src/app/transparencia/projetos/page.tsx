@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
-import { CheckSquare, ArrowLeft, ExternalLink, Building2, Tag } from 'lucide-react'
+import { ExternalLink, Building2, Tag } from 'lucide-react'
 import { sanityClient } from '@/lib/sanity'
 
 export const metadata: Metadata = {
@@ -67,19 +66,8 @@ export default async function ProjetosAprovadosPage() {
   return (
     <main>
       {/* Hero */}
-      <section
-        className="py-16 px-4 relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #1B3A6B 0%, #0d2347 100%)' }}
-      >
-        <div className="relative max-w-4xl mx-auto">
-          <Link href="/transparencia"
-            className="inline-flex items-center gap-2 text-white/60 text-sm mb-6 hover:text-white transition-colors">
-            <ArrowLeft size={14} /> Transparência
-          </Link>
-          <div className="flex items-center gap-3 mb-3">
-            <CheckSquare size={20} className="text-[#F26522]" aria-hidden="true" />
-            <p className="text-[#F26522] text-xs font-bold uppercase tracking-widest">Aprovados</p>
-          </div>
+      <section className="py-12 px-4" style={{ background: 'linear-gradient(135deg, #14387F 0%, #061B45 100%)' }}>
+        <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-extrabold text-white tracking-tight mb-3">Projetos Aprovados</h1>
           <p className="text-white/60 text-lg max-w-2xl">
             Projetos da ASESP com financiamento aprovado por órgãos públicos e privados, com impacto direto na comunidade surda.
@@ -99,11 +87,11 @@ export default async function ProjetosAprovadosPage() {
             return (
               <article key={projeto._id}
                 className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
-                <div className="h-1" style={{ background: '#F26522' }} aria-hidden="true" />
+                <div className="h-1" style={{ background: '#F7931E' }} aria-hidden="true" />
                 <div className="p-6">
                   <div className="flex flex-wrap items-start gap-3 mb-3">
                     <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-extrabold text-white shrink-0 mt-0.5"
-                      style={{ background: 'linear-gradient(135deg, #F26522, #e0541d)' }}
+                      style={{ background: 'linear-gradient(135deg, #F7931E, #e0541d)' }}
                       aria-hidden="true">
                       {i + 1}
                     </div>
@@ -115,12 +103,12 @@ export default async function ProjetosAprovadosPage() {
                         </span>
                         <span className="text-xs text-gray-400 font-medium">{projeto.ano}</span>
                       </div>
-                      <h2 className="text-lg font-extrabold text-[#1B3A6B] leading-snug">{projeto.titulo}</h2>
+                      <h2 className="text-lg font-extrabold text-[#14387F] leading-snug">{projeto.titulo}</h2>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-1.5 text-sm text-gray-500 mb-3 pl-11">
-                    <Building2 size={14} className="text-[#F26522] shrink-0 mt-0.5" aria-hidden="true" />
+                    <Building2 size={14} className="text-[#F7931E] shrink-0 mt-0.5" aria-hidden="true" />
                     <span className="font-medium">{projeto.financiador}</span>
                   </div>
 
@@ -129,7 +117,7 @@ export default async function ProjetosAprovadosPage() {
                   {projeto.link && (
                     <div className="pl-11">
                       <a href={projeto.link} target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-[#F26522] text-sm font-semibold hover:underline">
+                        className="inline-flex items-center gap-1.5 text-[#F7931E] text-sm font-semibold hover:underline">
                         Ver projeto completo <ExternalLink size={13} aria-hidden="true" />
                       </a>
                     </div>
@@ -143,13 +131,6 @@ export default async function ProjetosAprovadosPage() {
         <p className="text-xs text-gray-400 mt-8 text-center">
           Para mais informações, consulte os relatórios anuais ou entre em contato com a diretoria.
         </p>
-
-        <div className="mt-10 text-center">
-          <Link href="/transparencia"
-            className="inline-flex items-center gap-2 text-[#1B3A6B] font-semibold text-sm hover:underline">
-            <ArrowLeft size={14} /> Voltar para Transparência
-          </Link>
-        </div>
       </div>
     </main>
   )

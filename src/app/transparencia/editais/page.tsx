@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
-import { ClipboardList, ArrowLeft, ExternalLink, Calendar, CheckCircle2, Clock } from 'lucide-react'
+import { ExternalLink, Calendar, CheckCircle2, Clock } from 'lucide-react'
 import { sanityClient } from '@/lib/sanity'
 
 export const metadata: Metadata = {
@@ -52,7 +51,7 @@ const fallback: Edital[] = [
 
 const statusConfig: Record<Status, { label: string; bg: string; text: string; icon: React.ElementType }> = {
   vigente:      { label: 'Vigente',    bg: '#e6f4ea', text: '#1e7e34', icon: CheckCircle2 },
-  concluido:    { label: 'Concluído',  bg: '#eaeff7', text: '#1B3A6B', icon: CheckCircle2 },
+  concluido:    { label: 'Concluído',  bg: '#eaeff7', text: '#14387F', icon: CheckCircle2 },
   'em-analise': { label: 'Em análise', bg: '#fff8e1', text: '#b45309', icon: Clock        },
 }
 
@@ -66,20 +65,9 @@ export default async function EditaisPage() {
 
   return (
     <main>
-      {/* Hero */}
-      <section
-        className="py-16 px-4 relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #1B3A6B 0%, #0d2347 100%)' }}
-      >
-        <div className="relative max-w-4xl mx-auto">
-          <Link href="/transparencia"
-            className="inline-flex items-center gap-2 text-white/60 text-sm mb-6 hover:text-white transition-colors">
-            <ArrowLeft size={14} /> Transparência
-          </Link>
-          <div className="flex items-center gap-3 mb-3">
-            <ClipboardList size={20} className="text-[#00B4D8]" aria-hidden="true" />
-            <p className="text-[#00B4D8] text-xs font-bold uppercase tracking-widest">Convênios</p>
-          </div>
+      {/* Page Header */}
+      <section className="py-12 px-4" style={{ background: 'linear-gradient(135deg, #14387F 0%, #061B45 100%)' }}>
+        <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-extrabold text-white tracking-tight mb-3">Editais e Parcerias</h1>
           <p className="text-white/60 text-lg max-w-2xl">
             Contratos vigentes e concluídos firmados pela ASESP com secretarias de governo, fundos culturais e institutos parceiros.
@@ -100,10 +88,10 @@ export default async function EditaisPage() {
             return (
               <article key={edital._id}
                 className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
-                <div className="h-1" style={{ background: '#00B4D8' }} aria-hidden="true" />
+                <div className="h-1" style={{ background: '#0069B4' }} aria-hidden="true" />
                 <div className="p-6">
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
-                    <h2 className="text-lg font-extrabold text-[#1B3A6B] leading-snug flex-1">
+                    <h2 className="text-lg font-extrabold text-[#14387F] leading-snug flex-1">
                       {edital.titulo}
                     </h2>
                     <span className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full shrink-0"
@@ -112,7 +100,7 @@ export default async function EditaisPage() {
                       {cfg.label}
                     </span>
                   </div>
-                  <p className="text-sm font-semibold text-[#00B4D8] mb-2">{edital.orgao}</p>
+                  <p className="text-sm font-semibold text-[#0069B4] mb-2">{edital.orgao}</p>
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">{edital.objeto}</p>
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="flex items-center gap-1.5 text-gray-400 text-xs">
@@ -121,7 +109,7 @@ export default async function EditaisPage() {
                     </div>
                     {edital.link && (
                       <a href={edital.link} target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-[#00B4D8] text-sm font-semibold hover:underline">
+                        className="inline-flex items-center gap-1.5 text-[#0069B4] text-sm font-semibold hover:underline">
                         Ver documento <ExternalLink size={13} aria-hidden="true" />
                       </a>
                     )}
@@ -135,13 +123,6 @@ export default async function EditaisPage() {
         <p className="text-xs text-gray-400 mt-8 text-center">
           Para mais informações sobre parcerias, entre em contato com a diretoria da ASESP.
         </p>
-
-        <div className="mt-10 text-center">
-          <Link href="/transparencia"
-            className="inline-flex items-center gap-2 text-[#1B3A6B] font-semibold text-sm hover:underline">
-            <ArrowLeft size={14} /> Voltar para Transparência
-          </Link>
-        </div>
       </div>
     </main>
   )

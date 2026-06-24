@@ -5,9 +5,9 @@ import { useState, useEffect } from 'react'
 type FontSize = 'normal' | 'large' | 'xlarge'
 
 const FONT_LABELS: Record<FontSize, { aria: string; display: string; size: string }> = {
-  normal: { aria: 'Texto tamanho normal',      display: 'A', size: 'text-[10px]' },
-  large:  { aria: 'Texto tamanho grande',       display: 'A', size: 'text-xs'    },
-  xlarge: { aria: 'Texto tamanho muito grande', display: 'A', size: 'text-sm'    },
+  normal: { aria: 'Texto tamanho normal',      display: 'A', size: 'text-xs'  },
+  large:  { aria: 'Texto tamanho grande',       display: 'A', size: 'text-sm' },
+  xlarge: { aria: 'Texto tamanho muito grande', display: 'A', size: 'text-base' },
 }
 
 export default function AccessibilityBar() {
@@ -55,8 +55,8 @@ export default function AccessibilityBar() {
   /* ── Render ────────────────────────────────────────────────────────────── */
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-60 h-9 flex items-center px-4"
-      style={{ background: '#0a1c38', borderBottom: '1px solid rgba(255,255,255,0.07)' }}
+      className="fixed top-0 left-0 right-0 z-60 h-12 flex items-center px-4"
+      style={{ background: '#0a1c38', borderBottom: '1px solid #14387F' }}
       role="navigation"
       aria-label="Barra de acessibilidade"
     >
@@ -66,7 +66,7 @@ export default function AccessibilityBar() {
         className="
           sr-only
           focus:not-sr-only focus:absolute focus:top-1 focus:left-4 focus:z-70
-          focus:bg-[#F26522] focus:text-white focus:px-3 focus:py-1
+          focus:bg-[#F7931E] focus:text-white focus:px-3 focus:py-1
           focus:rounded focus:text-xs focus:font-bold focus:outline-none
         "
       >
@@ -74,16 +74,16 @@ export default function AccessibilityBar() {
       </a>
 
       <div className="max-w-7xl mx-auto w-full flex items-center justify-between gap-4">
-        {/* Label visível em telas maiores */}
-        <span className="hidden sm:block text-white/35 text-[10px] uppercase tracking-widest select-none">
+        {/* Label */}
+        <span className="text-white/45 text-[10px] sm:text-xs uppercase tracking-widest font-semibold select-none">
           Acessibilidade
         </span>
 
-        <div className="flex items-center gap-2 ml-auto">
+        <div className="flex items-center gap-3 ml-auto">
 
           {/* ── Tamanho de texto ──────────────────────────────────────── */}
           <div
-            className="flex items-center gap-0.5"
+            className="flex items-center gap-1"
             role="group"
             aria-label="Tamanho do texto"
           >
@@ -97,11 +97,11 @@ export default function AccessibilityBar() {
                     aria-label={aria}
                     aria-pressed={active}
                     className={`
-                      ${size} font-bold px-1.5 py-0.5 rounded leading-none transition-colors
-                      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4D8]
+                      ${size} font-bold px-2 py-1 rounded leading-none transition-colors
+                      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0069B4]
                       ${active
-                        ? 'bg-[#00B4D8] text-white'
-                        : 'text-white/45 hover:text-white hover:bg-white/10'}
+                        ? 'bg-[#0069B4] text-white'
+                        : 'text-white/55 hover:text-white hover:bg-white/10'}
                     `}
                   >
                     {display}
@@ -112,7 +112,7 @@ export default function AccessibilityBar() {
           </div>
 
           {/* Divisor */}
-          <div className="w-px h-4 bg-white/15" aria-hidden="true" />
+          <div className="w-px h-5 bg-white/15" aria-hidden="true" />
 
           {/* ── Alto contraste ────────────────────────────────────────── */}
           <button
@@ -120,15 +120,15 @@ export default function AccessibilityBar() {
             aria-pressed={highContrast}
             aria-label={highContrast ? 'Desativar alto contraste' : 'Ativar alto contraste'}
             className={`
-              flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-0.5 rounded
-              transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00B4D8]
+              flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded
+              transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0069B4]
               ${highContrast
                 ? 'bg-yellow-400 text-black'
-                : 'text-white/50 hover:text-white hover:bg-white/10'}
+                : 'text-white/60 hover:text-white hover:bg-white/10'}
             `}
           >
             {/* Circle half-filled icon */}
-            <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" fill="currentColor">
+            <svg width="14" height="14" viewBox="0 0 12 12" aria-hidden="true" fill="currentColor">
               <path d="M6 1a5 5 0 1 0 0 10A5 5 0 0 0 6 1zm0 1v8a4 4 0 0 1 0-8z"/>
             </svg>
             <span className="hidden sm:inline">Alto contraste</span>

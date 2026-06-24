@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { Users, Shield, BookOpen, Star } from 'lucide-react'
-import LibrasVideo from '@/components/shared/LibrasVideo'
+import MemberCard from './MemberCard'
 
 type Membro = {
   role: string
@@ -140,30 +140,14 @@ const nucleos = [
 export default function DiretoriaPage() {
   return (
     <main>
-      {/* Hero */}
-      <section
-        className="py-20 px-4 relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #14387F 0%, #061B45 100%)' }}
-      >
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-          <div
-            className="absolute -right-20 -top-20 w-72 h-72 rounded-full opacity-10"
-            style={{ background: 'radial-gradient(circle, #0069B4, transparent)' }}
-          />
-        </div>
-        <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-5">
-            <Users size={15} className="text-[#0069B4]" aria-hidden="true" />
-            <span className="text-white/80 text-sm font-medium">Estrutura administrativa</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
-            Diretoria e Estrutura Administrativa
-          </h1>
-          <p className="text-white/60 text-lg max-w-lg mx-auto">
-            Conheça as pessoas que trabalham pela comunidade surda paulista e a estrutura que sustenta a ASESP.
-          </p>
-          <LibrasVideo title="Diretoria da ASESP em Libras" />
-        </div>
+      {/* Page Header */}
+      <section className="py-12 px-4 text-center" style={{ background: 'linear-gradient(135deg, #14387F 0%, #061B45 100%)' }}>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-3">
+          Diretoria e Estrutura Administrativa
+        </h1>
+        <p className="text-white/60 text-lg max-w-2xl mx-auto">
+          Conheça as pessoas que trabalham pela comunidade surda paulista e a estrutura que sustenta a ASESP.
+        </p>
       </section>
 
       <div className="max-w-5xl mx-auto px-4 py-16 space-y-20">
@@ -197,14 +181,14 @@ export default function DiretoriaPage() {
                 ].map(({ label, sub }) => (
                   <div key={label} className="flex flex-col items-center gap-0">
                     <div className="w-px h-6 bg-gray-300" aria-hidden="true" />
-                    <div className="px-5 py-3 rounded-xl text-white font-bold text-xs shadow text-center min-w-35"
+                    <div className="px-5 py-3 rounded-xl text-white font-bold text-xs shadow text-center min-w-[140px]"
                       style={{ background: 'linear-gradient(135deg, #2D5BA3, #14387F)' }}>
                       {label}
                     </div>
                     {sub && (
                       <>
                         <div className="w-px h-3 bg-gray-200" aria-hidden="true" />
-                        <div className="px-4 py-2 rounded-lg text-xs font-semibold text-center min-w-32.5"
+                        <div className="px-4 py-2 rounded-lg text-xs font-semibold text-center min-w-[130px]"
                           style={{ background: '#EAF0FA', color: '#2D5BA3', border: '1px solid #D0DCF0' }}>
                           {sub}
                         </div>
@@ -296,34 +280,17 @@ export default function DiretoriaPage() {
                 </h3>
                 <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 list-none">
                   {g.membros.map((m) => (
-                    <li key={m.role} className="rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 relative group">
-                      <div className="relative h-64 w-full">
-                        {/* Foto */}
-                        {m.photo ? (
-                          <img
-                            src={m.photo}
-                            alt={m.name}
-                            loading="lazy"
-                            decoding="async"
-                            className="w-full h-full object-cover"
-                            style={{
-                              objectPosition: m.photoPosition ?? 'center top',
-                              transform: `scale(${m.photoScale ?? 1})`,
-                              transformOrigin: m.photoPosition ?? 'center top',
-                            }}
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center font-extrabold text-4xl" style={{ background: `${m.color}22`, color: m.color }}>
-                            {m.name === 'A definir' ? '?' : m.name.charAt(0)}
-                          </div>
-                        )}
-                        {/* Rodapé */}
-                        <div className="absolute bottom-0 left-0 right-0 px-4 py-4" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.80) 0%, transparent 100%)' }}>
-                          <p className="text-[10px] font-bold uppercase tracking-widest mb-0.5 text-[#F7931E]" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.6)' }}>{m.role}</p>
-                          <h3 className="font-extrabold text-white text-base leading-snug">{m.name}</h3>
-                        </div>
-                      </div>
-                    </li>
+                    <MemberCard
+                      key={m.role}
+                      photo={m.photo}
+                      name={m.name}
+                      role={m.role}
+                      photoPosition={m.photoPosition}
+                      photoScale={m.photoScale}
+                      fallbackBg={`${m.color}22`}
+                      fallbackColor={m.color}
+                      fallbackChar={m.name === 'A definir' ? '?' : m.name.charAt(0)}
+                    />
                   ))}
                 </ul>
               </div>
@@ -340,23 +307,15 @@ export default function DiretoriaPage() {
                   </h3>
                   <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 list-none">
                     {c.membros.map((m) => (
-                      <li key={m.nome} className="rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 relative group">
-                        <div className="relative h-64 w-full">
-                          {/* Foto */}
-                          {m.foto ? (
-                            <img src={m.foto} alt={m.nome} loading="lazy" decoding="async" className="w-full h-full object-cover object-center" />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center font-extrabold text-4xl" style={{ background: c.bgLight, color: c.color }}>
-                              {m.nome.charAt(0)}
-                            </div>
-                          )}
-                          {/* Rodapé */}
-                          <div className="absolute bottom-0 left-0 right-0 px-4 py-4" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.80) 0%, transparent 100%)' }}>
-                            <p className="text-[10px] font-bold uppercase tracking-widest mb-0.5 text-[#F7931E]" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.6)' }}>{m.cargo}</p>
-                            <h4 className="font-extrabold text-white text-base leading-snug">{m.nome}</h4>
-                          </div>
-                        </div>
-                      </li>
+                      <MemberCard
+                        key={m.nome}
+                        photo={m.foto}
+                        name={m.nome}
+                        role={m.cargo}
+                        fallbackBg={c.bgLight}
+                        fallbackColor={c.color}
+                        isHeading={false}
+                      />
                     ))}
                   </ul>
                 </div>

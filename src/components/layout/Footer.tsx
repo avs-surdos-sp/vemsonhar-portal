@@ -4,16 +4,15 @@ import Image from 'next/image'
 import { MapPin, Mail, Instagram, Linkedin } from 'lucide-react'
 
 const linksInstitucionais = [
-  { href: '/about',   label: 'Quem Somos' },
-  { href: '/board',   label: 'Diretoria'  },
-  { href: '/contact', label: 'Contato'    },
+  { href: '/sobre',     label: 'Quem Somos' },
+  { href: '/diretoria', label: 'Diretoria'  },
+  { href: '/contato',   label: 'Contato'    },
 ]
 
 const linksProjetos = [
-  { href: '/projects/nucleos', label: 'Núcleos e Projetos'      },
-  { href: '/partners',         label: 'Parcerias Institucionais' },
-  { href: '/how-to-join',      label: 'Seja Associado'          },
-  { href: '/donations',        label: 'Faça uma Doação'         },
+  { href: '/projetos/nucleos', label: 'Núcleos e Projetos'      },
+  { href: '/projetos/parceiros', label: 'Parcerias Institucionais' },
+  { href: '/doacoes',          label: 'Faça uma Doação'         },
 ]
 
 const linksTransparencia = [
@@ -24,8 +23,8 @@ const linksTransparencia = [
 ]
 
 const linksNoticias = [
-  { href: '/news', label: 'Últimas Notícias' },
-  { href: '/blog', label: 'Blog / Artigos'   },
+  { href: '/noticias', label: 'Últimas Notícias' },
+  { href: '/blog',     label: 'Blog / Artigos'   },
 ]
 
 const socialLinks = [
@@ -49,12 +48,12 @@ export default function Footer() {
   return (
     <footer
       className="text-white"
-      style={{ background: 'linear-gradient(180deg, #1B3A6B 0%, #0d2347 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #14387F 0%, #061B45 100%)' }}
     >
       {/* Decorative top border */}
       <div
         className="h-1 w-full"
-        style={{ background: 'linear-gradient(90deg, #F26522, #00B4D8, #F26522)' }}
+        style={{ background: 'linear-gradient(90deg, #F7931E, #0069B4, #F7931E)' }}
         aria-hidden="true"
       />
 
@@ -96,7 +95,7 @@ export default function Footer() {
 
             {/* Contato rápido */}
             <div className="mt-6 space-y-2">
-              <a href="mailto:contato@avemsonhar.org.br" className="flex items-center gap-2 text-base text-white/60 hover:text-[#00B4D8] transition-colors">
+              <a href="mailto:contato@avemsonhar.org.br" className="flex items-center gap-2 text-base text-white/60 hover:text-[#F7931E] transition-colors">
                 <Mail size={16} className="shrink-0" />
                 contato@avemsonhar.org.br
               </a>
@@ -104,7 +103,7 @@ export default function Footer() {
                 href="https://maps.google.com/?q=Rua+Angaturama,+623,+São+Paulo,+SP"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-base text-white/60 hover:text-[#00B4D8] transition-colors"
+                className="flex items-center gap-2 text-base text-white/60 hover:text-[#F7931E] transition-colors"
               >
                 <MapPin size={16} className="shrink-0" />
                 Rua Angaturama, 623 — São Paulo, SP

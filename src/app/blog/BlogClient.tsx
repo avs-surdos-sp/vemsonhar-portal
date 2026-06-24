@@ -18,9 +18,9 @@ export interface Artigo {
 }
 
 const categoriaColors: Record<string, string> = {
-  artigo:     '#1B3A6B',
-  reflexao:   '#F26522',
-  entrevista: '#00B4D8',
+  artigo:     '#14387F',
+  reflexao:   '#F7931E',
+  entrevista: '#0069B4',
   tutorial:   '#1565C0',
 }
 
@@ -61,11 +61,11 @@ export default function BlogClient({ artigos }: { artigos: Artigo[] }) {
     return (
       <div className="max-w-5xl mx-auto px-4 py-24 text-center">
         <BookOpen size={48} className="text-gray-300 mx-auto mb-4" aria-hidden="true" />
-        <h2 className="text-xl font-extrabold text-[#1B3A6B] mb-2">Nenhum artigo publicado ainda</h2>
+        <h2 className="text-xl font-extrabold text-[#14387F] mb-2">Nenhum artigo publicado ainda</h2>
         <p className="text-gray-500">
           Em breve publicaremos artigos, reflexões e entrevistas sobre a comunidade surda.{' '}
           Acesse o{' '}
-          <Link href="/studio" className="text-[#F26522] font-semibold hover:underline">
+          <Link href="/studio" className="text-[#F7931E] font-semibold hover:underline">
             Studio
           </Link>{' '}
           para adicionar conteúdo.
@@ -81,7 +81,7 @@ export default function BlogClient({ artigos }: { artigos: Artigo[] }) {
       {destaque && filtro === 'Todos' && (
         <Link
           href={`/blog/${destaque.slug.current}`}
-          className="group block rounded-3xl overflow-hidden mb-14 border border-[#eef2f8] bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1B3A6B] sm:flex"
+          className="group block rounded-3xl overflow-hidden mb-14 border border-[#eef2f8] bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#14387F] sm:flex"
           aria-label={`Destaque: ${destaque.titulo}`}
         >
           {/* Imagem ou cor */}
@@ -93,7 +93,7 @@ export default function BlogClient({ artigos }: { artigos: Artigo[] }) {
                     backgroundImage: `url(${urlFor(destaque.imagemCapa).width(800).height(500).url()})`,
                   }
                 : {
-                    background: `linear-gradient(135deg, ${categoriaColors[destaque.categoria] ?? '#1B3A6B'}dd, ${categoriaColors[destaque.categoria] ?? '#1B3A6B'}88)`,
+                    background: `linear-gradient(135deg, ${categoriaColors[destaque.categoria] ?? '#14387F'}dd, ${categoriaColors[destaque.categoria] ?? '#14387F'}88)`,
                   }
             }
             aria-hidden="true"
@@ -112,15 +112,15 @@ export default function BlogClient({ artigos }: { artigos: Artigo[] }) {
             <div className="flex items-center gap-3 mb-4">
               <span
                 className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full text-white"
-                style={{ background: categoriaColors[destaque.categoria] ?? '#1B3A6B' }}
+                style={{ background: categoriaColors[destaque.categoria] ?? '#14387F' }}
               >
                 {categoriaLabels[destaque.categoria] ?? destaque.categoria}
               </span>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#F26522] bg-[#fef2ec] px-2.5 py-1 rounded-full">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#F7931E] bg-[#fef2ec] px-2.5 py-1 rounded-full">
                 Destaque
               </span>
             </div>
-            <h2 className="text-xl md:text-2xl font-extrabold text-[#1B3A6B] leading-snug mb-3 group-hover:text-[#F26522] transition-colors">
+            <h2 className="text-xl md:text-2xl font-extrabold text-[#14387F] leading-snug mb-3 group-hover:text-[#F7931E] transition-colors">
               {destaque.titulo}
             </h2>
             <p className="text-gray-500 text-sm leading-relaxed mb-5 line-clamp-3">
@@ -141,7 +141,7 @@ export default function BlogClient({ artigos }: { artigos: Artigo[] }) {
               </div>
               <span
                 className="flex items-center gap-1.5 text-sm font-bold transition-colors"
-                style={{ color: categoriaColors[destaque.categoria] ?? '#1B3A6B' }}
+                style={{ color: categoriaColors[destaque.categoria] ?? '#14387F' }}
               >
                 Ler artigo <ArrowRight size={14} aria-hidden="true" />
               </span>
@@ -160,7 +160,7 @@ export default function BlogClient({ artigos }: { artigos: Artigo[] }) {
             onClick={() => setFiltro(cat)}
             className={`px-4 py-2 rounded-full text-base font-semibold transition-all duration-200 ${
               filtro === cat
-                ? 'bg-[#1B3A6B] text-white shadow-md'
+                ? 'bg-[#14387F] text-white shadow-md'
                 : 'bg-[#F5F7FA] text-gray-500 hover:bg-[#eef2f8]'
             }`}
           >
@@ -177,13 +177,13 @@ export default function BlogClient({ artigos }: { artigos: Artigo[] }) {
       ) : (
         <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none">
           {filtered.map((artigo) => {
-            const cor   = categoriaColors[artigo.categoria] ?? '#1B3A6B'
+            const cor   = categoriaColors[artigo.categoria] ?? '#14387F'
             const label = categoriaLabels[artigo.categoria] ?? artigo.categoria
             return (
               <li key={artigo._id} className="group">
                 <Link
                   href={`/blog/${artigo.slug.current}`}
-                  className="block h-full rounded-2xl overflow-hidden border border-[#eef2f8] bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1B3A6B]"
+                  className="block h-full rounded-2xl overflow-hidden border border-[#eef2f8] bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#14387F]"
                   aria-label={`Ler: ${artigo.titulo}`}
                 >
                   {/* Cover */}
@@ -210,7 +210,7 @@ export default function BlogClient({ artigos }: { artigos: Artigo[] }) {
 
                   {/* Body */}
                   <div className="p-5">
-                    <p className="text-[#1B3A6B] font-bold text-base leading-snug mb-2 group-hover:text-[#F26522] transition-colors line-clamp-2">
+                    <p className="text-[#14387F] font-bold text-base leading-snug mb-2 group-hover:text-[#F7931E] transition-colors line-clamp-2">
                       {artigo.titulo}
                     </p>
                     {artigo.resumo && (

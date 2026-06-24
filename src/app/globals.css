@@ -55,20 +55,20 @@
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(1 0 0);
+  --background: #F8F9FA;
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  /* ASESP: Azul marinho #1B3A6B */
+  /* ASESP: Azul marinho #14387F */
   --primary: oklch(0.30 0.11 253);
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.50 0 0);
-  /* ASESP: Laranja CTA #F26522 */
+  /* ASESP: Laranja CTA #F7931E */
   --accent: oklch(0.65 0.19 45);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -76,10 +76,10 @@
   --input: oklch(0.914 0 0);
   --ring: oklch(0.30 0.11 253);
   /* Brand tokens diretos */
-  --brand-navy: #1B3A6B;
-  --brand-navy-dark: #0d2347;
-  --brand-orange: #F26522;
-  --brand-cyan: #00B4D8;
+  --brand-navy: #14387F;
+  --brand-navy-dark: #061B45;
+  --brand-orange: #F7931E;
+  --brand-cyan: #0069B4;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -260,7 +260,7 @@
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #F26522 0%, #ff8c53 100%);
+  background: linear-gradient(135deg, #F7931E 0%, #ff8c53 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -336,18 +336,32 @@ html[data-hc="1"] header button:hover {
 }
 
 /* Dropdown "Ver tudo em Transparência" link */
-html[data-hc="1"] header .text-\[\#1B3A6B\] {
+html[data-hc="1"] header .text-\[\#14387F\] {
   color: #e8e8e8 !important;
 }
 
 /* ── Backgrounds claros → escuros ────────────────────────── */
 html[data-hc="1"] .bg-white {
   background-color: #111 !important;
+  color: #ffff00 !important;
+  border-color: rgba(255,255,255,0.35) !important;
+}
+
+/* Texto preto em HC mode vira amarelo para garantir contraste */
+html[data-hc="1"] .text-black {
+  color: #ffff00 !important;
 }
 
 html[data-hc="1"] .bg-gray-50,
-html[data-hc="1"] .bg-gray-100 {
+html[data-hc="1"] .bg-gray-100,
+html[data-hc="1"] .hover\:bg-gray-50:hover,
+html[data-hc="1"] .hover\:bg-gray-100:hover {
   background-color: #1a1a1a !important;
+}
+
+/* Hover em modo Alto Contraste — força contraste alto */
+html[data-hc="1"] [class*="hover:bg-"]:hover {
+  color: #ffff00 !important;
 }
 
 /* Tints coloridos (Tailwind JIT — upper e lower case) */
@@ -378,7 +392,7 @@ html[data-hc="1"] .text-gray-600 {
 }
 
 /* Navy e azul → branco */
-html[data-hc="1"] .text-\[\#1B3A6B\],
+html[data-hc="1"] .text-\[\#14387F\],
 html[data-hc="1"] .text-\[\#1565C0\] {
   color: #ffffff !important;
 }
@@ -413,7 +427,7 @@ html[data-hc="1"] .hero-badge {
 
 /* ── "Faça uma Doação" botão outline ────────────────────── */
 html[data-hc="1"] .hc-donation-btn {
-  border-color: #F26522 !important;
+  border-color: #F7931E !important;
   border-width: 2px !important;
   color: #ffffff !important;
 }
@@ -436,7 +450,7 @@ html[data-hc="1"] .text-gray-700 {
 
 /* ── Calendar dropdown: hover azul marinho + texto branco ── */
 html[data-hc="1"] .cal-dropdown-item:hover {
-  background-color: #1B3A6B !important;
+  background-color: #14387F !important;
   color: #ffffff !important;
 }
 
@@ -460,17 +474,16 @@ html[data-hc="1"] img {
 }
 
 /* ===========================
-   Scrollbar style */
-::-webkit-scrollbar {
-  width: 6px;
+   Header accent shimmer */
+@keyframes header-accent-shimmer {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+.header-accent-shimmer {
+  animation: header-accent-shimmer 8s linear infinite;
 }
-::-webkit-scrollbar-thumb {
-  background: #1B3A6B;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #F26522;
+@media (prefers-reduced-motion: reduce) {
+  .header-accent-shimmer {
+    animation: none;
+  }
 }
