@@ -1,182 +1,171 @@
+'use client'
+
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { ArrowRight } from 'lucide-react'
+import { useCallback, useEffect, useState } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay'
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
+
+// ─── Slides ───────────────────────────────────────────────────────────────────
+
+type Slide = {
+  badge: string
+  title: string
+  text?: string
+  cta?: { href: string; label: string }
+  bg: string
+}
+
+const slides: Slide[] = [
+  {
+    badge: 'Associação de Surdos do Estado de SP',
+    title: 'Bem-vindo ao nosso site institucional!',
+    bg: 'linear-gradient(135deg, #14387F 0%, #061B45 60%, #14387F 100%)',
+  },
+  {
+    badge: 'Nossa história',
+    title: 'Conheça a história da fundação da ASESP',
+    cta: { href: '/sobre', label: 'Conheça a ASESP' },
+    bg: 'linear-gradient(135deg, #0069B4 0%, #14387F 70%, #061B45 100%)',
+  },
+  {
+    badge: 'Faça a diferença',
+    title: 'Quer fazer parte e ajudar com doações?',
+    text: 'Venha ajudar a fazer a diferença!',
+    cta: { href: '/doacoes', label: 'Doe Agora' },
+    bg: 'linear-gradient(135deg, #F7931E 0%, #C27215 60%, #14387F 100%)',
+  },
+]
+
+// ─── Component ────────────────────────────────────────────────────────────────
 
 export default function Hero() {
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: 'center' },
+    [Autoplay({ delay: 6000, stopOnInteraction: false })]
+  )
+  const [selectedIndex, setSelectedIndex] = useState(0)
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi])
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
+  const scrollTo = useCallback(
+    (i: number) => emblaApi?.scrollTo(i),
+    [emblaApi]
+  )
+
+  useEffect(() => {
+    if (!emblaApi) return
+    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap())
+    emblaApi.on('select', onSelect)
+    onSelect()
+    return () => {
+      emblaApi.off('select', onSelect)
+    }
+  }, [emblaApi])
+
   return (
-    <section
-      className="relative -mt-16 min-h-screen flex items-center overflow-hidden bg-white"
-      aria-labelledby="hero-titulo"
-    >
-      {/* ── Decorative background elements ── */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-
-        {/* Large orange arc — top right */}
-        <div
-          className="absolute -top-40 -right-40 w-170 h-170 rounded-full"
-          style={{
-            background: 'radial-gradient(circle at 60% 40%, rgba(242,101,34,0.13) 0%, rgba(242,101,34,0.04) 55%, transparent 75%)',
-          }}
-        />
-
-        {/* Navy soft glow — bottom left */}
-        <div
-          className="absolute -bottom-24 -left-24 w-105 h-105 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(27,58,107,0.06) 0%, transparent 70%)',
-          }}
-        />
-
-        {/* Thin orange vertical bar */}
-        <div
-          className="absolute top-[20%] right-[5%] w-0.75 h-45 rounded-full opacity-30"
-          style={{ background: 'linear-gradient(to bottom, transparent, #F7931E 40%, transparent)' }}
-        />
-
-        {/* Thin cyan horizontal bar */}
-        <div
-          className="absolute bottom-[30%] left-[5%] w-25 h-0.5 rounded-full opacity-25"
-          style={{ background: 'linear-gradient(to right, transparent, #0069B4, transparent)' }}
-        />
-
-        {/* Dot grid — subtle */}
-        <div
-          className="absolute inset-0 opacity-[0.035]"
-          style={{
-            backgroundImage: 'radial-gradient(circle, #14387F 1px, transparent 1px)',
-            backgroundSize: '30px 30px',
-          }}
-        />
-
-        {/* Orange circle outline — right side mid */}
-        <div
-          className="absolute top-[35%] right-[12%] w-32 h-32 rounded-full border-[1.5px] border-[#F7931E]/15"
-        />
-        <div
-          className="absolute top-[38%] right-[14%] w-20 h-20 rounded-full border-[1.5px] border-[#0069B4]/12"
-        />
-      </div>
-
-      {/* ── Content ── */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-28 pb-28">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-
-          {/* Left column */}
-          <div>
-
-            {/* Pill badge */}
-            <div className="inline-flex items-center gap-2 mb-7 anim-hidden animate-fade-in-up">
-              <span
-                className="hero-badge inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border"
-                style={{
-                  color: '#14387F',
-                  borderColor: 'rgba(27,58,107,0.15)',
-                  background: 'rgba(27,58,107,0.05)',
-                }}
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#F7931E] animate-pulse" />
-                Associação de Surdos do Estado de SP
-              </span>
-            </div>
-
-            {/* Headline */}
-            <h1
-              id="hero-titulo"
-              className="text-4xl lg:text-[3.2rem] xl:text-[3.8rem] font-extrabold text-[#14387F] leading-[1.08] mb-6 tracking-tight anim-hidden animate-fade-in-up delay-100"
+    <section className="relative -mt-16 overflow-hidden" aria-roledescription="carousel" aria-label="Destaques da ASESP">
+      <div ref={emblaRef} className="overflow-hidden">
+        <div className="flex">
+          {slides.map((slide, i) => (
+            <div
+              key={i}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`Slide ${i + 1} de ${slides.length}`}
+              className="flex-[0_0_100%] min-w-0 relative"
+              style={{ background: slide.bg }}
             >
-              Sonhando junto<br />
-              com a{' '}
-              <span className="gradient-text">Comunidade<br />Surda</span>{' '}
-              paulista
-            </h1>
-
-            {/* Orange divider */}
-            <div className="w-16 h-1 rounded-full bg-[#F7931E] mb-6 anim-hidden animate-fade-in-up delay-150" />
-
-            <p className="text-gray-500 text-lg leading-relaxed mb-10 max-w-lg anim-hidden animate-fade-in-up delay-200">
-              Há mais de 9 anos construindo pontes de inclusão, dignidade e
-              pertencimento para a comunidade surda de São Paulo e região.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-4 mb-12 anim-hidden animate-fade-in-up delay-300">
-              <Button
-                asChild
-                size="lg"
-                className="font-bold px-8 rounded-full text-white shadow-lg shadow-orange-500/25 hover:-translate-y-0.5 transition-all duration-200"
-                style={{ background: 'linear-gradient(135deg, #F7931E, #C27215)' }}
-              >
-                <Link href="/doacoes">
-                  💙 Faça uma Doação
-                  <ArrowRight size={16} className="ml-1" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="hc-donation-btn font-semibold px-8 rounded-full border-[#14387F]/30 text-[#14387F] hover:bg-[#14387F] hover:text-white hover:border-[#14387F] transition-all duration-200"
-              >
-                <Link href="/sobre">Conheça a ASESP</Link>
-              </Button>
-            </div>
-
-          </div>
-
-          {/* Right column — card */}
-          <div className="relative anim-hidden animate-fade-in-up delay-200">
-
-            {/* Main card */}
-            <div className="bg-white rounded-3xl overflow-hidden border border-gray-100"
-              style={{ boxShadow: '0 20px 60px rgba(27,58,107,0.10), 0 4px 16px rgba(0,0,0,0.06)' }}>
-
-              {/* Card header with gradient bg */}
-              <div
-                className="relative flex flex-col items-center justify-center min-h-65 text-center p-8"
-                style={{ background: 'linear-gradient(135deg, rgba(27,58,107,0.04) 0%, rgba(242,101,34,0.06) 100%)' }}
-              >
-                {/* Decorative ring */}
-                <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
-                  <div className="w-50 h-50 rounded-full border border-[#F7931E]/10" />
-                </div>
-
-                {/* Play button */}
-                <button
-                  className="relative z-10 w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer animate-float"
+              {/* Decorative elements */}
+              <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+                <div
+                  className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-15"
+                  style={{ background: 'radial-gradient(circle, #F7931E 0%, transparent 65%)' }}
+                />
+                <div
+                  className="absolute -bottom-32 -left-32 w-[420px] h-[420px] rounded-full opacity-10"
+                  style={{ background: 'radial-gradient(circle, #0069B4 0%, transparent 65%)' }}
+                />
+                <div
+                  className="absolute inset-0 opacity-[0.05]"
                   style={{
-                    background: 'linear-gradient(135deg, #F7931E, #C27215)',
-                    boxShadow: '0 8px 24px rgba(242,101,34,0.4)',
+                    backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)',
+                    backgroundSize: '32px 32px',
                   }}
-                  aria-label="Reproduzir apresentação em Libras"
-                >
-                  <svg viewBox="0 0 24 24" width="28" height="28" fill="white" className="ml-1" aria-hidden="true">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                  <span className="absolute inset-0 rounded-full border-2 border-[#F7931E]/40 animate-pulse-ring" aria-hidden="true" />
-                </button>
-
-                <p className="relative z-10 text-[#14387F] font-bold text-lg mt-5">Apresentação em Libras</p>
-                <p className="relative z-10 text-gray-400 text-sm mt-1">Conheça a ASESP em Libras</p>
+                />
               </div>
 
-            </div>
+              {/* Slide content */}
+              <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center pt-40 pb-32 min-h-[560px] flex flex-col items-center justify-center">
+                <span className="text-sm font-bold uppercase tracking-widest text-white/90 mb-7">
+                  {slide.badge}
+                </span>
 
-          </div>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-[1.1] mb-6 tracking-tight max-w-3xl">
+                  {slide.title}
+                </h2>
+
+                <div
+                  className="w-16 h-1 rounded-full mb-7"
+                  style={{ background: 'linear-gradient(90deg, #F7931E, #0069B4)' }}
+                  aria-hidden="true"
+                />
+
+                {slide.text && (
+                  <p className="text-white/75 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl">
+                    {slide.text}
+                  </p>
+                )}
+
+                {slide.cta && (
+                  <Link
+                    href={slide.cta.href}
+                    className="inline-flex items-center gap-2 font-bold text-base px-8 py-3.5 rounded-full bg-white text-black hover:-translate-y-0.5 transition-transform duration-200"
+                  >
+                    {slide.cta.label}
+                    <ArrowRight size={16} className="ml-1" />
+                  </Link>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Wave transition to next section */}
-      <div className="absolute bottom-0 left-0 right-0" aria-hidden="true">
-        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <defs>
-            <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%"   stopColor="#F7931E" />
-              <stop offset="50%"  stopColor="#0069B4" />
-              <stop offset="100%" stopColor="#F7931E" />
-            </linearGradient>
-          </defs>
-          <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="url(#waveGradient)" />
-        </svg>
+      {/* Setas */}
+      <button
+        type="button"
+        onClick={scrollPrev}
+        className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-sm border border-white/20 text-white flex items-center justify-center transition-colors z-10"
+        aria-label="Slide anterior"
+      >
+        <ChevronLeft size={22} />
+      </button>
+      <button
+        type="button"
+        onClick={scrollNext}
+        className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-sm border border-white/20 text-white flex items-center justify-center transition-colors z-10"
+        aria-label="Próximo slide"
+      >
+        <ChevronRight size={22} />
+      </button>
+
+      {/* Dots */}
+      <div className="absolute bottom-6 left-0 right-0 flex items-center justify-center gap-2 z-10">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            onClick={() => scrollTo(i)}
+            aria-label={`Ir para slide ${i + 1}`}
+            aria-current={selectedIndex === i}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              selectedIndex === i
+                ? 'w-8 bg-[#F7931E]'
+                : 'w-2 bg-white/40 hover:bg-white/60'
+            }`}
+          />
+        ))}
       </div>
     </section>
   )

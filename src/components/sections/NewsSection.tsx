@@ -44,13 +44,13 @@ const QUERY = `
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export default async function NoticiasSection() {
+export default async function NewsSection() {
   const noticias = await sanityClient
     .fetch<NoticiaPreview[]>(QUERY, {}, { next: { revalidate: 60 } })
     .catch(() => [] as NoticiaPreview[])
 
   return (
-    <section className="py-20 px-4 bg-white" aria-labelledby="noticias-titulo">
+    <section className="py-20 px-4" aria-labelledby="noticias-titulo">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
