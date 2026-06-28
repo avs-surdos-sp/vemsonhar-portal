@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Users, Shield, BookOpen, Star } from 'lucide-react'
+import { Users, Shield, BookOpen, Star, Heart } from 'lucide-react'
 import MemberCard from './MemberCard'
 
 type Membro = {
@@ -146,7 +146,7 @@ export default function DiretoriaPage() {
           Diretoria e Estrutura Administrativa
         </h1>
         <p className="text-white/60 text-lg max-w-2xl mx-auto">
-          Conheça as pessoas que trabalham pela comunidade surda paulista e a estrutura que sustenta a ASESP.
+          Conheça as pessoas que trabalham pela ASESP e a estrutura que sustenta a associação.
         </p>
       </section>
 
@@ -369,9 +369,14 @@ export default function DiretoriaPage() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/doacoes"
-              className="bg-[#F7931E] text-white font-bold px-8 py-3 rounded-full hover:bg-[#C27215] transition-colors hover:shadow-lg"
+              className="group inline-flex items-center gap-2 bg-[#14387F] border-2 border-white text-white text-sm font-bold px-6 py-2.5 rounded-full transition-all duration-200 hover:bg-white hover:text-black hover:-translate-y-0.5 hover:shadow-lg"
             >
-              💙 Faça uma doação
+              <Heart
+                size={15}
+                fill="currentColor"
+                className="text-white group-hover:text-red-500 transition-colors duration-200"
+              />
+              Contribua
             </Link>
             <Link
               href="/contato"

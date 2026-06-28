@@ -84,12 +84,11 @@ export default function MemberCard({
 
           {/* Overlay com cargo (hover / tap ativo) */}
           <div
-            className={`absolute inset-0 flex items-center justify-center px-4 text-center transition-opacity duration-300 group-hover:opacity-100 ${
+            className={`member-role-overlay absolute inset-0 flex items-center justify-center px-4 text-center transition-opacity duration-300 group-hover:opacity-100 ${
               active ? 'opacity-100' : 'opacity-0'
             }`}
-            style={{ background: 'rgba(255,255,255,0.85)' }}
           >
-            <p className="font-extrabold text-sm uppercase tracking-widest text-black leading-snug">
+            <p className="member-role-text font-extrabold text-sm uppercase tracking-widest leading-snug">
               {role}
             </p>
           </div>

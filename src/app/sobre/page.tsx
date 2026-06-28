@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { Globe, GraduationCap, AccessibilityIcon, CheckCircle2, Heart, Shield, Eye, Star, Zap, Users, BookOpen } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Sobre | ASESP',
@@ -39,7 +40,7 @@ export default function SobrePage() {
           Sobre a ASESP
         </h1>
         <p className="text-white/60 text-lg max-w-2xl mx-auto">
-          Representando e defendendo os direitos da comunidade surda paulista desde 2017.
+          Representando e defendendo os direitos da comunidade surda desde 2017.
         </p>
       </section>
 
@@ -55,10 +56,22 @@ export default function SobrePage() {
               <p className="text-[#F7931E] text-xs font-extrabold uppercase tracking-widest shrink-0">História da ASESP – Vem Sonhar</p>
               <div className="h-px flex-1 bg-gray-200" />
             </div>
-            <h2 id="historia-titulo" className="text-2xl font-extrabold text-[#14387F] text-center mb-8 tracking-tight">
+            <h2 id="historia-titulo" className="text-2xl font-extrabold text-[#14387F] text-center mb-6 tracking-tight">
               Uma associação nascida da mobilização surda
             </h2>
-            <div className="grid md:grid-cols-2 gap-6 text-gray-600 text-base leading-relaxed">
+
+            {/* Logotipo AVS — destaque visual */}
+            <div className="flex justify-center mb-10">
+              <Image
+                src="/logo-avs.svg"
+                alt="Logotipo da AVS — Associação de Surdos do Estado de São Paulo"
+                width={220}
+                height={220}
+                className="h-32 sm:h-40 w-auto"
+              />
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 text-gray-800 text-base leading-relaxed text-left md:text-justify">
               <div className="space-y-4">
                 <p>
                   A Associação de Surdos do Estado de São Paulo – Vem Sonhar (AVS) surgiu a partir
@@ -104,11 +117,14 @@ export default function SobrePage() {
                     {/* Braço horizontal */}
                     <div className="hidden md:block h-px w-8 shrink-0" style={{ background: accent }} aria-hidden="true" />
                     {/* Card */}
-                    <div className={`bg-white border border-gray-100 rounded-2xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow w-full ${isLeft ? 'text-right' : ''}`}>
-                      <p className="text-xs font-extrabold uppercase tracking-widest mb-1" style={{ color: accent }}>
+                    <div
+                      className={`timeline-card border-2 border-gray-100 rounded-2xl px-6 py-5 shadow-sm transition-all duration-200 w-full hover:shadow-md ${isLeft ? 'text-right' : ''}`}
+                      style={{ ['--accent' as unknown as string]: accent } as React.CSSProperties}
+                    >
+                      <p className="timeline-title text-xs font-extrabold uppercase tracking-widest mb-1">
                         {item.titulo}
                       </p>
-                      <p className="text-gray-600 text-sm leading-relaxed">{item.evento}</p>
+                      <p className="timeline-text text-gray-800 text-sm leading-relaxed">{item.evento}</p>
                     </div>
                   </div>
 
@@ -148,23 +164,23 @@ export default function SobrePage() {
             Missão e Visão
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="rounded-2xl p-7 bg-[#EAF0FA] border border-gray-100">
+            <div className="rounded-2xl p-7 bg-[#EAF0FA] hover:bg-[#C4D9FF] border border-gray-100 transition-colors duration-300">
               <div className="w-10 h-10 rounded-xl bg-[#14387F] flex items-center justify-center mb-4">
                 <CheckCircle2 size={18} className="text-white" />
               </div>
               <h3 className="font-bold text-lg text-[#14387F] mb-3">Missão</h3>
-              <p className="text-gray-600 text-base leading-relaxed">
+              <p className="text-gray-800 text-base leading-relaxed">
                 Promover a inclusão social, educacional e cultural da comunidade surda, garantindo
                 acessibilidade, defesa de direitos e fortalecimento da identidade linguística e
                 cultural por meio da Libras.
               </p>
             </div>
-            <div className="rounded-2xl p-7 bg-[#FEF2EC] border border-gray-100">
+            <div className="rounded-2xl p-7 bg-[#FEF2EC] hover:bg-[#FEC7A7] border border-gray-100 transition-colors duration-300">
               <div className="w-10 h-10 rounded-xl bg-[#F7931E] flex items-center justify-center mb-4">
                 <Globe size={18} className="text-white" />
               </div>
               <h3 className="font-bold text-lg text-[#14387F] mb-3">Visão</h3>
-              <p className="text-gray-600 text-base leading-relaxed">
+              <p className="text-gray-800 text-base leading-relaxed">
                 Ser reconhecida como uma instituição de excelência e referência estadual de São Paulo
                 na promoção de políticas inclusivas, inovação social e desenvolvimento humano da
                 comunidade surda.
@@ -188,10 +204,10 @@ export default function SobrePage() {
                   className="group border border-gray-100 rounded-2xl p-5 hover:-translate-y-1 hover:shadow-md transition-all duration-200 bg-white flex items-center gap-3"
                 >
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform"
+                    className="valor-icon-wrap w-10 h-10 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform"
                     style={{ background: `${v.color}18` }}
                   >
-                    <Icon size={18} style={{ color: v.color }} />
+                    <Icon size={18} className="valor-icon" style={{ color: v.color }} />
                   </div>
                   <h3 className="font-semibold text-[#14387F] text-sm leading-snug">{v.titulo}</h3>
                 </li>
@@ -228,16 +244,19 @@ export default function SobrePage() {
             ].map((item, i) => {
               const accent = i % 3 === 0 ? '#14387F' : i % 3 === 1 ? '#F7931E' : '#0069B4'
               return (
-                <li key={i} className="flex items-center gap-6 py-4 group hover:bg-gray-50 px-3 rounded-xl transition-colors">
+                <li
+                  key={i}
+                  className="finalidade-row flex items-center gap-6 py-4 group hover:bg-[#D6D6D6] px-3 rounded-xl transition-colors"
+                  style={{ ['--accent' as unknown as string]: accent } as React.CSSProperties}
+                >
                   <span
-                    className="text-4xl font-extrabold w-12 text-right shrink-0 leading-none tabular-nums"
-                    style={{ color: accent }}
+                    className="finalidade-number text-4xl font-extrabold w-12 text-right shrink-0 leading-none tabular-nums"
                     aria-hidden="true"
                   >
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <div className="w-px h-8 shrink-0 rounded-full" style={{ background: `${accent}40` }} aria-hidden="true" />
-                  <p className="text-gray-700 text-base leading-relaxed">{item}</p>
+                  <div className="finalidade-divider w-px h-8 shrink-0 rounded-full" aria-hidden="true" />
+                  <p className="finalidade-text text-gray-900 text-base leading-relaxed">{item}</p>
                 </li>
               )
             })}
@@ -245,17 +264,22 @@ export default function SobrePage() {
         </section>
 
         {/* CTA */}
-        <section className="rounded-3xl p-10 text-center" style={{ background: 'linear-gradient(135deg, #14387F, #1565C0)' }}>
+        <section className="rounded-3xl p-10 text-center" style={{ background: 'linear-gradient(135deg, #F7931E, #C27215)' }}>
           <h2 className="text-2xl font-extrabold text-white mb-3">Apoie a ASESP</h2>
-          <p className="text-white/65 mb-7 max-w-md mx-auto">
+          <p className="text-white/80 mb-7 max-w-md mx-auto">
             Sua contribuição fortalece a comunidade surda do Estado de São Paulo.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/doacoes"
-              className="bg-[#F7931E] text-white font-bold px-8 py-3 rounded-full hover:bg-[#C27215] transition-colors hover:shadow-lg"
+              className="group inline-flex items-center gap-2 bg-[#F7931E] border-2 border-white text-white text-sm font-bold px-6 py-2.5 rounded-full transition-all duration-200 hover:bg-white hover:text-black hover:-translate-y-0.5 hover:shadow-lg"
             >
-              💙 Fazer uma doação
+              <Heart
+                size={15}
+                fill="currentColor"
+                className="text-white group-hover:text-red-500 transition-colors duration-200"
+              />
+              Quero apoiar
             </Link>
             <Link
               href="/contato"
