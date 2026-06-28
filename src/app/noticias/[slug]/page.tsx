@@ -5,6 +5,14 @@ import Link from 'next/link'
 import { ArrowLeft, Calendar, Tag } from 'lucide-react'
 import Image from 'next/image'
 import type { Metadata } from 'next'
+import Lightbox from '@/components/shared/Lightbox'
+
+interface GaleriaItem {
+  _key: string
+  asset: { _ref: string }
+  alt?: string
+  legenda?: string
+}
 
 interface Noticia {
   _id: string
@@ -15,6 +23,7 @@ interface Noticia {
   resumo: string
   imagemCapa?: { asset: { _ref: string }; alt?: string }
   conteudo?: unknown[]
+  galeria?: GaleriaItem[]
 }
 
 const categoriaLabels: Record<string, string> = {
@@ -66,7 +75,8 @@ export default async function NoticiaPage({ params }: Props) {
   const { slug } = await params
   const noticia: Noticia | null = await sanityClient.fetch(
     `*[_type == "noticia" && slug.current == $slug][0]{
-      _id, titulo, slug, categoria, dataPublicacao, resumo, imagemCapa, conteudo
+      _id, titulo, slug, categoria, dataPublicacao, resumo, imagemCapa, conteudo,
+      galeria[]{ _key, asset, alt, legenda }
     }`,
     { slug }
   )
@@ -130,6 +140,16 @@ export default async function NoticiaPage({ params }: Props) {
           </div>
         ) : (
           <p className="text-gray-400 text-center py-10">Conteúdo completo ainda não publicado.</p>
+        )}
+
+        {/* Galeria de fotos com Lightbox */}
+        {noticia.galeria && noticia.galeria.length > 0 && (
+          <section aria-labelledby="galeria-titulo" className="mt-14 pt-8 border-t border-[#eef2f8]">
+            <h2 id="galeria-titulo" className="text-2xl font-extrabold text-[#14387F] mb-6 tracking-tight">
+              Galeria de Fotos
+            </h2>
+            <Lightbox fotos={noticia.galeria} />
+          </section>
         )}
 
         <div className="mt-14 pt-8 border-t border-[#eef2f8]">
