@@ -5,7 +5,7 @@ import { Layers, Handshake, ArrowRight } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Projetos | ASESP',
   description:
-    'Conheça os projetos, núcleos e parcerias institucionais da ASESP em prol da comunidade surda paulista.',
+    'Conheça os projetos, núcleos e parcerias institucionais da ASESP em prol da comunidade surda.',
 }
 
 const sections = [
@@ -38,7 +38,7 @@ export default function ProjetosHubPage() {
           Projetos
         </h1>
         <p className="text-white/60 text-lg max-w-2xl mx-auto">
-          Conheça as iniciativas e parcerias da ASESP que fortalecem a comunidade surda paulista.
+          Conheça as iniciativas e parcerias que fortalecem a ASESP.
         </p>
       </section>
 
@@ -108,12 +108,12 @@ export default function ProjetosHubPage() {
             Apoie as nossas iniciativas
           </h2>
           <p className="text-white/80 mb-7 max-w-md mx-auto text-base leading-relaxed">
-            Sua doação financia encontros, cursos e eventos que transformam vidas na comunidade surda paulista.
+            Sua doação financia encontros, cursos e eventos que transformam vidas na comunidade surda.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/doacoes"
-              className="bg-white text-[#F7931E] font-bold px-8 py-3 rounded-full hover:shadow-lg transition-all"
+              className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-[#F7931E] text-sm font-bold px-6 py-2.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-orange-500/30"
             >
               💙 Fazer uma doação
             </Link>

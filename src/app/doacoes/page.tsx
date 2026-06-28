@@ -21,7 +21,7 @@ export default function DoacoesPage() {
   return (
     <main>
       {/* Page Header */}
-      <section className="py-12 px-4 text-center" style={{ background: 'linear-gradient(135deg, #14387F 0%, #061B45 100%)' }} aria-labelledby="doacoes-titulo">
+      <section className="py-12 px-4 text-center" style={{ background: 'linear-gradient(135deg, #F7931E 0%, #C27215 100%)' }} aria-labelledby="doacoes-titulo">
         <h1 id="doacoes-titulo" className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-3">
           Contribua e transforme vidas
         </h1>
@@ -51,7 +51,7 @@ export default function DoacoesPage() {
                     >
                       <Icon size={16} style={{ color: item.color }} />
                     </div>
-                    <span className="text-gray-700 text-sm font-medium leading-snug">{item.texto}</span>
+                    <span className="text-gray-900 text-sm font-medium leading-snug">{item.texto}</span>
                   </li>
                 )
               })}

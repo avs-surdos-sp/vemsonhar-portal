@@ -80,14 +80,15 @@ export default function ContatoPage() {
               href="https://www.instagram.com/avemsonhar/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 flex-1 p-4 rounded-2xl border border-gray-100 bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
+              className="flex items-center gap-3 flex-1 p-4 rounded-2xl hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 group"
+              style={{ background: 'linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)' }}
             >
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)' }}>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 bg-white/20">
                 <Instagram size={18} className="text-white" aria-hidden="true" />
               </div>
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-0.5">Instagram</p>
-                <p className="text-sm font-semibold text-[#14387F] group-hover:text-[#F7931E] transition-colors">@avemsonhar</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-white/70 mb-0.5">Instagram</p>
+                <p className="text-sm font-semibold text-white">@avemsonhar</p>
               </div>
             </a>
 
@@ -95,14 +96,14 @@ export default function ContatoPage() {
               href="https://www.linkedin.com/company/avemsonhar/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 flex-1 p-4 rounded-2xl border border-gray-100 bg-white hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
+              className="flex items-center gap-3 flex-1 p-4 rounded-2xl bg-[#0A66C2] hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 group"
             >
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 bg-[#0A66C2]">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 bg-white/20">
                 <Linkedin size={18} className="text-white" aria-hidden="true" />
               </div>
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-0.5">LinkedIn</p>
-                <p className="text-sm font-semibold text-[#14387F] group-hover:text-[#F7931E] transition-colors">avemsonhar</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-white/70 mb-0.5">LinkedIn</p>
+                <p className="text-sm font-semibold text-white">avemsonhar</p>
               </div>
             </a>
           </div>

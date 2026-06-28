@@ -40,7 +40,7 @@ export default async function EventsSection() {
     .catch(() => [] as Evento[])
 
   return (
-    <section className="py-20 px-4 bg-white" aria-labelledby="eventos-titulo">
+    <section className="py-20 px-4 bg-[#F5F7FA]" aria-labelledby="eventos-titulo">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}

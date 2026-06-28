@@ -3,7 +3,7 @@ import { Handshake, Clock } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Parcerias Institucionais | ASESP',
-  description: 'Conheça as organizações que caminham ao lado da ASESP em prol da comunidade surda paulista.',
+  description: 'Conheça as organizações que caminham ao lado da ASESP em prol da comunidade surda.',
 }
 
 export default function ParceirosPage() {
