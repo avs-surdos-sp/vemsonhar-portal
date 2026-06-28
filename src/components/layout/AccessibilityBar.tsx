@@ -12,7 +12,8 @@ const FONT_LABELS: Record<FontSize, { aria: string; display: string; size: strin
 
 export default function AccessibilityBar() {
   const [highContrast, setHighContrast] = useState(false)
-  const [fontSize, setFontSize]         = useState<FontSize>('normal')
+  const [fontSize,     setFontSize]     = useState<FontSize>('normal')
+  const [hidden,       setHidden]       = useState(false)
 
   /* ── Restore preferences on mount ─────────────────────────────────────── */
   useEffect(() => {
@@ -27,6 +28,15 @@ export default function AccessibilityBar() {
       document.documentElement.setAttribute('data-fs', fs)
       setFontSize(fs)
     }
+  }, [])
+
+  /* ── Esconder ao rolar para baixo ─────────────────────────────────────── */
+  useEffect(() => {
+    function handleScroll() {
+      setHidden(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   /* ── Handlers ──────────────────────────────────────────────────────────── */
@@ -55,10 +65,13 @@ export default function AccessibilityBar() {
   /* ── Render ────────────────────────────────────────────────────────────── */
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-60 h-12 flex items-center px-4"
+      className={`fixed top-0 left-0 right-0 z-60 h-14 flex items-center px-4 transition-transform duration-300 ${
+        hidden ? '-translate-y-full' : 'translate-y-0'
+      }`}
       style={{ background: '#0a1c38', borderBottom: '1px solid #14387F' }}
       role="navigation"
       aria-label="Barra de acessibilidade"
+      aria-hidden={hidden}
     >
       {/* ── Skip link (visível apenas no foco — WCAG 2.4.1) ─────────────── */}
       <a
@@ -124,7 +137,7 @@ export default function AccessibilityBar() {
               transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0069B4]
               ${highContrast
                 ? 'bg-yellow-400 text-black'
-                : 'text-white/60 hover:text-white hover:bg-white/10'}
+                : 'text-white/60 hover:text-black hover:bg-yellow-400'}
             `}
           >
             {/* Circle half-filled icon */}

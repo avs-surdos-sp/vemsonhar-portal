@@ -22,8 +22,8 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
     <>
       <AccessibilityBar />
       <Header />
-      {/* pt-36 = barra acessibilidade (48px) + header (96px) */}
-      <div id="main-content" className="flex-1 pt-36">
+      {/* 152px = barra acessibilidade (56px) + header (96px) */}
+      <div id="main-content" className="flex-1 pt-[152px]">
         {children}
       </div>
       <Footer />
