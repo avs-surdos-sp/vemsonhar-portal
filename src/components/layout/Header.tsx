@@ -37,7 +37,6 @@ const navLinks: NavLink[] = [
     label: 'Transparência',
     submenu: [
       { href: '/transparencia/relatorios',    label: 'Relatórios Anuais'        },
-      { href: '/transparencia/demonstrativo', label: 'Demonstrativo Financeiro' },
       { href: '/transparencia/editais',       label: 'Editais e Parcerias'      },
       { href: '/transparencia/projetos',      label: 'Projetos Aprovados'       },
     ],
@@ -252,7 +251,7 @@ export default function Header() {
 
           <Link
             href="/doacoes"
-            className="btn-fill-hover text-sm font-bold px-5 py-2.5 rounded-full"
+            className="btn-fill-hover text-sm font-bold px-5 py-2.5 rounded-lg"
             aria-label="Faça uma Doação"
           >
             <span className="btn-text">Faça uma Doação</span>
@@ -341,7 +340,7 @@ export default function Header() {
 
           <Link
             href="/doacoes"
-            className="btn-fill-hover mt-2 text-center text-sm font-bold px-5 py-3 rounded-full"
+            className="btn-fill-hover mt-2 text-center text-sm font-bold px-5 py-3 rounded-lg"
             onClick={() => setMenuAberto(false)}
             aria-label="Faça uma Doação"
           >

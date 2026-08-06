@@ -25,7 +25,7 @@ const slides: Slide[] = [
   },
   {
     badge: 'Nossa história',
-    title: 'Conheça a história da fundação da ASESP',
+    title: 'Conheça a história da ASESP',
     cta: { href: '/sobre', label: 'Conheça a ASESP' },
     bg: 'linear-gradient(135deg, rgba(0,105,180,0.85) 0%, rgba(20,56,127,0.92) 70%, rgba(6,27,69,0.95) 100%), url(/wallpaper-avs.png) center/120% no-repeat',
   },
@@ -124,7 +124,7 @@ export default function Hero() {
                 {slide.cta && (
                   <Link
                     href={slide.cta.href}
-                    className="inline-flex items-center gap-2 font-bold text-base px-8 py-3.5 rounded-full bg-white text-black shadow-md hover:shadow-xl transition-shadow duration-200"
+                    className="inline-flex items-center gap-2 font-bold text-base px-8 py-3.5 rounded-lg bg-white text-black shadow-md hover:shadow-xl transition-shadow duration-200"
                   >
                     {slide.cta.label}
                     <ArrowRight size={16} className="ml-1" />

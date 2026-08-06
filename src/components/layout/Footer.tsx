@@ -16,10 +16,9 @@ const linksProjetos = [
 ]
 
 const linksTransparencia = [
-  { href: '/transparencia/relatorios',     label: 'Relatórios Anuais'        },
-  { href: '/transparencia/demonstrativo',  label: 'Demonstrativo Financeiro' },
-  { href: '/transparencia/editais',        label: 'Editais e Parcerias'      },
-  { href: '/transparencia/projetos',       label: 'Projetos Aprovados'       },
+  { href: '/transparencia/relatorios',     label: 'Relatórios Anuais'   },
+  { href: '/transparencia/editais',        label: 'Editais e Parcerias' },
+  { href: '/transparencia/projetos',       label: 'Projetos Aprovados'  },
 ]
 
 const linksNoticias = [
