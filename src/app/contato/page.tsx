@@ -34,10 +34,10 @@ export default function ContatoPage() {
 
             {/* E-mail */}
             <div
-              className="rounded-3xl p-8 text-center flex flex-col items-center justify-center gap-3"
+              className="rounded-2xl p-8 text-center flex flex-col items-center justify-center gap-3"
               style={{ background: 'linear-gradient(135deg, #14387F 0%, #061B45 100%)' }}
             >
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#F7931E]/20">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-[#F7931E]/20">
                 <Mail size={22} className="text-[#F7931E]" aria-hidden="true" />
               </div>
               <div>
@@ -54,10 +54,10 @@ export default function ContatoPage() {
               href="https://wa.me/5511937760888"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-3xl p-8 text-center flex flex-col items-center justify-center gap-3 hover:brightness-110 transition-all duration-200"
+              className="rounded-2xl p-8 text-center flex flex-col items-center justify-center gap-3 hover:brightness-110 transition-all duration-200"
               style={{ background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)' }}
             >
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-white/20">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-white/20">
                 <WhatsAppIcon size={22} />
               </div>
               <div>
@@ -80,7 +80,7 @@ export default function ContatoPage() {
               href="https://www.instagram.com/avemsonhar/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 flex-1 p-4 rounded-2xl hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 group"
+              className="flex items-center gap-3 flex-1 p-4 rounded-xl hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 group"
               style={{ background: 'linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)' }}
             >
               <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 bg-white/20">
@@ -96,7 +96,7 @@ export default function ContatoPage() {
               href="https://www.linkedin.com/company/avemsonhar/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 flex-1 p-4 rounded-2xl bg-[#0A66C2] hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 group"
+              className="flex items-center gap-3 flex-1 p-4 rounded-xl bg-[#0A66C2] hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 group"
             >
               <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 bg-white/20">
                 <Linkedin size={18} className="text-white" aria-hidden="true" />
@@ -114,7 +114,7 @@ export default function ContatoPage() {
           <h2 id="mapa-titulo" className="text-2xl font-extrabold text-[#14387F] mb-6 tracking-tight">
             Como chegar
           </h2>
-          <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+          <div className="rounded-none overflow-hidden border border-gray-100 shadow-sm">
             <iframe
               title="Localização da AVS — Rua Angaturama, 623"
               src="https://maps.google.com/maps?q=Rua+Angaturama,+623,+São+Paulo,+SP&output=embed&z=16"

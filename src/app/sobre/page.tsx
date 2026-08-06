@@ -118,7 +118,7 @@ export default function SobrePage() {
                     <div className="hidden md:block h-px w-8 shrink-0" style={{ background: accent }} aria-hidden="true" />
                     {/* Card */}
                     <div
-                      className={`timeline-card border-2 border-gray-100 rounded-2xl px-6 py-5 shadow-sm transition-all duration-200 w-full hover:shadow-md ${isLeft ? 'text-right' : ''}`}
+                      className={`timeline-card border-2 border-gray-100 rounded-xl px-6 py-5 transition-all duration-200 w-full ${isLeft ? 'text-right' : ''}`}
                       style={{ ['--accent' as unknown as string]: accent } as React.CSSProperties}
                     >
                       <p className="timeline-title text-xs font-extrabold uppercase tracking-widest mb-1">
@@ -165,7 +165,7 @@ export default function SobrePage() {
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="rounded-2xl p-7 bg-[#EAF0FA] hover:bg-[#C4D9FF] border border-gray-100 transition-colors duration-300">
-              <div className="w-10 h-10 rounded-xl bg-[#14387F] flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-lg bg-[#14387F] flex items-center justify-center mb-4">
                 <CheckCircle2 size={18} className="text-white" />
               </div>
               <h3 className="font-bold text-lg text-[#14387F] mb-3">Missão</h3>
@@ -176,7 +176,7 @@ export default function SobrePage() {
               </p>
             </div>
             <div className="rounded-2xl p-7 bg-[#FEF2EC] hover:bg-[#FEC7A7] border border-gray-100 transition-colors duration-300">
-              <div className="w-10 h-10 rounded-xl bg-[#F7931E] flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-lg bg-[#F7931E] flex items-center justify-center mb-4">
                 <Globe size={18} className="text-white" />
               </div>
               <h3 className="font-bold text-lg text-[#14387F] mb-3">Visão</h3>
@@ -201,10 +201,10 @@ export default function SobrePage() {
               return (
                 <li
                   key={v.titulo}
-                  className="group border border-gray-100 rounded-2xl p-5 hover:-translate-y-1 hover:shadow-md transition-all duration-200 bg-white flex items-center gap-3"
+                  className="group border border-gray-100 rounded-xl p-5 hover:-translate-y-1 hover:shadow-md transition-all duration-200 bg-white flex items-center gap-3"
                 >
                   <div
-                    className="valor-icon-wrap w-10 h-10 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform"
+                    className="valor-icon-wrap w-10 h-10 rounded-lg flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform"
                     style={{ background: `${v.color}18` }}
                   >
                     <Icon size={18} className="valor-icon" style={{ color: v.color }} />
@@ -264,7 +264,7 @@ export default function SobrePage() {
         </section>
 
         {/* CTA */}
-        <section className="rounded-3xl p-10 text-center" style={{ background: 'linear-gradient(135deg, #F7931E, #C27215)' }}>
+        <section className="rounded-2xl p-10 text-center" style={{ background: 'linear-gradient(135deg, #F7931E, #C27215)' }}>
           <h2 className="text-2xl font-extrabold text-white mb-3">Apoie a ASESP</h2>
           <p className="text-white/80 mb-7 max-w-md mx-auto">
             Sua contribuição fortalece a comunidade surda do Estado de São Paulo.
@@ -272,7 +272,7 @@ export default function SobrePage() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/doacoes"
-              className="group inline-flex items-center gap-2 bg-[#F7931E] border-2 border-white text-white text-sm font-bold px-6 py-2.5 rounded-full transition-all duration-200 hover:bg-white hover:text-black hover:-translate-y-0.5 hover:shadow-lg"
+              className="group inline-flex items-center gap-2 bg-[#F7931E] border-2 border-white text-white text-sm font-bold px-6 py-2.5 rounded-lg transition-all duration-200 hover:bg-white hover:text-black hover:-translate-y-0.5 hover:shadow-lg"
             >
               <Heart
                 size={15}
@@ -283,7 +283,7 @@ export default function SobrePage() {
             </Link>
             <Link
               href="/contato"
-              className="bg-white/10 border border-white/30 text-white font-semibold px-8 py-3 rounded-full hover:bg-white/20 transition-colors"
+              className="bg-white/10 border border-white/30 text-white font-semibold px-8 py-3 rounded-lg hover:bg-white/20 transition-colors"
             >
               Falar conosco
             </Link>

@@ -21,9 +21,9 @@ export default function ParceirosPage() {
 
       {/* Em breve */}
       <div className="max-w-3xl mx-auto px-4 py-24 text-center">
-        <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"
+        <div className="w-16 h-16 rounded-lg flex items-center justify-center mx-auto mb-6"
           style={{ background: '#0069B418' }}>
-          <Clock size={30} className="text-[#0069B4]" aria-hidden="true" />
+          <Clock size={28} className="text-[#0069B4]" aria-hidden="true" />
         </div>
         <h2 className="text-2xl font-extrabold text-[#14387F] mb-3">Conteúdo em breve</h2>
         <p className="text-gray-500 text-lg leading-relaxed max-w-md mx-auto">

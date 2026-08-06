@@ -69,7 +69,7 @@ export default async function EventsSection() {
               return (
                 <li
                   key={e._id || e.titulo}
-                  className="rounded-2xl bg-white border border-gray-100 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300 overflow-hidden group"
+                  className="rounded-xl bg-white border border-gray-100 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300 overflow-hidden group"
                 >
                   <div className="flex items-stretch">
                     {/* Bloco de data */}

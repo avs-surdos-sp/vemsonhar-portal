@@ -80,7 +80,7 @@ export default function NewsClient({ noticias }: { noticias: Noticia[] }) {
             <li key={noticia._id} className="group">
               <Link
                 href={`/news/${noticia.slug.current}`}
-                className="block h-full rounded-2xl overflow-hidden border border-[#eef2f8] bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#14387F]"
+                className="block h-full rounded-none overflow-hidden border border-[#eef2f8] bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#14387F]"
                 aria-label={`Leia: ${noticia.titulo}`}
               >
                 {/* Cover */}

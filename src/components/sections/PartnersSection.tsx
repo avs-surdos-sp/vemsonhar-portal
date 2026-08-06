@@ -48,7 +48,7 @@ export default function PartnersSection() {
         <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 list-none">
           {parceiros.map((p) => (
             <li key={p.sigla}>
-              <div className="h-24 rounded-2xl flex flex-col items-center justify-center gap-1.5 px-3 hover:-translate-y-1 transition-all duration-300">
+              <div className="h-24 rounded-xl flex flex-col items-center justify-center gap-1.5 px-3 hover:-translate-y-1 transition-all duration-300">
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center font-extrabold text-xs text-white"
                   style={{ background: p.cor }}

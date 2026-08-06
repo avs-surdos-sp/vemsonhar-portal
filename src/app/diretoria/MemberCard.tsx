@@ -31,7 +31,7 @@ export default function MemberCard({
 
   return (
     <li
-      className={`rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 relative group ${
+      className={`rounded-xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 relative group ${
         active ? 'is-active' : ''
       }`}
     >

@@ -61,7 +61,7 @@ const ptComponents = {
   types: {
     image: ({ value }: { value: { asset: { _ref: string }; alt?: string; legenda?: string } }) => (
       <figure className="my-8">
-        <div className="relative w-full rounded-2xl overflow-hidden" style={{ aspectRatio: '16/9' }}>
+        <div className="relative w-full rounded-xl overflow-hidden" style={{ aspectRatio: '16/9' }}>
           <Image
             src={urlFor(value).width(900).url()}
             alt={value.alt ?? ''}

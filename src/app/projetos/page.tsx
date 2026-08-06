@@ -51,18 +51,18 @@ export default function ProjetosHubPage() {
               <li key={s.href}>
                 <Link
                   href={s.href}
-                  className="group flex flex-col h-full bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden relative"
+                  className="group flex flex-col h-full bg-white border border-gray-100 rounded-xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden relative"
                 >
                   {/* Top accent */}
                   <div
-                    className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl"
+                    className="absolute top-0 left-0 right-0 h-1 rounded-t-xl"
                     style={{ background: s.color }}
                     aria-hidden="true"
                   />
 
                   <div className="flex items-start justify-between mb-5">
                     <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center"
+                      className="w-12 h-12 rounded-lg flex items-center justify-center"
                       style={{ background: `${s.color}15` }}
                     >
                       <Icon size={22} style={{ color: s.color }} />
@@ -100,7 +100,7 @@ export default function ProjetosHubPage() {
 
         {/* CTA */}
         <section
-          className="mt-16 rounded-3xl p-10 text-center"
+          className="mt-16 rounded-2xl p-10 text-center"
           style={{ background: 'linear-gradient(135deg, #F7931E, #C27215)' }}
           aria-labelledby="cta-projetos"
         >
@@ -113,7 +113,7 @@ export default function ProjetosHubPage() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/doacoes"
-              className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-[#F7931E] text-sm font-bold px-6 py-2.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-orange-500/30"
+              className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-[#F7931E] text-sm font-bold px-6 py-2.5 rounded-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-orange-500/30"
             >
               💙 Fazer uma doação
             </Link>

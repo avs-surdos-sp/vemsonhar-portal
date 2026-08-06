@@ -107,7 +107,7 @@ export default function DoacoesPage() {
                 href="https://wa.me/5511937760888"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold text-sm px-5 py-3 rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg shadow-green-500/30"
+                className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold text-sm px-5 py-3 rounded-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg shadow-green-500/30"
               >
                 <MessageCircle size={16} />
                 Enviar comprovante

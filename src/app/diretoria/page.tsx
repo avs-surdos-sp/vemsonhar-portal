@@ -163,7 +163,7 @@ export default function DiretoriaPage() {
 
             {/* Nível 1 — Presidência */}
             <div className="flex justify-center">
-              <div className="flex items-center gap-3 px-8 py-4 rounded-2xl text-white font-extrabold text-sm shadow-lg"
+              <div className="flex items-center gap-3 px-8 py-4 rounded-xl text-white font-extrabold text-sm shadow-lg"
                 style={{ background: 'linear-gradient(135deg, #14387F, #2D5BA3)' }}>
                 <Users size={16} className="opacity-80" />
                 Presidência
@@ -223,7 +223,7 @@ export default function DiretoriaPage() {
 
             {/* Diretoria Executiva */}
             <div className="flex justify-center">
-              <div className="flex items-center gap-3 px-8 py-4 rounded-2xl text-white font-extrabold text-sm shadow-lg"
+              <div className="flex items-center gap-3 px-8 py-4 rounded-xl text-white font-extrabold text-sm shadow-lg"
                 style={{ background: 'linear-gradient(135deg, #14387F, #2D5BA3)' }}>
                 <Users size={16} className="opacity-80" />
                 Diretoria Executiva
@@ -338,10 +338,10 @@ export default function DiretoriaPage() {
                 <li key={n.nome}>
                   <Link
                     href={n.href}
-                    className="group flex flex-col items-center text-center p-6 rounded-2xl border border-gray-100 bg-white hover:-translate-y-1.5 hover:shadow-md transition-all duration-200"
+                    className="group flex flex-col items-center text-center p-6 rounded-xl border border-gray-100 bg-white hover:-translate-y-1.5 hover:shadow-md transition-all duration-200"
                   >
                     <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"
+                      className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"
                       style={{ background: n.bgLight }}
                     >
                       <Icon size={22} style={{ color: n.color }} />
@@ -359,7 +359,7 @@ export default function DiretoriaPage() {
 
         {/* CTA */}
         <section
-          className="rounded-3xl p-10 text-center"
+          className="rounded-2xl p-10 text-center"
           style={{ background: 'linear-gradient(135deg, #14387F, #1565C0)' }}
         >
           <h2 className="text-2xl font-extrabold text-white mb-3">Apoie a ASESP</h2>
@@ -369,7 +369,7 @@ export default function DiretoriaPage() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/doacoes"
-              className="group inline-flex items-center gap-2 bg-[#14387F] border-2 border-white text-white text-sm font-bold px-6 py-2.5 rounded-full transition-all duration-200 hover:bg-white hover:text-black hover:-translate-y-0.5 hover:shadow-lg"
+              className="group inline-flex items-center gap-2 bg-[#14387F] border-2 border-white text-white text-sm font-bold px-6 py-2.5 rounded-lg transition-all duration-200 hover:bg-white hover:text-black hover:-translate-y-0.5 hover:shadow-lg"
             >
               <Heart
                 size={15}
@@ -380,7 +380,7 @@ export default function DiretoriaPage() {
             </Link>
             <Link
               href="/contato"
-              className="bg-white/10 border border-white/30 text-white font-semibold px-8 py-3 rounded-full hover:bg-white/20 transition-colors"
+              className="bg-white/10 border border-white/30 text-white font-semibold px-8 py-3 rounded-lg hover:bg-white/20 transition-colors"
             >
               Falar com a diretoria
             </Link>

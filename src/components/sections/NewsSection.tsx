@@ -91,7 +91,7 @@ export default async function NewsSection() {
                 <li key={n.slug || n.titulo}>
                   <Link
                     href={href}
-                    className="relative block h-105 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group"
+                    className="relative block h-105 rounded-none overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group"
                   >
                     {/* Imagem de fundo (ou fallback) */}
                     <div className="absolute inset-0">

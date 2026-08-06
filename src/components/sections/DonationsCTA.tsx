@@ -28,7 +28,7 @@ export default function DonationsCTA() {
         {/* Botão */}
         <Link
           href="/doacoes"
-          className="group inline-flex items-center gap-2 bg-[#14387F] border-2 border-white text-white text-sm font-bold px-6 py-2.5 rounded-full transition-all duration-200 hover:bg-white hover:text-black hover:-translate-y-0.5 hover:shadow-lg shrink-0"
+          className="group inline-flex items-center gap-2 bg-[#14387F] border-2 border-white text-white text-sm font-bold px-6 py-2.5 rounded-lg transition-all duration-200 hover:bg-white hover:text-black hover:-translate-y-0.5 hover:shadow-lg shrink-0"
         >
           <Heart
             size={15}
