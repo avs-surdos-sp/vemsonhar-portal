@@ -78,7 +78,7 @@ export default async function BlogPage() {
                 <p className="text-xs font-bold uppercase tracking-widest text-[#F7931E] mb-4">Destaque</p>
                 <Link
                   href={`/blog/${destaque.slug.current}`}
-                  className="group flex flex-col md:flex-row rounded-2xl overflow-hidden border border-gray-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                  className="group flex flex-col md:flex-row rounded-none overflow-hidden border border-gray-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                   aria-label={`Leia: ${destaque.titulo}`}
                 >
                   <div className="md:w-[45%] h-56 md:h-auto relative shrink-0">
@@ -132,7 +132,7 @@ export default async function BlogPage() {
                     return (
                       <li key={artigo._id} className="group">
                         <Link href={`/blog/${artigo.slug.current}`}
-                          className="flex flex-col h-full rounded-2xl overflow-hidden border border-[#eef2f8] bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#14387F]"
+                          className="flex flex-col h-full rounded-none overflow-hidden border border-[#eef2f8] bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#14387F]"
                           aria-label={`Leia: ${artigo.titulo}`}>
                           {/* Capa */}
                           <div className="h-36 relative flex items-end p-4"

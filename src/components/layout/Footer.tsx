@@ -10,21 +10,25 @@ const linksInstitucionais = [
 ]
 
 const linksProjetos = [
-  { href: '/projetos/nucleos', label: 'Núcleos e Projetos'      },
+  { href: '/projetos/nucleos',   label: 'Núcleos e Projetos'      },
   { href: '/projetos/parceiros', label: 'Parcerias Institucionais' },
-  { href: '/doacoes',          label: 'Faça uma Doação'         },
+  { href: '/doacoes',            label: 'Faça uma Doação'         },
 ]
 
 const linksTransparencia = [
-  { href: '/transparencia/relatorios',     label: 'Relatórios Anuais'        },
-  { href: '/transparencia/demonstrativo',  label: 'Demonstrativo Financeiro' },
-  { href: '/transparencia/editais',        label: 'Editais e Parcerias'      },
-  { href: '/transparencia/projetos',       label: 'Projetos Aprovados'       },
+  { href: '/transparencia/relatorios',     label: 'Relatórios Anuais'   },
+  { href: '/transparencia/editais',        label: 'Editais e Parcerias' },
+  { href: '/transparencia/projetos',       label: 'Projetos Aprovados'  },
 ]
 
 const linksNoticias = [
   { href: '/noticias', label: 'Últimas Notícias' },
   { href: '/blog',     label: 'Blog / Artigos'   },
+]
+
+const linksLegais = [
+  { href: '/privacidade',   label: 'Política de Privacidade' },
+  { href: '/termos-de-uso', label: 'Termos de Uso'           },
 ]
 
 const socialLinks = [
@@ -67,17 +71,14 @@ export default function Footer() {
               <Image
                 src="/logo-avs.svg"
                 alt="AVS — Associação de Surdos do Estado de São Paulo"
-                width={200}
-                height={75}
-                className="h-20 w-auto brightness-0 invert"
+                width={280}
+                height={105}
+                className="footer-logo h-32 w-auto brightness-0 invert"
               />
             </div>
-            <p className="text-white/60 text-base leading-relaxed max-w-xs text-justify">
-              Associação de Surdos do Estado de São Paulo. Representando e defendendo os direitos da comunidade surda paulista desde 2017.
-            </p>
 
             {/* Redes sociais */}
-            <div className="flex items-center gap-3 mt-6">
+            <div className="flex items-center gap-3">
               {socialLinks.map(({ icon: Icon, href, label, hoverBg, color }) => (
                 <a
                   key={href}
@@ -95,7 +96,10 @@ export default function Footer() {
 
             {/* Contato rápido */}
             <div className="mt-6 space-y-2">
-              <a href="mailto:contato@avemsonhar.org.br" className="flex items-center gap-2 text-base text-white/60 hover:text-[#F7931E] transition-colors">
+              <a
+                href="mailto:contato@avemsonhar.org.br"
+                className="flex items-center gap-2 text-base text-white/60 hover:text-white hover:font-bold transition-colors duration-75"
+              >
                 <Mail size={16} className="shrink-0" />
                 contato@avemsonhar.org.br
               </a>
@@ -103,7 +107,7 @@ export default function Footer() {
                 href="https://maps.google.com/?q=Rua+Angaturama,+623,+São+Paulo,+SP"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-base text-white/60 hover:text-[#F7931E] transition-colors"
+                className="flex items-center gap-2 text-base text-white/60 hover:text-white hover:font-bold transition-colors duration-75"
               >
                 <MapPin size={16} className="shrink-0" />
                 Rua Angaturama, 623 — São Paulo, SP
@@ -182,8 +186,23 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 mt-12 pt-6 text-center text-base text-white/40">
-          <p>© {new Date().getFullYear()} ASESP - Todos os direitos reservados.</p>
+        <div className="border-t border-white/10 mt-12 pt-6 flex flex-col sm:flex-row items-start sm:items-end sm:justify-between gap-4 text-sm text-white/40">
+          <p>
+            © {new Date().getFullYear()} · Associação de Surdos do Estado de SP -  Vem Sonhar
+          </p>
+          <ul className="flex items-center gap-5 list-none ">
+            {linksLegais.map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  data-text={l.label}
+                  className="link-bold-on-hover hover:text-white hover:font-bold transition-colors duration-150"
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>

@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
+import HandsBackground from '@/components/shared/HandsBackground'
 
 // ─── Slides ───────────────────────────────────────────────────────────────────
 
@@ -24,16 +25,16 @@ const slides: Slide[] = [
   },
   {
     badge: 'Nossa história',
-    title: 'Conheça a história da fundação da ASESP',
+    title: 'Conheça a história da ASESP',
     cta: { href: '/sobre', label: 'Conheça a ASESP' },
-    bg: 'linear-gradient(135deg, #0069B4 0%, #14387F 70%, #061B45 100%)',
+    bg: 'linear-gradient(135deg, rgba(0,105,180,0.85) 0%, rgba(20,56,127,0.92) 70%, rgba(6,27,69,0.95) 100%), url(/wallpaper-avs.png) center/120% no-repeat',
   },
   {
     badge: 'Faça a diferença',
     title: 'Quer fazer parte e ajudar com doações?',
     text: 'Venha ajudar a fazer a diferença!',
     cta: { href: '/doacoes', label: 'Doe Agora' },
-    bg: 'linear-gradient(135deg, #F7931E 0%, #C27215 60%, #14387F 100%)',
+    bg: 'linear-gradient(135deg, rgba(247,147,30,0.6) 0%, rgba(194,114,21,0.65) 60%, rgba(20,56,127,0.75) 100%), url(/doacao.png) center/cover no-repeat',
   },
 ]
 
@@ -76,6 +77,9 @@ export default function Hero() {
               className="flex-[0_0_100%] min-w-0 relative"
               style={{ background: slide.bg }}
             >
+              {/* Mãos animadas — apenas no primeiro slide */}
+              {i === 0 && <HandsBackground cols={8} rows={5} />}
+
               {/* Decorative elements */}
               <div aria-hidden="true" className="pointer-events-none absolute inset-0">
                 <div
@@ -120,7 +124,7 @@ export default function Hero() {
                 {slide.cta && (
                   <Link
                     href={slide.cta.href}
-                    className="inline-flex items-center gap-2 font-bold text-base px-8 py-3.5 rounded-full bg-white text-black hover:-translate-y-0.5 transition-transform duration-200"
+                    className="inline-flex items-center gap-2 font-bold text-base px-8 py-3.5 rounded-lg bg-white text-black shadow-md hover:shadow-xl transition-shadow duration-200"
                   >
                     {slide.cta.label}
                     <ArrowRight size={16} className="ml-1" />

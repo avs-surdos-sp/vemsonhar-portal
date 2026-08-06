@@ -21,7 +21,7 @@ export default async function NoticiasPage() {
       {/* Page Header */}
       <section className="py-12 px-4 text-center" style={{ background: 'linear-gradient(135deg, #14387F 0%, #061B45 100%)' }} aria-labelledby="noticias-titulo">
         <h1 id="noticias-titulo" className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-3">Notícias</h1>
-        <p className="text-white/60 text-lg max-w-2xl mx-auto">Acompanhe as novidades da ASESP e da comunidade surda paulista.</p>
+        <p className="text-white/60 text-lg max-w-2xl mx-auto">Acompanhe as novidades da ASESP e da comunidade surda.</p>
       </section>
 
       <NewsClient noticias={noticias} />

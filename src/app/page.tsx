@@ -7,7 +7,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'ASESP — Associação de Surdos do Estado de São Paulo',
-  description: 'A ASESP representa e defende os direitos da comunidade surda paulista. Apoie a nossa causa.',
+  description: 'A ASESP representa e defende os direitos da comunidade surda. Apoie a nossa causa.',
 }
 
 export default function HomePage() {

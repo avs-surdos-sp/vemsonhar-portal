@@ -1,7 +1,3 @@
-export const metadata = {
-  title: 'ASESP CMS',
-}
-
 export default function StudioLayout({
   children,
 }: {

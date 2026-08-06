@@ -81,7 +81,7 @@ export default function BlogClient({ artigos }: { artigos: Artigo[] }) {
       {destaque && filtro === 'Todos' && (
         <Link
           href={`/blog/${destaque.slug.current}`}
-          className="group block rounded-3xl overflow-hidden mb-14 border border-[#eef2f8] bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#14387F] sm:flex"
+          className="group block rounded-none overflow-hidden mb-14 border border-[#eef2f8] bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#14387F] sm:flex"
           aria-label={`Destaque: ${destaque.titulo}`}
         >
           {/* Imagem ou cor */}
@@ -183,7 +183,7 @@ export default function BlogClient({ artigos }: { artigos: Artigo[] }) {
               <li key={artigo._id} className="group">
                 <Link
                   href={`/blog/${artigo.slug.current}`}
-                  className="block h-full rounded-2xl overflow-hidden border border-[#eef2f8] bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#14387F]"
+                  className="block h-full rounded-none overflow-hidden border border-[#eef2f8] bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#14387F]"
                   aria-label={`Ler: ${artigo.titulo}`}
                 >
                   {/* Cover */}

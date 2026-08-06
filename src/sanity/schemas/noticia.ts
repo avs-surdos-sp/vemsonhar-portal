@@ -68,6 +68,34 @@ export default defineType({
       ],
     }),
     defineField({
+      name: 'galeria',
+      title: 'Galeria de Fotos',
+      description: 'Adicione até 10 fotos relacionadas à notícia.',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+          options: { hotspot: true },
+          fields: [
+            defineField({
+              name: 'alt',
+              title: 'Texto alternativo (acessibilidade)',
+              type: 'string',
+            }),
+            defineField({
+              name: 'legenda',
+              title: 'Legenda (opcional)',
+              type: 'string',
+            }),
+          ],
+        },
+      ],
+      validation: (Rule) => Rule.max(10),
+      options: {
+        layout: 'grid',
+      },
+    }),
+    defineField({
       name: 'destaque',
       title: 'Destaque na Home?',
       type: 'boolean',

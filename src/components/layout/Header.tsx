@@ -37,7 +37,6 @@ const navLinks: NavLink[] = [
     label: 'Transparência',
     submenu: [
       { href: '/transparencia/relatorios',    label: 'Relatórios Anuais'        },
-      { href: '/transparencia/demonstrativo', label: 'Demonstrativo Financeiro' },
       { href: '/transparencia/editais',       label: 'Editais e Parcerias'      },
       { href: '/transparencia/projetos',      label: 'Projetos Aprovados'       },
     ],
@@ -86,7 +85,7 @@ export default function Header() {
       const y = window.scrollY
       const docHeight = document.documentElement.scrollHeight - window.innerHeight
       setScrollProgress(docHeight > 0 ? (y / docHeight) * 100 : 0)
-      setScrolled(y > 10)
+      setScrolled(y > 50)
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
@@ -110,8 +109,8 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-12 left-0 right-0 z-50 h-24 border-b border-[#14387F] transition-all duration-300 ${
-        scrolled ? 'shadow-md' : 'shadow-none'
+      className={`fixed left-0 right-0 z-50 h-24 transition-all duration-300 ${
+        scrolled ? 'top-0 shadow-md' : 'top-14 shadow-none'
       }`}
       style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(12px)' }}
     >
@@ -147,9 +146,9 @@ export default function Header() {
           <Image
             src="/logo-avs.svg"
             alt="VemSonhar ASESP"
-            width={200}
-            height={200}
-            className="h-15 w-auto"
+            width={240}
+            height={240}
+            className="h-20 w-auto"
             priority
           />
         </Link>
@@ -252,9 +251,11 @@ export default function Header() {
 
           <Link
             href="/doacoes"
-            className="bg-[#F7931E] text-white text-sm font-bold px-5 py-2.5 rounded-full hover:bg-[#C27215] transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5"
+            className="btn-fill-hover text-sm font-bold px-5 py-2.5 rounded-lg"
+            aria-label="Faça uma Doação"
           >
-            Faça uma Doação
+            <span className="btn-text">Faça uma Doação</span>
+            <span className="btn-hover-icon" aria-hidden="true">❤️</span>
           </Link>
         </nav>
 
@@ -339,10 +340,12 @@ export default function Header() {
 
           <Link
             href="/doacoes"
-            className="mt-2 text-center bg-[#F7931E] text-white text-sm font-bold px-5 py-3 rounded-full hover:bg-[#C27215] transition-colors"
+            className="btn-fill-hover mt-2 text-center text-sm font-bold px-5 py-3 rounded-lg"
             onClick={() => setMenuAberto(false)}
+            aria-label="Faça uma Doação"
           >
-            Faça uma Doação
+            <span className="btn-text">Faça uma Doação</span>
+            <span className="btn-hover-icon" aria-hidden="true">❤️</span>
           </Link>
         </div>
       </div>

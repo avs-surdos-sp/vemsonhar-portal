@@ -48,9 +48,14 @@
   --radius-4xl: calc(var(--radius) + 16px);
   /* Brand colors — ASESP */
   --color-brand-navy: var(--brand-navy);
-  --color-brand-orange: var(--brand-orange);
-  --color-brand-cyan: var(--brand-cyan);
   --color-brand-navy-dark: var(--brand-navy-dark);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-orange-dark: var(--brand-orange-dark);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-cyan: var(--brand-cyan);
+  --color-brand-gray: var(--brand-gray);
+  --color-brand-white: var(--brand-white);
+  --color-brand-black: var(--brand-black);
 }
 
 :root {
@@ -75,11 +80,16 @@
   --border: oklch(0.914 0 0);
   --input: oklch(0.914 0 0);
   --ring: oklch(0.30 0.11 253);
-  /* Brand tokens diretos */
-  --brand-navy: #14387F;
-  --brand-navy-dark: #061B45;
-  --brand-orange: #F7931E;
-  --brand-cyan: #0069B4;
+  /* Brand tokens — paleta oficial AVS (gerada do logotipo) */
+  --brand-navy: #14387F;        /* azul marinho (primário) */
+  --brand-navy-dark: #061B45;   /* navy escuro (gradientes) */
+  --brand-orange: #F7931E;      /* laranja (CTA principal) */
+  --brand-orange-dark: #C27215; /* laranja escuro (hover) */
+  --brand-blue: #0069B4;        /* azul médio (links/ícones) */
+  --brand-cyan: #20FFFF;        /* ciano brilhante (acento) */
+  --brand-gray: #CCCCCC;        /* cinza neutro */
+  --brand-white: #FFFFFF;
+  --brand-black: #000000;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -307,19 +317,25 @@ html[data-hc="1"] {
 }
 
 html[data-hc="1"] body {
-  background-color: #000 !important;
+  background-color: #1a1a1a !important;
   color: #fff !important;
 }
 
 /* ── Header ──────────────────────────────────────────────── */
 html[data-hc="1"] header {
-  background: #0d0d0d !important;
+  background: #1a1a1a !important;
   border-bottom: 1px solid rgba(255,255,255,0.25) !important;
+}
+
+/* ── Barra de Acessibilidade ────────────────────────────── */
+html[data-hc="1"] [aria-label="Barra de acessibilidade"] {
+  background: #1a1a1a !important;
+  border-bottom-color: rgba(255,255,255,0.25) !important;
 }
 
 /* Dropdown panel (bg-white → black) */
 html[data-hc="1"] header [class*="bg-white"] {
-  background-color: #0d0d0d !important;
+  background-color: #1a1a1a !important;
   border-color: rgba(255,255,255,0.35) !important;
 }
 
@@ -342,14 +358,14 @@ html[data-hc="1"] header .text-\[\#14387F\] {
 
 /* ── Backgrounds claros → escuros ────────────────────────── */
 html[data-hc="1"] .bg-white {
-  background-color: #111 !important;
-  color: #ffff00 !important;
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
   border-color: rgba(255,255,255,0.35) !important;
 }
 
-/* Texto preto em HC mode vira amarelo para garantir contraste */
+/* Texto preto em HC mode vira branco para garantir leitura agradável */
 html[data-hc="1"] .text-black {
-  color: #ffff00 !important;
+  color: #ffffff !important;
 }
 
 html[data-hc="1"] .bg-gray-50,
@@ -359,9 +375,23 @@ html[data-hc="1"] .hover\:bg-gray-100:hover {
   background-color: #1a1a1a !important;
 }
 
-/* Hover em modo Alto Contraste — força contraste alto */
-html[data-hc="1"] [class*="hover:bg-"]:hover {
-  color: #ffff00 !important;
+/* Timeline cards — fundo escuro no HC */
+html[data-hc="1"] .timeline-card {
+  background-color: #1a1a1a !important;
+  border-color: rgba(255,255,255,0.25) !important;
+}
+html[data-hc="1"] .timeline-card .timeline-text {
+  color: #e8e8e8 !important;
+}
+
+/* Missão e Visão — hover funciona em HC */
+html[data-hc="1"] [class*="hover:bg-[#C4D9FF]"]:hover,
+html[data-hc="1"] [class*="hover:bg-[#c4d9ff]"]:hover,
+html[data-hc="1"] [class*="hover:bg-[#FEC7A7]"]:hover,
+html[data-hc="1"] [class*="hover:bg-[#fec7a7]"]:hover,
+html[data-hc="1"] [class*="hover:bg-[#D6D6D6]"]:hover,
+html[data-hc="1"] [class*="hover:bg-[#d6d6d6]"]:hover {
+  background-color: #2a2a2a !important;
 }
 
 /* Tints coloridos (Tailwind JIT — upper e lower case) */
@@ -387,7 +417,10 @@ html[data-hc="1"] [class*="bg-[#f5f7fa]"] {
 /* Cinza → quase branco para legibilidade */
 html[data-hc="1"] .text-gray-400,
 html[data-hc="1"] .text-gray-500,
-html[data-hc="1"] .text-gray-600 {
+html[data-hc="1"] .text-gray-600,
+html[data-hc="1"] .text-gray-700,
+html[data-hc="1"] .text-gray-800,
+html[data-hc="1"] .text-gray-900 {
   color: #e8e8e8 !important;
 }
 
@@ -443,10 +476,6 @@ html[data-hc="1"] .hc-highlight-card {
   border-width: 2px !important;
 }
 
-/* ── Calendar dropdown: text-gray-700 geral → claro ─────── */
-html[data-hc="1"] .text-gray-700 {
-  color: #e8e8e8 !important;
-}
 
 /* ── Calendar dropdown: hover azul marinho + texto branco ── */
 html[data-hc="1"] .cal-dropdown-item:hover {
@@ -487,3 +516,227 @@ html[data-hc="1"] img {
     animation: none;
   }
 }
+
+/* ===========================
+   Hands background — floating animation */
+@keyframes hands-float {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) rotate(var(--rotate, 0deg)) scale(0.8);
+  }
+  20% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-30px) rotate(calc(var(--rotate, 0deg) + 15deg)) scale(1);
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-80px) rotate(calc(var(--rotate, 0deg) + 30deg)) scale(0.8);
+  }
+}
+.hands-bg-emoji {
+  animation: hands-float linear infinite;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+}
+@media (prefers-reduced-motion: reduce) {
+  .hands-bg-emoji {
+    animation: none;
+    opacity: 0.4 !important;
+  }
+}
+
+/* ===========================
+   Link "bold no hover" sem deslocar layout
+   (reserva o espaço da versão bold via pseudo-element invisível) */
+.link-bold-on-hover {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+.link-bold-on-hover::before {
+  content: attr(data-text);
+  height: 0;
+  visibility: hidden;
+  overflow: hidden;
+  font-weight: 700;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ===========================
+   Botão "Faça uma Doação" — Fill Hover (laranja → azul claro)
+   + texto vira coração ❤️ no hover */
+.btn-fill-hover {
+  position: relative;
+  overflow: hidden;
+  background: #F7931E;
+  color: #ffffff;
+  z-index: 0;
+  isolation: isolate;
+  box-shadow: 0 4px 14px rgba(247, 147, 30, 0.25);
+  transition: box-shadow 0.4s ease;
+}
+.btn-fill-hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #008EF0;
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: -1;
+}
+.btn-fill-hover:hover::before {
+  transform: scaleY(1);
+}
+.btn-fill-hover:hover {
+  box-shadow: 0 6px 18px rgba(0, 142, 240, 0.4);
+}
+.btn-fill-hover .btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: opacity 0.2s ease 0.1s;
+}
+.btn-fill-hover .btn-hover-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4em;
+  opacity: 0;
+  transition: opacity 0.25s ease 0.2s;
+  pointer-events: none;
+}
+.btn-fill-hover:hover .btn-text {
+  opacity: 0;
+  transition-delay: 0s;
+}
+.btn-fill-hover:hover .btn-hover-icon {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-fill-hover::before,
+  .btn-fill-hover,
+  .btn-fill-hover .btn-text,
+  .btn-fill-hover .btn-hover-icon {
+    transition: none;
+  }
+}
+
+/* ===========================
+   Timeline card — fundo inteiro vira a cor do número (--accent) no hover */
+.timeline-card {
+  background-color: #ffffff;
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+              box-shadow 0.25s ease, transform 0.25s ease;
+}
+.timeline-card .timeline-title {
+  color: var(--accent, #14387F);
+  transition: color 0.25s ease;
+}
+.timeline-card .timeline-text {
+  transition: color 0.25s ease;
+}
+.timeline-card:hover {
+  background-color: var(--accent, #14387F) !important;
+  border-color: var(--accent, #14387F) !important;
+}
+.timeline-card:hover .timeline-title,
+.timeline-card:hover .timeline-text {
+  color: #ffffff !important;
+}
+
+/* ===========================
+   Finalidades — número/divisor seguem cor do accent + HC override */
+.finalidade-number {
+  color: var(--accent, #14387F);
+}
+.finalidade-divider {
+  background-color: color-mix(in srgb, var(--accent, #14387F) 25%, transparent);
+}
+
+/* Alto Contraste — força legibilidade em elementos com inline color */
+html[data-hc="1"] .finalidade-number {
+  color: #ffff00 !important;
+}
+html[data-hc="1"] .finalidade-divider {
+  background-color: rgba(255,255,255,0.3) !important;
+}
+html[data-hc="1"] .finalidade-text {
+  color: #ffffff !important;
+}
+
+/* Timeline — title + circle visíveis no HC */
+html[data-hc="1"] .timeline-card .timeline-title {
+  color: #ffff00 !important;
+}
+html[data-hc="1"] .timeline-card .timeline-text {
+  color: #e8e8e8 !important;
+}
+
+/* ===========================
+   Valores (Quem Somos) — ícones com cor inline
+   No HC, força cor clara/visível independente da cor inline */
+html[data-hc="1"] .valor-icon {
+  color: #20FFFF !important;
+}
+html[data-hc="1"] .valor-icon-wrap {
+  background-color: rgba(32, 255, 255, 0.15) !important;
+}
+
+/* ===========================
+   MemberCard (Diretoria) — overlay com cargo
+   Mantém fundo branco translúcido + texto sempre PRETO mesmo no HC */
+.member-role-overlay {
+  background: rgba(255, 255, 255, 0.85);
+}
+.member-role-text {
+  color: #000000;
+}
+html[data-hc="1"] .member-role-overlay {
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+html[data-hc="1"] .member-role-text {
+  color: #000000 !important;
+}
+
+/* ===========================
+   Prose (Tailwind Typography) — força texto branco no HC
+   Aplica ao conteúdo de notícias, blog e qualquer outro PortableText */
+html[data-hc="1"] .prose,
+html[data-hc="1"] .prose p,
+html[data-hc="1"] .prose li,
+html[data-hc="1"] .prose strong,
+html[data-hc="1"] .prose em,
+html[data-hc="1"] .prose blockquote {
+  color: #ffffff !important;
+}
+html[data-hc="1"] .prose h1,
+html[data-hc="1"] .prose h2,
+html[data-hc="1"] .prose h3,
+html[data-hc="1"] .prose h4,
+html[data-hc="1"] .prose h5,
+html[data-hc="1"] .prose h6 {
+  color: #ffff00 !important;
+}
+html[data-hc="1"] .prose a {
+  color: #20FFFF !important;
+}
+html[data-hc="1"] .prose code {
+  color: #20FFFF !important;
+  background-color: #2a2a2a !important;
+}
+
+/* ===========================
+   Logo do Footer — força branco no HC */
+html[data-hc="1"] .footer-logo {
+  filter: brightness(0) invert(1) !important;
+}
+

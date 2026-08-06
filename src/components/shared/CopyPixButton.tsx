@@ -26,7 +26,7 @@ export default function CopyPixButton({ value, label = 'Copiar chave' }: Props) 
       type="button"
       onClick={handleCopy}
       aria-label={copied ? 'Chave copiada' : label}
-      className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full border transition-all duration-200 ${
+      className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-lg border transition-all duration-200 ${
         copied
           ? 'bg-[#14387F] text-white border-[#14387F]'
           : 'bg-white text-[#14387F] border-[#14387F]/20 hover:border-[#14387F] hover:bg-[#14387F]/5'
